@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta chaset="utf-8"/>
+<meta name="description" content="見て下さい、この大きな蟹" />
+<meta name="viewport" content="width=device-width"/>
+<title>Saita Magic - 01</title>
+<style>
+.Output
+{
+	margin: 2em;
+}
+</style>
+<script src="https://github.com/hirosphere/Quake11/raw/master/File1.js"></script>
+</head>
+<body>
+<h1>Saita Magic - 01</h1>
+<p>上野－尾久－赤羽－浦和－さいたま新都心－大宮－宮原－上尾－北上尾－桶川－北本－鴻巣－吹上－行田－熊谷－籠原－岡部－深谷。</p>
+
+<button onclick="OperA();">男性専用車 (おすだけ)</button>
+<button onclick="OperB();">イニシエート</button>
+<div id="UhoOut" class="Output"></div>
+<script>
+
+function OperA()
+{
+    //ModuleA.ProcA( "深夜のJavaScript" );
+	var e = document.getElementById( "UhoOut" );
+	e.innerHTML += "ウホ　";
+}
+
+function OperB()
+{
+    //ModuleA.ProcA( "深夜のJavaScript" );
+	var e = document.getElementById( "UhoOut" );
+	e.innerHTML = "ようこそ　高崎線　";
+}
+
+</script>
+
+</body>
+</html>
