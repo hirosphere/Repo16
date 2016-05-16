@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width" />
+<title>WebAudio sample</title>
+<script src="/js/jquery.js"></script>
+<script>
+//コンテキスト作成
+var AC = window.AudioContext ||window.webkitAudioContext;
+if(!AC) alert("WebAudio not supported") ;
+var ctx = new AC() ;
+
+//ノードモジュールの作成
+var vco0 = ctx.createOscillator() ; //オシレータ
+var f0 = ctx.createBiquadFilter() ; //フィルタ
+var e0 = ctx.createGain() ;         //エンベロープ用ゲイン
+var g0 = ctx.createGain() ;         //出力用アンプ
+var l0 = ctx.createOscillator() ;   //LFO
+var l0o = ctx.createGain() ;        //LFOからオシレータのゲイン
+var l0f = ctx.createGain() ;        //LFOからフィルタのゲイン
+var l0a = ctx.createGain() ;        //LFOからアンプのゲイン
+var a0 = ctx.createAnalyser() ;     //ビジュアライザ用ノード
+
+//パッチング
+vco0.connect(f0) ;  //オシレータからフィルタへ
+f0.connect(e0) ;    //フィルタからエンベロープへ
+e0.connect(a0) ;    //エンベロープからアナライザへ
+a0.connect(g0) ;    //アナライザから出力アンプへ
+l0.connect(l0o) ;   //LFOからオシレータのゲインへ
+l0.connect(l0f) ;   //LFOからフィルタのゲインへ
+l0.connect(l0a) ;   //LFOからアンプのゲインへ
+l0o.connect(vco0.frequency) ;   //オシレータゲインからオシレータの周波数へ
+l0f.connect(f0.frequency) ;     //フィルタゲインからフィルタの周波数へ
+l0a.connect(g0.gain) ;          //アンプゲインからアンプのゲインへ
+g0.connect(ctx.destination) ;   //出力アンプを最終出力へ
+
+//パラメータ初期化
+vco0.frequency.value = 440 ;
+vco0.type = "sine" ;
+vco0.started = false ;
+f0.frequency.value = 20000 ;
+f0.Q.value=0 ;
+g0.gain.value= 0.2 ;
+e0.gain.value= 0 ;
+l0.frequency.value=1.0 ;
+l0.type = "sine" ;
+l0o.gain.value = 0 ;
+l0f.gain.value = 0 ;
+l0a.gain.value = 0 ;
+a0.fftSize = 512 ;
+
+//エンベロープ付きで単音鳴らす
+function note() {
+    var now=ctx.currentTime;    //WebAudioの持ってるタイマーの時間
+    var attack=0.01, decay=0.1, sustain=0 ;
+    var maxvalue=1.0; // Attackの目標値を1.0
+    e0.gain.cancelScheduledValues(0);  // スケジュールを全て解除
+    e0.gain.setValueAtTime(0.0, now);  // 開始時間にgainを0に
+    e0.gain.linearRampToValueAtTime(maxvalue, now + attack); //AttackタイムかけてrootValueまで遷移  
+    e0.gain.linearRampToValueAtTime(sustain * maxvalue, now + attack + decay);  //decayタイムでsustainレベルまで。
+}
+
+//VCOの開始
+function start() {
+    if(!vco0.started) {
+        vco0.start(0) ;
+        l0.start(0);
+        vco0.started = true ;
+    }
+}
+//ビジュアライザ
+function visual() {
+    var can = $('#c_wave').get(0).getContext('2d') ;
+    can.strokeStyle="#fff" ;
+    can.fillStyle="#486";
+    var ad = new Uint8Array(512) ;
+    setInterval(function() {
+        a0.getByteTimeDomainData(ad) ;  //波形取得
+        can.fillRect(0,0,512,256);
+        can.beginPath();
+        can.moveTo(0,128);
+        for(i=0;i<256;i++) {
+            can.lineTo(i,256-ad[i*2]);
+        }
+        a0.getByteFrequencyData(ad);    //周波数スペクトル取得
+        can.moveTo(256,256);
+        for(i=0;i<256;i++) {
+            can.moveTo(i+256,255);
+            can.lineTo(i+256,256-ad[i]);
+        }
+        can.stroke() ;
+    },100); 
+}
+var flag = false ;
+var intv = null ;
+$(function(){
+    //スライダーのバインド
+    sbind('s_g0',g0.gain,function(v){ return v/1000;} ) ;
+    sbind('s_v0',vco0.frequency,function(v){return Math.pow(2,v*9/1000)*20;});
+    sbind('s_f0',f0.frequency,function(v){return Math.pow(2,v*10/1000)*20;});
+    sbind('s_fp0',f0.Q,function(v){return v/10;});
+    sbind('s_l0',l0.frequency,function(v){return Math.pow(2,v*10/1000)*0.1;});
+    sbind('s_l0o',l0o.gain,function(v){ return v/1;} ) ;
+    sbind('s_l0f',l0f.gain,function(v){ return v/1;} ) ;
+    sbind('s_l0a',l0a.gain,function(v){ return v/1000;} ) ;
+    $('#s_wave').on('change',function(){
+        vco0.type  = $(this).val() ;
+    }); 
+    $('#s_lwave').on('change',function(){
+        l0.type  = $(this).val() ;
+    }); 
+
+    //連続音のon/off
+    $('#b_start').on('click',function(){
+        start() ;
+        e0.gain.cancelScheduledValues(0);  // スケジュールを全て解除
+        if(flag) e0.gain.value= 0;
+        else e0.gain.value= 1.0 ;
+        flag = !flag ;
+    });
+
+    //単音再生
+    $('#b_trig').on('click',function(){
+        start() ;
+        note();
+    });
+
+    //単音をインターバル再生
+    $('#b_seq').on('click',function(){
+        start() ;
+        if(!intv) {
+            intv = setInterval(function() {
+                note();
+            },200) ;
+        } else {
+            clearInterval(intv) ;
+            intv = null ;
+        }
+    });
+    visual() ;
+});
+//スライダーとパラメータのバインド
+function sbind(id,tgt,func) {
+    $('#'+id).on('input',function() {
+        var v = func($(this).val()) ;
+        $('#'+id+'_v').val(v) ;
+        tgt.value = v ;
+    });
+}
+</script>
+<style>
+body {
+    line-height:150% ;
+    background-color:#444 ;
+    color:#fff ;
+}
+h3 {
+    margin:0 ;
+    margin-top:1em;
+    border-top:1px solid white ;
+}
+input[type=range] {
+    width:800px ;
+    background-color:white ;
+}
+dd input[type=text] {
+    width:4em ;
+}
+dl {
+    margin:0 ;
+}
+dl dt {
+    width:5em;
+    text-align: right ;
+}
+dl dd {
+    margin-left:5em ;
+    margin-top:-1.5em ;
+}
+</style>
+</head>
+<body>
+<button id=b_start>CONT</button><button id=b_trig>TRIG</button><button id=b_seq>SEQ</button><br/>
+<h3>OSC</h3>
+<dl>
+<dt>waveform</dt>
+<dd><select id=s_wave><option>sine</option><option>square</option><option>sawtooth</option><option>triangle</option></select></dd>
+<dt>freq</dt><dd><input id=s_v0 type=range min=1 max=1000 value=440><input type=text  id=s_v0_v></dd>
+</dl>
+<h3>LPF</h3>
+<dl>
+<dt>cutoff</dt><dd><input id=s_f0 type=range min=1 max=1000 value=10000><input type=text  id=s_f0_v></dd>
+<dt>resonance</dt><dd><input id=s_fp0 type=range min=0 max=1000 value=1><input type=text  id=s_fp0_v></dd>
+</dl>
+<h3>LFO</h3>
+<dl>
+<dt>waveform</dt><dd><select id=s_lwave><option>sine</option><option>square</option><option>sawtooth</option><option>triangle</option></select></dd>
+<dt>freq</dt><dd><input id=s_l0 type=range min=1 max=1000 value=100><input type=text  id=s_l0_v></dd>
+<dt>OSC gain</dt><dd><input id=s_l0o type=range min=0 max=1000 value=0><input type=text  id=s_l0o_v></dd>
+<dt>LPF gain</dt><dd><input id=s_l0f type=range min=0 max=1000 value=0><input type=text  id=s_l0f_v></dd>
+<dt>AMP gain</dt><dd><input id=s_l0a type=range min=0 max=1000 value=0><input type=text  id=s_l0a_v></dd>
+</dl>
+<h3>AMP</h3>
+<dl>
+<dt>gain</dt><dd><input id=s_g0 type=range min=0 max=1000 value=50><input type=text  id=s_g0_v></dd>
+</dl>
+<h3>output</h3>
+<canvas id=c_wave width=512 height=256></canvas> 
