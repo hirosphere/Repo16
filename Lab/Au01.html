@@ -1,44 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta chaset="utf-8"/>
 <meta name="description" content="見て下さい、この大きな蟹" />
 <meta name="viewport" content="width=device-width"/>
-<title>Saita Magic - 01</title>
+<title>Audio-01</title>
 <style>
 .Output
 {
-	margin: 3%;
+	margin: 2em;
 }
 </style>
 <script src="../Prime16.js"></script>
 </head>
 <body>
-<h1>Saita Magic - 01</h1>
-<p>上野－尾久－赤羽－浦和－さいたま新都心－大宮－宮原－上尾－北上尾－桶川－北本－鴻巣－吹上－行田－熊谷－籠原－岡部－深谷－本庄－倉賀野－神保原－新町－高崎。</p>
-
-
-<button onclick="OperA();">男性専用車 (おすだけ)</button>
-<button onclick="OperB();">イニシエート</button>
-
-<div id="UhoOut" class="Output"></div>
-<script>
-
-function OperA()
-{
-    //ModuleA.ProcA( "深夜のJavaScript" );
-	var e = document.getElementById( "UhoOut" );
-	e.innerHTML += "ウホ　";
-}
-
-function OperB()
-{
-    //ModuleA.ProcA( "深夜のJavaScript" );
-	var e = document.getElementById( "UhoOut" );
-	e.innerHTML = "ようこそ　高崎線　";
-}
-
-</script>
+<h1>Audio-01</h1>
+<p>HTML Audio 練習</p>
 
 <div id="Main"></div>
 <p id="Output"></p>
@@ -56,8 +33,8 @@ var Synth = class_def
 			var context = this.Context = ac ? new ac() : null;
 			
 			this.Volume = context.createGain();
-			this.Voice1 = new Voice( context, this.Volume, 0.5 );
-			this.Voice2 = new Voice( context, this.Volume, 0.44 );
+			this.Voice1 = new Voice( context, this.Volume );
+			this.Voice2 = new Voice( context, this.Volume );
 			this.Volume.connect( context.destination );
 			this.Volume.gain.value = 0.0;
 		}
@@ -74,7 +51,7 @@ var Voice = class_def
 	null,
 	function()
 	{
-		this.Initiate = function( context, volume, morate )
+		this.Initiate = function( context, volume )
 		{
 			this.Context = context;
 			
@@ -96,9 +73,9 @@ var Voice = class_def
 			this.VoOsc1.type = "sine";
 			this.VoEnv.gain.value = 1.0;
 			
-			this.Mo1Osc.frequency.value = morate;
+			this.Mo1Osc.frequency.value = 0.5;
 			this.Mo1Osc.type = "sine";
-			this.Mo1AVol.gain.value = 0.5;
+			this.Mo1AVol.gain.value = 0.2;
 			
 			
 			this.VoOsc1.start();
@@ -143,13 +120,13 @@ var AppAPane = class_def
 		function build_div1( com, synth )
 		{
 			var e = enew( "div", com, null, { marginBottom: "8px" } );
-			//var bu_1 = enew_t( "button", e, "トリガー" );
-			//var bu_2 = enew_t( "button", e, "トリガー" );
-			//var bu_3 = enew_t( "button", e, "トリガー" );
+			var bu_1 = enew_t( "button", e, "トリガー" );
+			var bu_2 = enew_t( "button", e, "トリガー" );
+			var bu_3 = enew_t( "button", e, "トリガー" );
 			
-			//bu_1.onclick = function()
+			bu_1.onclick = function()
 			{
-			//	synth.Voice1.Trigger();
+				synth.Voice1.Trigger();
 			}
 		}
 		
