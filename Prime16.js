@@ -1,16 +1,20 @@
-﻿/*  Prime  */
+﻿
+"みてください、この大きなカニ";
+
+/*  Prime  */
 
 function class_def( base, decor )
 {
 	var ctor = function()
 	{
-		this.Initiate.apply( this, arguments );
+		this.Initiate && this.Initiate.apply( this, arguments );
 	}
+	
 	if( base )
 	{
 		for( var fn in base.prototype )    ctor.prototype[ fn ] = base.prototype[ fn ];
 	}
-	ctor.prototype.Initiate = function() {}
+	
 	decor.call( ctor.prototype, base, ctor );
 	return ctor;
 }
