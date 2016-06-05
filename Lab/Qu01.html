@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta chaset="utf-8"/>
+<meta name="description" content="JavaScript プログラミング" />
+<meta name="viewport" content="width=device-width"/>
+<title>Qu01</title>
+<style>
+</style>
+
+<script src="../Prime16.js"></script>
+
+</head>
+<body>
+
+<div id="main"></div>
+
+<script><!--
+
+var App = class_def
+(
+	null,
+	function()
+	{
+		this.Initiate = function( com )
+		{
+			var fr = fnew();
+			var e_res = enew( "div", fr );
+			var e_rqr = enew( "div", fr );
+			com.appendChild( fr );
+			
+			function onrqr( res )
+			{
+				e_plain( e_rqr, new res().Msg );
+			}
+			
+			require( "Rqur01.js", onrqr );
+		}
+	}
+);
+
+new App( e_id( "main" ) );
+
+
+//--></script>
+
+</body>
+</html>

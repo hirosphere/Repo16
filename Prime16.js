@@ -3,6 +3,11 @@
 
 /*  Prime  */
 
+function log( msg )
+{
+	console.log( msg );
+}
+
 function class_def( base, decor )
 {
 	var ctor = function()
@@ -15,10 +20,45 @@ function class_def( base, decor )
 		for( var fn in base.prototype )    ctor.prototype[ fn ] = base.prototype[ fn ];
 	}
 	
-	decor.call( ctor.prototype, base, ctor );
+	decor.call( ctor.prototype, base && base.prototype, ctor );
 	return ctor;
 }
 
+
+function require( file, onload )
+{
+	var res;
+	if( onload )
+	{
+		text_get
+		(
+			file,
+			function( code )
+			{
+				eval( "res =\r\n" + code );
+				onload( res );
+			}
+		);
+	}
+	else
+	{
+		var code = text_get( file );
+		eval( "res =\r\n" + code );
+		return res;
+	}
+}
+
+
+var Leaf = class_def
+(
+	null,
+	function()
+	{
+		this.Value = undefined;
+		this.Changed = {};
+		
+	}
+);
 
 
 /*  HTML, DOM  */
@@ -34,14 +74,16 @@ function enew( type, com, attrs, style, class_name, text )
 	return e;
 }
 
-function enew_t( type, com, text, attrs, class_name, style )
+function enew_t( type, com, text, attrs, style, class_name )
 {
 	return enew( type, com, attrs, style, class_name, text );
 }
 
-function tnew( value )
+function tnew( value, com )
 {
-	return document.createTextNode( value );
+	var t = document.createTextNode( value );
+	if( com )  com.appendChild( t );
+	return t;
 }
 
 function fnew( value )
@@ -81,7 +123,26 @@ function ht_plain( plain )
 
 /*  HTTP  */
 
-
+function text_get( url, callback )
+{
+	var req = new XMLHttpRequest();
+	req.open( "GET", url, callback != null );
+	
+	if( callback )
+	{
+		req.onloadend = function(  )
+		{
+			callback( req.responseText );
+		};
+		
+		req.send( null );
+	}
+	else
+	{
+		req.send( null );
+		return req.responseText;
+	}
+}
 
 /*  Data  */
 

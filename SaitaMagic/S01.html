@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta chaset="utf-8"/>
+<meta charset="utf-8"/>
 <meta name="description" content="見て下さい、この大きな蟹" />
 <meta name="viewport" content="width=device-width"/>
 <title>Saita Magic - 01</title>
@@ -12,12 +12,14 @@
 }
 </style>
 <script src="../Prime16.js"></script>
+<script src="S01/Au01.js"></script>
 </head>
 <body>
 <h1>Saita Magic - 01</h1>
 <p>
+上野－尾久－赤羽－浦和－さいたま新都心－大宮－土呂－東大宮－蓮田－白岡－新白岡－久喜－東鷲宮－栗橋－古河－野木－間々田－小山－小金井－自治医大－石橋－雀宮－宇都宮
 <!--上野－尾久－赤羽－浦和－さいたま新都心－大宮－宮原－上尾－北上尾－桶川－北本－鴻巣－吹上－行田－熊谷－籠原－岡部－深谷－本庄－倉賀野－神保原－新町－高崎。-->
-西武新宿－高田馬場－下落合－中井－新井薬師前－沼袋－野方－都立家政－鷺宮－下井草－井荻－上井草－上石神井－武蔵関－東伏見－西武柳沢－田無－花小金井－小平－久米川－東村山－所沢－航空公園－新所沢－入曽－狭山市－新狭山－南大塚－本川越
+<!--西武新宿－高田馬場－下落合－中井－新井薬師前－沼袋－野方－都立家政－鷺宮－下井草－井荻－上井草－上石神井－武蔵関－東伏見－西武柳沢－田無－花小金井－小平－久米川－東村山－所沢－航空公園－新所沢－入曽－狭山市－新狭山－南大塚－本川越-->
 </p>
 
 
@@ -27,164 +29,37 @@
 <div id="UhoOut" class="Output"></div>
 <script>
 
+var uho = "";
+
 function OperA()
 {
 	var e = document.getElementById( "UhoOut" );
-	e.innerHTML += "ウホ　";
+	uho += "ウホ　";
+	e.innerHTML = uho;
 }
 
 function OperB()
 {
 	var e = document.getElementById( "UhoOut" );
-	e.innerHTML = "ようこそ　西武新宿線　";
+	uho = "";
+	e.innerHTML = "ようこそ　宇都宮線　";
 }
 
+new function()
+{
+	require( "S01/S01_1.js", on_sm_load );
+	
+	
+	function on_sm_load( module )
+	{
+		new module.AppAPane( e_id( "Main" ) );
+	}
+
+};
 </script>
 
 <div id="Main"></div>
 <p id="Output"></p>
-
-<script>
-
-var Synth = class_def
-(
-	null,
-	function()
-	{
-		this.Initiate = function()
-		{
-			var ac = AudioContext || webkitAudioContext;
-			var context = this.Context = ac ? new ac() : null;
-			
-			this.Volume = context.createGain();
-			this.Voice1 = new Voice( context, this.Volume, 0.5 );
-			this.Voice2 = new Voice( context, this.Volume, 0.44 );
-			this.Volume.connect( context.destination );
-			this.Volume.gain.value = 0.0;
-		}
-		
-		this.Trigger = function()
-		{
-			
-		}
-	}
-);
-
-var Voice = class_def
-(
-	null,
-	function()
-	{
-		this.Initiate = function( context, volume, morate )
-		{
-			this.Context = context;
-			
-			this.VoOsc1 = context.createOscillator();
-			this.VoEnv = context.createGain();
-			
-			this.Mo1Osc = context.createOscillator();
-			this.Mo1AVol = context.createGain();
-			
-			// connect
-			this.VoOsc1.connect( this.VoEnv );
-			this.VoEnv.connect( volume );
-			
-			this.Mo1Osc.connect( this.Mo1AVol );
-			this.Mo1AVol.connect( this.VoEnv.gain );
-			
-			// init
-			this.VoOsc1.frequency.value = 440;
-			this.VoOsc1.type = "sine";
-			this.VoEnv.gain.value = 1.0;
-			
-			this.Mo1Osc.frequency.value = morate;
-			this.Mo1Osc.type = "sine";
-			this.Mo1AVol.gain.value = 0.5;
-			
-			
-			this.VoOsc1.start();
-			this.Mo1Osc.start();
-		}
-		
-		this.Trigger = function()
-		{
-			
-		}
-		
-		this.toString = function() { return "class Synth" }
-	}
-);
-
-
-
-var output = e_id( "Output" );
-
-function log( text )
-{
-	output.innerHTML += ht_plain( text + "\n" );
-}
-
-var AppAPane = class_def
-(
-	null,
-	function()
-	{
-		this.Initiate = function( com )
-		{
-			var fr = fnew();
-			var e = enew( "div", fr );
-			
-			var synth = new Synth();
-			
-			build_div1( fr, synth );
-			build_div2( fr, synth );
-			eadd( com, fr );
-		}
-		
-		function build_div1( com, synth )
-		{
-			var e = enew( "div", com, null, { marginBottom: "8px" } );
-			//var bu_1 = enew_t( "button", e, "トリガー" );
-			//var bu_2 = enew_t( "button", e, "トリガー" );
-			//var bu_3 = enew_t( "button", e, "トリガー" );
-			
-			//bu_1.onclick = function()
-			{
-			//	synth.Voice1.Trigger();
-			}
-		}
-		
-		function build_div2( com, synth )
-		{
-			function vl1( label ) { return label / 1000; }
-			function vl2( label ) { return 20 * Math.pow( 2, label / 1000 * 10 ); }
-			
-			var e = enew( "div", com, null, { marginBottom: "4px" } );
-			new Slide( "Volume", e, 0, 1000, synth.Volume.gain, vl1 );  enew( "br", e );
-			new Slide( "Vo1 VCO Freq", e, 0, 1000, synth.Voice1.VoOsc1.frequency, vl2 );  enew( "br", e );
-			new Slide( "Vo2 VCO Freq", e, 0, 1000, synth.Voice2.VoOsc1.frequency, vl2 );  enew( "br", e );
-			//new Slide( e, 0, 1000 );  enew( "br", e );
-			//new Slide( e, 0, 1000 );  enew( "br", e );
-		}
-		
-	}
-);
-
-function Slide( label, com, min, max, target, vl )
-{
-	var lab = enew_t( "label", com, label );
-	var slide = enew( "input", com, { type: "range", min: min, max: max, value: 0 } );
-	slide.style.width = "500px";
-	
-	slide.oninput = function()
-	{
-		target.value = vl( this.value );
-	}
-}
-
-new AppAPane( e_id( "Main" ) );
-
-</script>
 
 
 </body>
