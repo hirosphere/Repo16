@@ -181,7 +181,7 @@
 		var vo_types = [ "sine", "triangle", "square", "sawtooth" ];
 		var vo_labels = [ "Sine", "Tri", "Squ", "Saw" ];
 		
-		var flt_types = [ "allpass", "lowass", "highpass", "bandpass", "notch" ];
+		var flt_types = [ "allpass", "lowpass", "highpass", "bandpass", "notch" ];
 		var flt_labels = [ "Pass", "LP", "HP", "BP", "Notch" ];
 		
 		this.Vo_Key    = new Leaf( 0, upd_vosc );
