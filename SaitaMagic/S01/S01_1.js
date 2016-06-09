@@ -28,6 +28,7 @@ new function()
 				new Slider( table,  "Key",     -60,  60,  "250px",  synth.Pitch );
 				build_voice( "Voice 1", table, synth.Voice1 );
 				build_voice( "Voice 2", table, synth.Voice2 );
+				build_voice( "Voice 3", table, synth.Voice3 );
 			}
 			
 			function build_voice( title, table, voice )

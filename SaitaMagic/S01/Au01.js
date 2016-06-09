@@ -105,9 +105,11 @@
 		
 		this.Voice1 = new VoiceUnitA( context, unit, { Vo_Key: 3, Amp_Mod: 75, MG_Pitch: -5 } );
 		this.Voice2 = new VoiceUnitA( context, unit, { Vo_Key: 0, Amp_Mod: 75, MG_Pitch: -6 } );
+		this.Voice3 = new VoiceUnitA( context, unit, { Vo_Key: -4, Amp_Mod: 75, MG_Pitch: -7 } );
 		
 		this.Voice1.Start();
 		this.Voice2.Start();
+		this.Voice3.Start();
 		
 		// 値インターフェイス //
 		
@@ -179,6 +181,7 @@
 		this.Vo_Type   = new TypeLeaf( 0, upd_vosc, types, labels ); 
 		
 		this.MG_Pitch  = new Leaf( 0, upd_mg );
+		this.Mod_Type   = new TypeLeaf( 0, upd_mg, types, labels ); 
 		this.Vo_Mod    = new Leaf( 0, upd_mg );
 		this.Amp_Mod   = new Leaf( 0, upd_mg );
 		
@@ -195,6 +198,8 @@
 			if( mg == null ) return;
 			var value = self.MG_Pitch.GetValue() * 100;
 			mg.detune.setValueAtTime( value, context.AbsDT() );
+			
+			mg.type = self.Mod_Type.GetType();
 			
 			var value = self.Vo_Mod.GetValue();
 			vm.gain.setValueAtTime( value, context.AbsDT() );
