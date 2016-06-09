@@ -50,7 +50,8 @@ new function()
 	function t_title( table, text )
 	{
 		var tr = enew( "tr", table );
-		var td = enew_t( "td", tr, text, { colSpan: "3" }, null, "t_title" );
+		var style = { padding: "0.86ex", textAlign: "center", fontWeight: "bold" };
+		var td = enew_t( "td", tr, text, { colSpan: "3" }, style, "t_title" );
 	}
 	
 	var Slider = class_def

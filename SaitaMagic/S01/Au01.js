@@ -6,7 +6,7 @@
 	
 	context.AbsDT = function()
 	{
-		return this.currentTime + 0.1;
+		return this.currentTime + 0.17;
 	}
 	
 	var dc_src;
