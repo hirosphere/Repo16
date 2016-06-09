@@ -22,28 +22,35 @@ new function()
 			{
 				var table = enew( "table", com );
 				
-				new Slider( table,  "Volume",      0,   100,  "350px",  synth.Volume );
-				//new Slider( table,  "Pitch",   -6000,  6000,  "350px",  synth.Pitch );
+				t_title( table, "Master" );
+				
+				new Slider( table,  "Volume",    0, 100,  "250px",  synth.Volume );
+				new Slider( table,  "Key",     -60,  60,  "250px",  synth.Pitch );
 				build_voice( "Voice 1", table, synth.Voice1 );
 				build_voice( "Voice 2", table, synth.Voice2 );
 			}
 			
 			function build_voice( title, table, voice )
 			{
-				t_label( table, title );
-				new Slider( table,  "Vo Pitch", -6000, 6000,  "350px",  voice.Vo_Pitch );
-				//new Select( table, "Type", voice.Vo_Type );
-				new Slider( table,  "Vo Mod",  -6000, 6000,  "350px",  voice.Vo_Mod );
-				new Slider( table,  "Mod Pitch",  -120, 120,  "350px",  voice.MG_Pitch );
-				new Slider( table,  "Amp Mod",  -100, 100,  "350px",  voice.Amp_Mod );
+				t_title( table, title );
+				new Slider( table,  "Vo Pitch",    -60,   60,  "250px",  voice.Vo_Key   );
+				new Slider( table,  "Vo Type",       0,    3,   "65px",  voice.Vo_Type, { Measure_Value: osctype_mv } );
+				new Slider( table,  "Mod Pitch",  -120,  120,  "250px",  voice.MG_Pitch );
+				new Slider( table,  "Mod > Vo",  -6000, 6000,  "250px",  voice.Vo_Mod   );
+				new Slider( table,  "Mod > Amp",  -100,  100,  "250px",  voice.Amp_Mod  );
+			}
+			
+			function osctype_mv()
+			{
+				return this.Leaf.GetLabel();
 			}
 		}
 	);
 	
-	function t_label( table, text )
+	function t_title( table, text )
 	{
 		var tr = enew( "tr", table );
-		var td = enew_t( "td", tr, text, { colSpan: "2" }, { textAlign: "center", fontWeight: "bold" } );
+		var td = enew_t( "td", tr, text, { colSpan: "3" }, null, "t_title" );
 	}
 	
 	var Slider = class_def
@@ -51,19 +58,19 @@ new function()
 		null,
 		function()
 		{
-			this.Initiate = function( com, title, min, max, width, leaf )
+			this.Initiate = function( com, title, min, max, width, leaf, decor )
 			{
 				this.Leaf = leaf;
 				
 				var tr = enew( "tr", com );
 				var td = enew( "td", tr );
-				enew_t( "label", td, title );
-				
-				var td = enew( "td", tr );
-				this.Slider = enew( "input", td, { type: "range", min: min, max: max, value: 0 } );
+				enew_t( "label", td, title, null, { fontWeight: "bold" } );
 				
 				var td = enew( "td", tr );
 				this.Measure = enew_t( "label", td, "--" );
+				
+				var td = enew( "td", tr );
+				this.Slider = enew( "input", td, { type: "range", min: min, max: max, value: 0 } );
 				this.Slider.style.width = width;
 				
 				this.Slider.oninput = function()
@@ -71,8 +78,12 @@ new function()
 					self.Leaf.SetValue( self.Value_Pos() );
 				}
 				
+				if( decor )  for( var fn in decor )  this[ fn ] = decor[ fn ];
+				
 				var self = this;
 				this.Leaf.AddView( function(){ self.Update(); } );
+				
+				this.Update();
 			}
 			
 			this.Update = function()
@@ -95,6 +106,13 @@ new function()
 		
 		var td = enew( "td", tr );
 		var select = enew( "select", td );
+		
+		function update()
+		{
+			
+		}
+		
+		update();
 	}
 	
 	var Table = class_def
