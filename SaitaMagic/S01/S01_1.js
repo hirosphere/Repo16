@@ -36,9 +36,13 @@ new function()
 				t_title( table, title );
 				new Slider( table,  "Vo Pitch",    -60,   60,  "250px",  voice.Vo_Key   );
 				new Slider( table,  "Vo Type",       0,    3,   "65px",  voice.Vo_Type, { Measure_Value: osctype_mv } );
-				new Slider( table,  "Mod Pitch",  -120,  120,  "250px",  voice.MG_Pitch );
-				new Slider( table,  "Mod > Vo",  -6000, 6000,  "250px",  voice.Vo_Mod   );
-				new Slider( table,  "Mod > Amp",  -100,  100,  "250px",  voice.Amp_Mod  );
+				new Slider( table,  "Flt Pitch",   -60,   60,  "250px",  voice.Flt_Key   );
+				new Slider( table,  "Flt Q"    ,   -0,    50,  "250px",  voice.Flt_Q   );
+				new Slider( table,  "Flt Type",      0,    4,   "65px",  voice.Flt_Type, { Measure_Value: osctype_mv } );
+				new Slider( table,  "Mod Pitch",  -120,  120,  "250px",  voice.Mod_Pitch );
+				new Slider( table,  "Mod > Vo",  -6000, 6000,  "250px",  voice.Mod_Vo   );
+				new Slider( table,  "Mod > Flt", -6000, 6000,  "250px",  voice.Mod_Flt  );
+				new Slider( table,  "Mod > Amp",  -100,  100,  "250px",  voice.Mod_Amp  );
 			}
 			
 			function osctype_mv()
@@ -68,7 +72,7 @@ new function()
 				var td = enew( "td", tr );
 				enew_t( "label", td, title, null, { fontWeight: "bold" } );
 				
-				var td = enew( "td", tr );
+				var td = enew( "td", tr, null, { width: "7em" } );
 				this.Measure = enew_t( "label", td, "--" );
 				
 				var td = enew( "td", tr );

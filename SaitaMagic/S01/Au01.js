@@ -6,7 +6,7 @@
 	
 	context.AbsDT = function()
 	{
-		return this.currentTime + 0.17;
+		return this.currentTime + 0.22;
 	}
 	
 	var dc_src;
@@ -103,9 +103,9 @@
 		unit.dest.gain.value = exp_min;
 		unit.dest.connect( context.destination );
 		
-		this.Voice1 = new VoiceUnitA( context, unit, { Vo_Key: 3, Amp_Mod: 75, MG_Pitch: -5 } );
-		this.Voice2 = new VoiceUnitA( context, unit, { Vo_Key: 0, Amp_Mod: 75, MG_Pitch: -6 } );
-		this.Voice3 = new VoiceUnitA( context, unit, { Vo_Key: -4, Amp_Mod: 75, MG_Pitch: -7 } );
+		this.Voice1 = new VoiceUnitA( context, unit, { Vo_Key: 3, Mod_Amp: 75, Mod_Pitch: -5 } );
+		this.Voice2 = new VoiceUnitA( context, unit, { Vo_Key: 0, Mod_Amp: 75, Mod_Pitch: -6 } );
+		this.Voice3 = new VoiceUnitA( context, unit, { Vo_Key: -4, Mod_Amp: 75, Mod_Pitch: -7 } );
 		
 		this.Voice1.Start();
 		this.Voice2.Start();
@@ -149,13 +149,18 @@
 	{
 		var self = this;
 		
-		var vosc, mg
+		var vosc, mod
 		
+		var flt = context.createBiquadFilter();
 		var vm = context.createGain();
 		var fm = context.createGain();
 		var am = context.createGain();
 		var out = context.createGain();
 		
+		flt.frequency.value = 440;
+		
+		flt.connect( out );
+		fm.connect( flt.detune );
 		am.connect( out.gain );
 		
 		out.gain.value = 1.0;
@@ -173,17 +178,26 @@
 		
 		//  値インターフェース  //
 		
-		var types = [ "sine", "triangle", "square", "sawtooth" ];
-		var labels = [ "Sine", "Tri", "Squ", "Saw" ];
+		var vo_types = [ "sine", "triangle", "square", "sawtooth" ];
+		var vo_labels = [ "Sine", "Tri", "Squ", "Saw" ];
+		
+		var flt_types = [ "allpass", "lowass", "highpass", "bandpass", "notch" ];
+		var flt_labels = [ "Pass", "LP", "HP", "BP", "Notch" ];
 		
 		this.Vo_Key    = new Leaf( 0, upd_vosc );
 		this.Vo_Detune = new Leaf( 0, upd_vosc );
-		this.Vo_Type   = new TypeLeaf( 0, upd_vosc, types, labels ); 
+		this.Vo_Type   = new TypeLeaf( 0, upd_vosc, vo_types, vo_labels ); 
 		
-		this.MG_Pitch  = new Leaf( 0, upd_mg );
-		this.Mod_Type   = new TypeLeaf( 0, upd_mg, types, labels ); 
-		this.Vo_Mod    = new Leaf( 0, upd_mg );
-		this.Amp_Mod   = new Leaf( 0, upd_mg );
+		this.Flt_Key    = new Leaf( 0, upd_flt );
+		this.Flt_Detune = new Leaf( 0, upd_flt );
+		this.Flt_Q      = new Leaf( 0, upd_flt );
+		this.Flt_Type   = new TypeLeaf( 0, upd_flt, flt_types, flt_labels ); 
+		
+		this.Mod_Pitch  = new Leaf( 0, upd_mod );
+		this.Mod_Type   = new TypeLeaf( 0, upd_mod, vo_types, vo_labels ); 
+		this.Mod_Vo    = new Leaf( 0, upd_mod );
+		this.Mod_Flt   = new Leaf( 0, upd_mod );
+		this.Mod_Amp   = new Leaf( 0, upd_mod );
 		
 		function upd_vosc()
 		{
@@ -193,20 +207,36 @@
 			vosc.type = self.Vo_Type.GetType();
 		}
 		
-		function upd_mg()
+		function upd_flt()
 		{
-			if( mg == null ) return;
-			var value = self.MG_Pitch.GetValue() * 100;
-			mg.detune.setValueAtTime( value, context.AbsDT() );
+			var value = self.Flt_Key.GetValue() * 100 + self.Flt_Detune.GetValue( );
+			flt.detune.setValueAtTime( value, context.AbsDT() );
 			
-			mg.type = self.Mod_Type.GetType();
+			var value = self.Flt_Q.GetValue();
+			flt.Q.setValueAtTime( value, context.AbsDT() );
 			
-			var value = self.Vo_Mod.GetValue();
+			flt.type = self.Flt_Type.GetType();
+		}
+		
+		function upd_mod()
+		{
+			if( mod == null ) return;
+			var value = self.Mod_Pitch.GetValue() * 100;
+			mod.detune.setValueAtTime( value, context.AbsDT() );
+			
+			mod.type = self.Mod_Type.GetType();
+			
+			var value = self.Mod_Vo.GetValue();
 			vm.gain.setValueAtTime( value, context.AbsDT() );
 			
-			var value = self.Amp_Mod.GetValue() / 100;
+			var value = self.Mod_Flt.GetValue();
+			fm.gain.setValueAtTime( value, context.AbsDT() );
+			
+			var value = self.Mod_Amp.GetValue() / 100;
 			am.gain.setValueAtTime( value, context.AbsDT() );
 		}
+		
+		upd_flt();
 		
 		
 		//  操作インターフェース  //
@@ -222,17 +252,17 @@
 		this.Start = function()
 		{
 			vosc = make_osc( vosc, 440 );
-			vosc.connect( out );
+			vosc.connect( flt );
 			vm.connect( vosc.detune );
 			master.pitch.connect( vosc.detune );
 			
-			mg = make_osc( mg, 1 );
-			mg.connect( vm );
-			mg.connect( fm );
-			mg.connect( am );
+			mod = make_osc( mod, 1 );
+			mod.connect( vm );
+			mod.connect( fm );
+			mod.connect( am );
 			
 			upd_vosc();
-			upd_mg();
+			upd_mod();
 		}
 		
 		//  //
