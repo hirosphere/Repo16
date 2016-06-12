@@ -2,6 +2,9 @@
 
 var Eki = new function()
 {
+	"https://www.ekidata.jp/api/l/11302.json"
+	
+	
 	var Stations = {};
 	
 	this.GetRosen = function( line_cd, onload )
@@ -33,7 +36,7 @@ var Eki = new function()
 		{
 			Loading = true;
 			var path = LoadQueue[ 0 ][ 0 ];
-			var url = "http://www.ekidata.jp/api/" + path + ".json";
+			var url = "https://www.ekidata.jp/api/" + path + ".json";
 			log( url );
 			var scr = enew( "script", document.documentElement, { src: url } );
 		}
