@@ -72,7 +72,7 @@ new function()
 				var td = enew( "td", tr );
 				enew_t( "label", td, title, null, { fontWeight: "bold" } );
 				
-				var td = enew( "td", tr, null, { width: "7em" } );
+				var td = enew( "td", tr, null, { width: "4em" } );
 				this.Measure = enew_t( "label", td, "--" );
 				
 				var td = enew( "td", tr );

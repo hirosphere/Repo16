@@ -79,6 +79,16 @@ function enew_t( type, com, text, attrs, style, class_name )
 	return enew( type, com, attrs, style, class_name, text );
 }
 
+function enew_c( type, com, class_name, attrs, style, text )
+{
+	return enew( type, com, attrs, style, class_name, text );
+}
+
+function enew_ct( type, com, class_name, text, attrs, style )
+{
+	return enew( type, com, attrs, style, class_name, text );
+}
+
 function tnew( value, com )
 {
 	var t = document.createTextNode( value );

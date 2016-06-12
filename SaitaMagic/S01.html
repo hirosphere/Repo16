@@ -11,20 +11,28 @@
 
 .Output { padding: 2em; }
 
+.uho_eki_li { cursor: default; }
+.uho_ro_li  { cursor: default; padding: 0 0.1ex; line-height: 1.4em; }
+
+
 </style>
 
 <script src="../Prime16.js"></script>
 <script src="S01/Au01.js"></script>
+<script src="Eki01.js"></script>
 
 </head>
 
 <body>
 <h1>Saita Magic - 01</h1>
-<p>
-上野－尾久－赤羽－浦和－さいたま新都心－大宮－土呂－東大宮－蓮田－白岡－新白岡－久喜－東鷲宮－栗橋－古河－野木－間々田－小山－小金井－自治医大－石橋－雀宮－宇都宮
+<div id="Uho_Main" style="padding: 1em;">
+<!--上野－尾久－赤羽－浦和－さいたま新都心－大宮－土呂－東大宮－蓮田－白岡－新白岡－久喜－東鷲宮－栗橋－古河－野木－間々田－小山－小金井－自治医大－石橋－雀宮－宇都宮-->
 <!--上野－尾久－赤羽－浦和－さいたま新都心－大宮－宮原－上尾－北上尾－桶川－北本－鴻巣－吹上－行田－熊谷－籠原－岡部－深谷－本庄－倉賀野－神保原－新町－高崎。-->
 <!--西武新宿－高田馬場－下落合－中井－新井薬師前－沼袋－野方－都立家政－鷺宮－下井草－井荻－上井草－上石神井－武蔵関－東伏見－西武柳沢－田無－花小金井－小平－久米川－東村山－所沢－航空公園－新所沢－入曽－狭山市－新狭山－南大塚－本川越-->
-</p>
+
+<div style="float: left; height: 4em;"></div>
+<br/>
+</div>
 
 
 <button onclick="OperA();">男性専用車 (おすだけ)</button>
@@ -46,8 +54,157 @@ function OperB()
 {
 	var e = document.getElementById( "UhoOut" );
 	uho = "";
-	e.innerHTML = "ようこそ　宇都宮線　";
+	e.innerHTML = "ようこそ " + uhoPane.GetUhoTitle();
 }
+
+var UhoPane = class_def
+(
+	null,
+	function()
+	{
+		this.Initiate = function()
+		{
+			var com = e_id( "Uho_Main" );
+			var e = enew( "div", com );
+			
+			this.Frame = e;
+			this.Pages = {};
+			this.Current = null;
+			
+			this.Select( "St_1130212" );
+		}
+		
+		this.GetUhoTitle = function()
+		{
+			return this.Current && this.Current.UhoTitle;
+		}
+		
+		this.Select = function( page_id )
+		{
+			if( this.Current )  this.Current.style.display = "none";
+			log( this.Current && this.Current.style );
+			
+			var page = this.Pages[ page_id ];
+			
+			if( page == null )
+			{
+				page = this.CreatePage( page_id );
+				this.Pages[ page_id ] = page;
+				this.Frame.appendChild( page );
+			}
+			
+			page.style.display = "block";
+			this.Current = page;
+		}
+		
+		this.CreatePage = function( page_id )
+		{
+			var mt = page_id.match( /(St|L)_(\d+)/ );
+			switch( mt && mt[ 1 ] || "" )
+			{
+				case "St" : page = this.CreateEkiPage( mt[ 2 ] );	break;
+				case "L"  : page = this.CreateRosenPage( mt[ 2 ] );	break;
+				default   : page = enew( "div" );	break;
+			}
+			
+			return page;
+		}
+		
+		this.CreateEkiPage = function( station_cd )
+		{
+			var e = enew_t( "div", null, "" );
+			var self = this;
+			
+			e.UhoTitle = "";
+			Eki.GetEki
+			(
+				station_cd,
+				function( data )
+				{
+					self.BuildEkiPane( e, data );
+					e.UhoTitle = data.station_g[ 0 ].station_name;
+				}
+			);
+			
+			return e;
+		}
+		
+		this.CreateRosenPage = function( line_cd )
+		{
+			var e = enew_t( "div", null, "" );
+			var self = this;
+			
+			e.UhoTitle = "";
+			Eki.GetRosen
+			(
+				line_cd,
+				function( data )
+				{
+					self.BuildRosenPane( e, data );
+					e.UhoTitle = data.line_name;
+				}
+			);
+			
+			return e;
+		}
+		
+		this.BuildEkiPane = function( com, data )
+		{
+			var self = this;
+			
+			var st = data.station_g[ 0 ];
+			var gr = data.station_g;
+			enew_t( "span", com, st.station_name, null, { paddingRight: "1ex", fontWeight: "bold" } );
+			
+			var sep = false;
+			for( var i in gr )
+			{
+				if( sep )  tnew( "　", com );
+				make_link( com, gr[ i ] );
+				sep = true;
+			}
+			
+			function make_link( com, st )
+			{
+				var text = "・" + st.line_name;
+				var link = enew_ct( "span", com, "uho_eki_li", text );
+				link.onclick = function()
+				{
+					self.Select( "L_" + st.line_cd );
+				}
+			}
+		}
+		
+		this.BuildRosenPane = function( com, data )
+		{
+			var self = this;
+			
+			enew_t( "span", com, data.line_name, null, { paddingRight: "1ex", fontWeight: "bold" } );
+			
+			var list = data.station_l;
+			
+			var sep = false;
+			for( var i in list )
+			{
+				if( sep )  tnew( "―", com );
+				make_link(  com, list[ i ] );
+				sep = true;
+			}
+			
+			function make_link( com, st )
+			{
+				var text = st.station_name;
+				var link = enew_ct( "span", com, "uho_ro_li", text );
+				link.onclick = function()
+				{
+					self.Select( "St_" + st.station_g_cd );
+				}
+			}
+		}
+	}
+);
+
+var uhoPane = new UhoPane();
 
 new function()
 {
@@ -57,6 +214,7 @@ new function()
 	function on_sm_load( module )
 	{
 		new module.AppAPane( e_id( "Main" ) );
+		
 	}
 
 };
