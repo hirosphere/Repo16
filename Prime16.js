@@ -1,5 +1,5 @@
 ﻿
-"みてください、この大きなカニ";
+//    "みてください、この大きなカニ";    //
 
 /*  Prime  */
 
@@ -49,16 +49,12 @@ function require( file, onload )
 }
 
 
-var Leaf = class_def
-(
-	null,
-	function()
-	{
-		this.Value = undefined;
-		this.Changed = {};
-		
-	}
-);
+function str_format( format, args )
+{
+
+}
+
+var sf = str_format;
 
 
 /*  HTML, DOM  */
@@ -96,7 +92,7 @@ function tnew( value, com )
 	return t;
 }
 
-function fnew( value )
+function fnew()
 {
 	return document.createDocumentFragment();
 }

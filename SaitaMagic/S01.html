@@ -9,10 +9,25 @@
 
 <style>
 
+html {  }
+
+a { text-decoration: none; color: #a2a098;  }
+
 .Output { padding: 2em; }
 
-.uho_eki_li { cursor: default; }
-.uho_ro_li  { cursor: default; padding: 0 0.1ex; line-height: 1.4em; }
+#Uho_Main { cursor: default; }
+
+.Uho_Title
+{
+	margin-right: 0.5em; font-size: 23px; font-weight: bold;
+	vertical-align: middle;
+}
+.Uho_LI
+{
+	margin: 0 2px; padding: 2px; line-height: 2.0em; font-size: 14px;
+	vertical-align: middle;
+}
+.Uho_LI:hover { background: #cef; }
 
 
 </style>
@@ -25,7 +40,7 @@
 
 <body>
 <h1>Saita Magic - 01</h1>
-<div id="Uho_Main" style="padding: 1em;">
+<div id="Uho_Main" style="padding: 0 1.5em 2em;">
 <!--上野－尾久－赤羽－浦和－さいたま新都心－大宮－土呂－東大宮－蓮田－白岡－新白岡－久喜－東鷲宮－栗橋－古河－野木－間々田－小山－小金井－自治医大－石橋－雀宮－宇都宮-->
 <!--上野－尾久－赤羽－浦和－さいたま新都心－大宮－宮原－上尾－北上尾－桶川－北本－鴻巣－吹上－行田－熊谷－籠原－岡部－深谷－本庄－倉賀野－神保原－新町－高崎。-->
 <!--西武新宿－高田馬場－下落合－中井－新井薬師前－沼袋－野方－都立家政－鷺宮－下井草－井荻－上井草－上石神井－武蔵関－東伏見－西武柳沢－田無－花小金井－小平－久米川－東村山－所沢－航空公園－新所沢－入曽－狭山市－新狭山－南大塚－本川越-->
@@ -37,22 +52,24 @@
 
 <button onclick="OperA();">男性専用車 (おすだけ)</button>
 <button onclick="OperB();">イニシエート</button>
+<a id="Uho_Link" href="?" target="_blank" style="font-family: monospace; font-size: 12px;">*</a>
+<a id="Uho_JSON" href="?" target="_blank" style="font-family: monospace; font-size: 12px;">JSON</a>
 
-<div id="UhoOut" class="Output"></div>
+<div id="Uho_Out" class="Output"></div>
 <script>
 
 var uho = "";
 
 function OperA()
 {
-	var e = document.getElementById( "UhoOut" );
+	var e = document.getElementById( "Uho_Out" );
 	uho += "ウホ　";
 	e.innerHTML = uho;
 }
 
 function OperB()
 {
-	var e = document.getElementById( "UhoOut" );
+	var e = document.getElementById( "Uho_Out" );
 	uho = "";
 	e.innerHTML = "ようこそ " + uhoPane.GetUhoTitle();
 }
@@ -71,7 +88,7 @@ var UhoPane = class_def
 			this.Pages = {};
 			this.Current = null;
 			
-			this.Select( "St_1130212" );
+			this.Select( "S-1130212" );
 		}
 		
 		this.GetUhoTitle = function()
@@ -95,14 +112,16 @@ var UhoPane = class_def
 			
 			page.style.display = "block";
 			this.Current = page;
+			
+			UhoLink.SetUhoLink( page_id, page.DataPath );
 		}
 		
 		this.CreatePage = function( page_id )
 		{
-			var mt = page_id.match( /(St|L)_(\d+)/ );
+			var mt = page_id.match( /(S|L)\-(\d+)/ );
 			switch( mt && mt[ 1 ] || "" )
 			{
-				case "St" : page = this.CreateEkiPage( mt[ 2 ] );	break;
+				case "S" : page = this.CreateEkiPage( mt[ 2 ] );	break;
 				case "L"  : page = this.CreateRosenPage( mt[ 2 ] );	break;
 				default   : page = enew( "div" );	break;
 			}
@@ -114,6 +133,8 @@ var UhoPane = class_def
 		{
 			var e = enew_t( "div", null, "" );
 			var self = this;
+			
+			e.DataPath = "g/" + station_cd;
 			
 			e.UhoTitle = "";
 			Eki.GetEki
@@ -134,6 +155,8 @@ var UhoPane = class_def
 			var e = enew_t( "div", null, "" );
 			var self = this;
 			
+			e.DataPath = "l/" + line_cd;
+			
 			e.UhoTitle = "";
 			Eki.GetRosen
 			(
@@ -141,7 +164,7 @@ var UhoPane = class_def
 				function( data )
 				{
 					self.BuildRosenPane( e, data );
-					e.UhoTitle = data.line_name;
+					e.UhoTitle = data.line_name.replace( /JR|東京メトロ/, "" );
 				}
 			);
 			
@@ -154,7 +177,7 @@ var UhoPane = class_def
 			
 			var st = data.station_g[ 0 ];
 			var gr = data.station_g;
-			enew_t( "span", com, st.station_name, null, { paddingRight: "1ex", fontWeight: "bold" } );
+			enew_ct( "span", com, "Uho_Title", st.station_name );
 			
 			var sep = false;
 			for( var i in gr )
@@ -166,12 +189,10 @@ var UhoPane = class_def
 			
 			function make_link( com, st )
 			{
-				var text = "・" + st.line_name;
-				var link = enew_ct( "span", com, "uho_eki_li", text );
-				link.onclick = function()
-				{
-					self.Select( "L_" + st.line_cd );
-				}
+				var text = st.line_name.replace( /JR|東京メトロ/, "" );
+				var link = enew_ct( "span", com, "Uho_LI", text );
+				
+				link.onclick = function() { self.Select( "L-" + st.line_cd ); } ;
 			}
 		}
 		
@@ -179,14 +200,17 @@ var UhoPane = class_def
 		{
 			var self = this;
 			
-			enew_t( "span", com, data.line_name, null, { paddingRight: "1ex", fontWeight: "bold" } );
+			var line_name = data.line_name.replace( /JR|東京メトロ/, "" );
+			
+			enew_ct( "span", com, "Uho_Title", line_name );
+			tnew( " ", com );
 			
 			var list = data.station_l;
 			
 			var sep = false;
 			for( var i in list )
 			{
-				if( sep )  tnew( "―", com );
+				if( sep )  tnew( "-", com );
 				make_link(  com, list[ i ] );
 				sep = true;
 			}
@@ -194,28 +218,49 @@ var UhoPane = class_def
 			function make_link( com, st )
 			{
 				var text = st.station_name;
-				var link = enew_ct( "span", com, "uho_ro_li", text );
-				link.onclick = function()
-				{
-					self.Select( "St_" + st.station_g_cd );
-				}
+				var link = enew_ct( "span", com, "Uho_LI", text );
+				
+				link.onclick = function() { self.Select( "S-" + st.station_g_cd ); } ;
 			}
 		}
 	}
 );
 
+
+var UhoLink = new function()
+{
+	var vs = { u: "" };
+	
+	this.SetUhoLink = function( uho_id, data_path )
+	{
+		vs.u = uho_id;
+		vs.data = data_path;
+		update();
+	}
+	
+	function update()
+	{
+		var href = "?" + "u=" + vs.u;
+		
+		var link = e_id( "Uho_Link" );
+		link.href = href;
+		link.innerHTML = ht_plain( href );
+		
+		var link = e_id( "Uho_JSON" );
+		link.href = "https://www.ekidata.jp/api/" + vs.data + ".json";
+	}
+};
+
+
 var uhoPane = new UhoPane();
+
 
 new function()
 {
-	require( "S01/S01_1.js", on_sm_load );
 	
+	require( "S01/S01_2.js", function( module ) { new module.AppPane( e_id( "Main" ) ); } );
 	
-	function on_sm_load( module )
-	{
-		new module.AppAPane( e_id( "Main" ) );
-		
-	}
+	//  require( "S01/S01_1.js", function( module ) { new module.AppAPane( e_id( "Main" ) ); } );
 
 };
 </script>

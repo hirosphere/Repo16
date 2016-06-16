@@ -38,7 +38,7 @@ var Eki = new function()
 			var path = LoadQueue[ 0 ][ 0 ];
 			var url = "https://www.ekidata.jp/api/" + path + ".json";
 			log( url );
-			var scr = enew( "script", document.documentElement, { src: url } );
+			var scr = enew( "script", document.body, { src: url, type: "text/javascript" } );
 		}
 	}
 	
