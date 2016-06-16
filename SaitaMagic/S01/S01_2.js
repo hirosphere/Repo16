@@ -81,15 +81,25 @@
 		volume.connect( context.destination );
 		volume.gain.value = 0.07;
 		
+		var base_vo = new Voice( volume );
 		var ch_vo_1 = new Voice( volume );
 		var ch_vo_2 = new Voice( volume );
 		var ch_vo_3 = new Voice( volume );
 		
-		this.SetChord = function( c1, c2, c3 )
+		this.SetChord = function( ba, c1, c2, c3 )
 		{
+			base_vo.NoteOn( ba );
 			ch_vo_1.NoteOn( c1 );
 			ch_vo_2.NoteOn( c2 );
 			ch_vo_3.NoteOn( c3 );
+		}
+		
+		this.OffChord = function()
+		{
+			base_vo.NoteOff();
+			ch_vo_1.NoteOff();
+			ch_vo_2.NoteOff();
+			ch_vo_3.NoteOff();
 		}
 		
 		this.Volume = new Leaf
@@ -98,7 +108,7 @@
 			function( meas )
 			{
 				var value = ( meas == 0 ? 0 : Math.pow( 2, meas / 10 - 10 ) );
-				volume.gain.setTargetAtTime( value, context.AbsDT(), 0.01 );
+				volume.gain.setTargetAtTime( value, context.currentTime + 0.2, 0.01 );
 			}
 		);
 	}
@@ -120,14 +130,20 @@
 		this.NoteOn = function( key )
 		{
 			var attack = 0.3;
-			var decay = 0.2;
 			
 			vosc.detune.setValueAtTime( key * 100, context.AbsDT() );
 			
 			amp.gain.cancelScheduledValues( context.AbsDT() );
 			amp.gain.setValueAtTime( 0, context.AbsDT() );
 			amp.gain.setTargetAtTime( 1, context.AbsDT(), attack );
-			amp.gain.setTargetAtTime( 0, context.AbsDT() + attack * 1 / 0.63, decay );
+		}
+		
+		this.NoteOff = function()
+		{
+			var r = 0.1;
+			
+			amp.gain.cancelScheduledValues( context.AbsDT() );
+			amp.gain.setTargetAtTime( 0, context.AbsDT(), r );
 		}
 	}
 	
@@ -147,11 +163,17 @@
 		this.SetChord = function( key, maj )
 		{
 			var base = this.Base.GetValue();
+			var ba = key_range_loop( key, base ) - 24;
 			var c1 = key_range_loop( key, base );
 			var c2 = key_range_loop( key + ( maj ? 4 : 3 ), base );
 			var c3 = key_range_loop( key + 7, base );
 			
-			synth.SetChord( c1, c2, c3 );
+			synth.SetChord( ba, c1, c2, c3 );
+		}
+		
+		this.Off = function()
+		{
+			synth.OffChord();
 		}
 		
 		this.Base = new Leaf( -12, function(){} );
@@ -223,7 +245,7 @@
 			for( var i = 0; i < 5; i ++ )
 			{
 				var x = 7 + i * 56;
-				var ckey = ( i - 2 ) * 7;
+				var ckey = ( i - 2 ) * 5;
 				make_key( e, x, y +  0, rkey + ckey + 3, true );
 				make_key( e, x, y + 27, rkey + ckey + 0, false );
 			}
@@ -231,6 +253,8 @@
 		
 		function make_key( com, x, y, key, maj )
 		{
+			var key_on = false;
+			
 			var style =
 			{
 				position: "absolute",
@@ -257,7 +281,18 @@
 			
 			e.onmousedown = function()
 			{
+				key_on = true;
 				chord_play.SetChord( key, maj );
+			}
+			
+			e.onmouseup =
+			e.onmouseleave = function()
+			{
+				if( key_on )
+				{
+					key_on = false;
+					chord_play.Off();
+				}
 			}
 		}
 		
