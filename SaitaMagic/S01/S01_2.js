@@ -123,13 +123,19 @@
 		var env = CreateDCGain();
 		
 		var amp =  context.createGain();
+		var amp_in1 =  context.createGain();
 		
 		
 		vosc.connect( amp );
-		amp.connect( dest );
 		
 		mod.connect( mod_amp );
-		mod_amp.connect( amp.gain );
+		mod_amp.connect( amp_in1.gain );
+		
+		env.connect( amp_in1 );
+		
+		amp_in1.connect( amp.gain );
+		amp.connect( dest );
+		
 		
 		vosc.frequency.value = 440;
 		amp.gain.value = 1;
@@ -347,6 +353,7 @@
 			
 			e.onmousedown = function()
 			{
+				hover && hover( chord_play.GetLabel( key, maj ) );
 				stat.key_on = true;
 				chord_play.SetChord( stat );
 			}
@@ -365,7 +372,7 @@
 			e.onmousemove =
 			e.ondblclick = function( ev )
 			{
-				//sev.stopPropagation();
+				hover && hover( [ ev.offsetX, ev.offsetY ] );
 			};
 			
 			key_buttons.push( e );
