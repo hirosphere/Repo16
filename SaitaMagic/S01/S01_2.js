@@ -6,7 +6,7 @@
 	
 	context.AbsDT = function()
 	{
-		return this.currentTime + 0.02;
+		return this.currentTime + 0.04;
 	}
 	
 	var dc_src;
@@ -81,10 +81,10 @@
 		volume.connect( context.destination );
 		volume.gain.value = 0.07;
 		
-		var base_vo = new Voice( volume );
-		var ch_vo_1 = new Voice( volume );
-		var ch_vo_2 = new Voice( volume );
-		var ch_vo_3 = new Voice( volume );
+		var base_vo = new Voice( volume, -24 );
+		var ch_vo_1 = new Voice( volume, -23 );
+		var ch_vo_2 = new Voice( volume, -22 );
+		var ch_vo_3 = new Voice( volume, -21 );
 		
 		this.SetChord = function( ba, c1, c2, c3 )
 		{
@@ -104,46 +104,71 @@
 		
 		this.Volume = new Leaf
 		(
-			50,
+			65,
 			function( meas )
 			{
 				var value = ( meas == 0 ? 0 : Math.pow( 2, meas / 10 - 10 ) );
-				volume.gain.setTargetAtTime( value, context.currentTime + 0.2, 0.01 );
+				volume.gain.linearRampToValueAtTime( value, context.currentTime + 0.1 );
 			}
 		);
 	}
 	
-	function Voice( dest )
+	function Voice( dest, mod_pitch )
 	{
 		var vosc = context.createOscillator();
+		
+		var mod  = context.createOscillator();
+		var mod_amp =  context.createGain();
+		
+		var env = CreateDCGain();
+		
 		var amp =  context.createGain();
+		
 		
 		vosc.connect( amp );
 		amp.connect( dest );
+		
+		mod.connect( mod_amp );
+		mod_amp.connect( amp.gain );
 		
 		vosc.frequency.value = 440;
 		amp.gain.value = 1;
 		amp.gain.setTargetAtTime( 0, context.AbsDT(), 0.1 );
 		
+		mod.frequency.value = 1;
+		mod.detune.value = mod_pitch * 100;
+		mod_amp.gain.value = 0.4;
+		
 		vosc.start();
+		mod.start();
+		
+		var note_on = false;
 		
 		this.NoteOn = function( key )
 		{
-			var attack = 0.3;
-			
 			vosc.detune.setValueAtTime( key * 100, context.AbsDT() );
 			
-			amp.gain.cancelScheduledValues( context.AbsDT() );
-			amp.gain.setValueAtTime( 0, context.AbsDT() );
-			amp.gain.setTargetAtTime( 1, context.AbsDT(), attack );
+			if( ! note_on )
+			{
+				note_on = true;
+				
+				var attack = 0.8;
+				
+				env.gain.cancelScheduledValues( context.AbsDT() );
+				env.gain.setValueAtTime( 0, context.AbsDT() );
+				env.gain.setTargetAtTime( 1, context.AbsDT() + 0.01, attack );
+			}
 		}
 		
 		this.NoteOff = function()
 		{
+			if( ! note_on ) return;
+			note_on = false;
+			
 			var r = 0.1;
 			
-			amp.gain.cancelScheduledValues( context.AbsDT() );
-			amp.gain.setTargetAtTime( 0, context.AbsDT(), r );
+			env.gain.cancelScheduledValues( context.AbsDT() );
+			env.gain.setTargetAtTime( 0, context.AbsDT() + 0.01, r );
 		}
 	}
 	
@@ -160,23 +185,25 @@
 			return keynames[ key ] + ( maj ? "" : "m" );
 		}
 		
-		this.SetChord = function( key, maj )
+		this.SetChord = function( stat )
 		{
+			var key = stat.key;
+			
+			var maj = stat.maj ? 4 : 3;
+			var c2s = stat.sus2 ? 2 : ( stat.sus4 ? 5 : maj );
+			
+			var c3s = stat.dom7 ? 10 : 7;
+			
 			var base = this.Base.GetValue();
 			var ba = key_range_loop( key, base ) - 24;
 			var c1 = key_range_loop( key, base );
-			var c2 = key_range_loop( key + ( maj ? 4 : 3 ), base );
-			var c3 = key_range_loop( key + 7, base );
+			var c2 = key_range_loop( key + c2s, base );
+			var c3 = key_range_loop( key + c3s, base );
 			
-			synth.SetChord( ba, c1, c2, c3 );
+			stat.key_on ? synth.SetChord( ba, c1, c2, c3 ) : synth.OffChord();
 		}
 		
-		this.Off = function()
-		{
-			synth.OffChord();
-		}
-		
-		this.Base = new Leaf( -12, function(){} );
+		this.Base = new Leaf( -6, function(){} );
 	}
 	
 	function key_range_loop( key, base )
@@ -187,6 +214,7 @@
 	}
 	
 	var keynames = [ "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" ];
+	var keynames_ = [ "9", "10", "11", "0", "1", "2", "3", "4", "5", "6", "7", "8" ];
 	
 	
 	//  //
@@ -220,6 +248,19 @@
 	
 	function KeyPane( com, chord_play, hover )
 	{
+		var margin_y = 8;
+		var margin_x = 8;
+		var pitch_x = 58;
+		var pitch_y = 78;
+		
+		var key_width = 53;
+		var key_height = 34;
+		var min_offset = 36;
+		
+		var sub_width = 16;
+		var sub_height = 11;
+		
+		
 		var style =
 		{
 			position: "relative",
@@ -229,6 +270,7 @@
 			borderRadius: "10px",
 			cursor: "default"
 		};
+		
 		
 		var key_buttons = [];
 		
@@ -241,37 +283,61 @@
 		
 		function make_row( row, rkey )
 		{
-			var y = 10 + row * 65;
+			var y_maj = margin_y + row * pitch_y;
+			var y_min = y_maj + min_offset;
 			for( var i = 0; i < 5; i ++ )
 			{
-				var x = 7 + i * 56;
-				var ckey = ( i - 2 ) * 5;
-				make_key( e, x, y +  0, rkey + ckey + 3, true );
-				make_key( e, x, y + 27, rkey + ckey + 0, false );
+				var x = margin_x + i * pitch_x;
+				var ckey = ( i - 2 ) * 7;
+				make_key( e, x, y_maj, rkey + ckey + 3, true );
+				make_key( e, x, y_min, rkey + ckey + 0, false );
 			}
 		}
 		
 		function make_key( com, x, y, key, maj )
 		{
-			var key_on = false;
-			
-			var style =
+			var stat =
 			{
-				position: "absolute",
-				background: "hsl( 20, 8%, 80% )",
-				borderRadius: "4px",
-				padding: "0 4px",
-				lineHeight: "26px",
-				left: x + "px", top: y + "px", width: "45px", height: "26px"
+				key: key, maj: maj, key_on: false,
+				sus2: false, sus4: false, dom7: false, maj7: false
 			};
 			
-			var e = enew( "div", com, null, style );
+			var key_style =
+			{
+				position: "absolute",
+				borderRadius: "4px",
+				padding: "0 " + 4 + "px",
+				lineHeight: key_height + "px",
+				
+				background: "hsl( 45, 20%, 90% )",
+				fontSize: "11px",
+				
+				left: x + "px",
+				top: y + "px",
+				width: key_width - 8 + "px",
+				height: key_height + "px",
+			};
 			
-			key_buttons.push( e );
+			var sub_style =
+			{
+				position: "absolute",
+				width: sub_width + "px",
+				height: sub_height + "px",
+				background: "hsl( 45, 20%, 75% )"
+			};
+			
+			
+			var e = enew( "div", com, null, key_style );
+			
+			make_sub( e, 0,  0, "sus2" );
+			make_sub( e, key_width - sub_width,  0, "sus4" );
+			make_sub( e, 0,  key_height - sub_height, "dom7" );
+			
+			var label = tnew( "", e );
 			
 			e.Update = function()
 			{
-				e.innerHTML = chord_play.GetLabel( key, maj );
+				label.nodeValue = chord_play.GetLabel( key, maj );
 			}
 			
 			e.onmouseenter = function()
@@ -281,19 +347,50 @@
 			
 			e.onmousedown = function()
 			{
-				key_on = true;
-				chord_play.SetChord( key, maj );
+				stat.key_on = true;
+				chord_play.SetChord( stat );
 			}
 			
 			e.onmouseup =
 			e.onmouseleave = function()
 			{
-				if( key_on )
+				//ev.stopPropagation();
+				if( stat.key_on )
 				{
-					key_on = false;
-					chord_play.Off();
+					stat.key_on = false;
+					chord_play.SetChord( stat );
 				}
 			}
+			
+			e.onmousemove =
+			e.ondblclick = function( ev )
+			{
+				//sev.stopPropagation();
+			};
+			
+			key_buttons.push( e );
+			
+			function make_sub( e, x, y, prop )
+			{
+				var sub = enew( "div", e, null, sub_style );
+				sub.style.left = x + "px";
+				sub.style.top = y + "px";
+				
+				sub.onmouseover  = function( ev )
+				{
+					stat[ prop ] = true;
+					chord_play.SetChord( stat );
+				};
+				
+				sub.onmouseleave  = function( ev )
+				{
+					//sev.stopPropagation();
+					stat[ prop ] = false;
+					chord_play.SetChord( stat );
+				};
+
+			}
+			
 		}
 		
 		function update()
