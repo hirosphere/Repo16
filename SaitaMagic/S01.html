@@ -13,7 +13,7 @@ html {  }
 
 a { text-decoration: none; color: #a2a098;  }
 
-.Output { padding: 2em; }
+.Output { padding: 1em; font-size: 13px; font-family: monospace; }
 
 #Uho_Main { cursor: default; }
 
@@ -55,6 +55,14 @@ a { text-decoration: none; color: #a2a098;  }
 <a id="Uho_JSON" href="?" target="_blank" style="font-family: monospace; font-size: 12px;">JSON</a>
 
 <div id="Uho_Out" class="Output"></div>
+
+<div id="Main"></div>
+<p id="Output"></p>
+
+
+
+
+
 <script>
 
 var uho = "";
@@ -253,20 +261,21 @@ var UhoLink = new function()
 
 var uhoPane = new UhoPane();
 
+var e_out = e_id( "Output" );
+
+function slog( msg )
+{
+	e_out.innerHTML += ht_plain( msg + "\n" );
+}
 
 new function()
 {
-	
 	require( "S01/S01_2.js", function( module ) { new module.AppPane( e_id( "Main" ) ); } );
 	
 	//  require( "S01/S01_1.js", function( module ) { new module.AppAPane( e_id( "Main" ) ); } );
 
 };
 </script>
-
-<div id="Main"></div>
-<p id="Output"></p>
-
 
 </body>
 </html>
