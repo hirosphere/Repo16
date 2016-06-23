@@ -6,7 +6,7 @@
 	
 	context.AbsDT = function()
 	{
-		return this.currentTime + 0.04;
+		return this.currentTime;
 	}
 	
 	var dc_src;
@@ -81,10 +81,10 @@
 		volume.connect( context.destination );
 		volume.gain.value = 0.07;
 		
-		var base_vo = new Voice( volume, -24 );
-		var ch_vo_1 = new Voice( volume, -23 );
-		var ch_vo_2 = new Voice( volume, -22 );
-		var ch_vo_3 = new Voice( volume, -21 );
+		var base_vo = new Voice( volume, -18 );
+		var ch_vo_1 = new Voice( volume, -17 );
+		var ch_vo_2 = new Voice( volume, -16 );
+		var ch_vo_3 = new Voice( volume, -15 );
 		
 		this.SetChord = function( ba, c1, c2, c3 )
 		{
@@ -104,7 +104,7 @@
 		
 		this.Volume = new Leaf
 		(
-			65,
+			50,
 			function( meas )
 			{
 				var value = ( meas == 0 ? 0 : Math.pow( 2, meas / 10 - 10 ) );
@@ -128,22 +128,23 @@
 		
 		vosc.connect( amp );
 		
+		env.connect( amp_in1 );
+		
 		mod.connect( mod_amp );
 		mod_amp.connect( amp_in1.gain );
-		
-		env.connect( amp_in1 );
 		
 		amp_in1.connect( amp.gain );
 		amp.connect( dest );
 		
 		
 		vosc.frequency.value = 440;
-		amp.gain.value = 1;
+		env.gain.value = 0;
+		amp.gain.value = 0;
 		amp.gain.setTargetAtTime( 0, context.AbsDT(), 0.1 );
 		
 		mod.frequency.value = 1;
 		mod.detune.value = mod_pitch * 100;
-		mod_amp.gain.value = 0.4;
+		mod_amp.gain.value = 0.8;
 		
 		vosc.start();
 		mod.start();
@@ -158,23 +159,33 @@
 			{
 				note_on = true;
 				
-				var attack = 0.8;
+				var attack = 0.3;
+				var t = context.AbsDT();
 				
-				env.gain.cancelScheduledValues( context.AbsDT() );
-				env.gain.setValueAtTime( 0, context.AbsDT() );
-				env.gain.setTargetAtTime( 1, context.AbsDT() + 0.01, attack );
+				env.gain.cancelScheduledValues( t );
+				//env.gain.setValueAtTime( env.gain.value, t );
+				env.gain.setValueAtTime( 0, t );
+				//env.gain.setTargetAtTime( 1, context.AbsDT(), attack );
+				env.gain.linearRampToValueAtTime( 1, t + attack );
 			}
 		}
 		
 		this.NoteOff = function()
 		{
-			if( ! note_on ) return;
-			note_on = false;
-			
-			var r = 0.1;
-			
-			env.gain.cancelScheduledValues( context.AbsDT() );
-			env.gain.setTargetAtTime( 0, context.AbsDT() + 0.01, r );
+			if( note_on )
+			{
+				note_on = false;
+				
+				var release = 1.0;
+				var t = context.AbsDT();
+				
+				var curv = env.gain.value;
+				env.gain.cancelScheduledValues( t );
+				env.gain.setValueAtTime( curv, t + 0.01 );
+				//env.gain.setTargetAtTime( 0.4, t + 0.01, 1 );
+				//env.gain.setTargetAtTime( 0.2, t + 1, 1 );
+				env.gain.linearRampToValueAtTime( 0, t + release );
+			}
 		}
 	}
 	
@@ -184,6 +195,8 @@
 	
 	function ChordPlay( synth )
 	{
+		var self = this;
+		var stat;
 		this.GetLabel = function( key, maj )
 		{
 			var oct = Math.floor( key / 12 );
@@ -191,7 +204,13 @@
 			return keynames[ key ] + ( maj ? "" : "m" );
 		}
 		
-		this.SetChord = function( stat )
+		this.SetChord = function( _stat )
+		{
+			stat = _stat;
+			update();
+		}
+		
+		function update()
 		{
 			var key = stat.key;
 			
@@ -200,7 +219,7 @@
 			
 			var c3s = stat.dom7 ? 10 : 7;
 			
-			var base = this.Base.GetValue();
+			var base = self.Base.GetValue();
 			var ba = key_range_loop( key, base ) - 24;
 			var c1 = key_range_loop( key, base );
 			var c2 = key_range_loop( key + c2s, base );
@@ -209,7 +228,8 @@
 			stat.key_on ? synth.SetChord( ba, c1, c2, c3 ) : synth.OffChord();
 		}
 		
-		this.Base = new Leaf( -6, function(){} );
+		this.Base = new Leaf( 0, function(){} );
+		this.Hold = new Leaf( false, function(){} )
 	}
 	
 	function key_range_loop( key, base )
@@ -239,6 +259,10 @@
 		
 		new Slider( table, "音量",   0,  100, 30, 180, synth.Volume );
 		new Slider( table, "範囲", -24, + 24, 30, 180, chord_play.Base );
+		
+		var tr = enew( "tr", table );
+		var td = enew( "td", tr, { colSpan: "3" } );
+		new CheckBox( td, "ホールド", chord_play.Hold );
 		
 		new KeyPane( e, chord_play, hover );
 		this.mon = enew( "div", e, null, { height: "1.5em" }, "", "Monitor" );
@@ -409,6 +433,32 @@
 		
 		com.appendChild( e );
 	}
+	
+	
+	var CheckBox = class_def
+	(
+		null,
+		function()
+		{
+			this.Initiate = function( com, title, leaf )
+			{
+				enew_t( "label", com, title );
+				var e = enew( "input", com, { type: "checkbox" } );
+				
+				e.onchange = function()
+				{
+					leaf.SetValue( e.checked );
+				}
+				
+				function update()
+				{
+					e.chacked = leaf.GetValue();
+				}
+				
+				update();
+			}
+		}
+	);
 	
 	
 	var Slider = class_def
