@@ -81,7 +81,7 @@ var AppPane = function( com )
 	{
 		var touch = ev.changedTouches[ 0 ];
 		
-		e_mon.innerHTML = ht_plain( touch.toString() );
+		e_mon.innerHTML = ht_plain( [ touch.identifier, touch.pageX, touch.pageY ] );
 		//x_bar.style.left = ev.offsetX + "px";
 		//y_bar.style.top = ev.offsetY + "px";
 	}
