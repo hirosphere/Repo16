@@ -67,12 +67,27 @@ var AppPane = function( com )
 	);
 	
 	var tou = has_touches;
-	cont.addEventListener( tou ? "touchstart" : "mousedown", tou ? t_start : m_down );
+	cont.addEventListener( tou ? "touchstart" : "mousedown",  tou ? t_start : m_down );
+	cont.addEventListener( tou ? "touchmove"  : "mousemove",  tou ? t_start : m_move );
+	cont.addEventListener( tou ? "touchend"   : "mouseup"  ,  tou ? t_start : m_leave );
+	cont.addEventListener( tou ? "touchcancel": "mouseleave", tou ? t_start : m_leave );
 	
-	
+	var in_drag = false;
 	function m_down( ev )
 	{
+		in_drag = true;
 		set_bar( "mousedown", ev.offsetX, ev.offsetY );
+	}
+	
+	function m_move( ev )
+	{
+		if( in_drag )  set_bar( "mousemove", ev.offsetX, ev.offsetY );
+	}
+	
+	function m_leave( ev )
+	{
+		in_drag = false;
+		set_bar( "mouseleave", ev.offsetX, ev.offsetY, true );
 	}
 	
 	function t_start( ev )
@@ -81,19 +96,23 @@ var AppPane = function( com )
 		var touch = ev.changedTouches[ 0 ];
 		var bou = cont.getBoundingClientRect();
 		
-		var x = touch.pageX - bou.left;
-		var y = touch.pageY - bou.top;
+		var x = touch.pageX - bou.left + window.pageXOffset;
+		var y = touch.pageY - bou.top + window.pageYOffset;
 		
-		set_bar( "touchstart", x, y );
+		set_bar( ev.type, x, y );
 	}
 	
 	var e_mon = enew_t( "p", e, "monitor" );
 	
-	function set_bar( m, x, y )
+	function set_bar( m, x, y, u )
 	{
 		e_mon.innerHTML = ht_plain( [ m, x, y ].join( " " ) );
-		x_bar.style.left = x + "px";
-		y_bar.style.top = y + "px";
+		
+		if( ! u )
+		{
+			x_bar.style.left = x + "px";
+			y_bar.style.top = y + "px";
+		}
 	}
 	
 }
