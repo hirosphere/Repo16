@@ -72,23 +72,29 @@ var AppPane = function( com )
 	
 	function m_down( ev )
 	{
-		e_mon.innerHTML = ht_plain( [ ev.offsetX, ev.offsetY ] );
-		x_bar.style.left = ev.offsetX + "px";
-		y_bar.style.top = ev.offsetY + "px";
+		set_bar( "mousedown", ev.offsetX, ev.offsetY );
 	}
 	
 	function t_start( ev )
 	{
+		ev.preventDefault();
 		var touch = ev.changedTouches[ 0 ];
+		var bou = cont.getBoundingClientRect();
 		
-		e_mon.innerHTML = ht_plain( [ touch.identifier, touch.pageX, touch.pageY ] );
-		//x_bar.style.left = ev.offsetX + "px";
-		//y_bar.style.top = ev.offsetY + "px";
+		var x = touch.pageX - bou.left;
+		var y = touch.pageY - bou.top;
+		
+		set_bar( "touchstart", x, y );
 	}
 	
 	var e_mon = enew_t( "p", e, "monitor" );
 	
-	
+	function set_bar( m, x, y )
+	{
+		e_mon.innerHTML = ht_plain( [ m, x, y ].join( " " ) );
+		x_bar.style.left = x + "px";
+		y_bar.style.top = y + "px";
+	}
 	
 }
 
