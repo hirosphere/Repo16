@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta chaset="utf-8"/>
+<meta name="description" content="見て下さい、この大きな蟹" />
+<meta name="viewport" content="width=device-width"/>
+<title>Tap-01</title>
+<style>
+.Output
+{
+	margin: 2em;
+}
+</style>
+<script src="../Prime16.js"></script>
+</head>
+<body>
+<h1>Tap-01</h1>
+<p>タップにならしむ</p>
+
+<div id="Main"></div>
+<p id="Output"></p>
+<p id="Log"></p>
+
+<script>
+
+function log( msg )
+{
+	e_id( "Log" ).innerHTML += ht_plain( msg + "\n" ); 
+}
+
+var AppPane = function( com )
+{
+	var e = enew( "div", com );
+	
+	var cont = enew
+	(
+		"div", e, null,
+		{
+			height: "600px",
+			border: "1px solid #555",
+			position: "relative"
+		}
+	);
+	
+	var x_bar = enew
+	(
+		"div", cont, null,
+		{
+			position: "absolute",
+			width: "0",
+			height: "100%",
+			borderRight: "1px dotted #666",
+			left: "10px"
+		}
+	);
+	
+	var y_bar = enew
+	(
+		"div", cont, null,
+		{
+			position: "absolute",
+			width: "100%",
+			height: "0",
+			borderBottom: "1px dotted #666",
+			top: "10px"
+		}
+	);
+	
+	var touch = "ontouchstart" in window;
+	var down = touch ? "touchstart" : "mousedown";
+	
+	cont.addEventListener
+	(
+		down,
+		function( ev )
+		{
+			e_mon.innerHTML = ht_plain( [ ev.offsetX, ev.offsetY ] );
+			x_bar.style.left = ev.offsetX + "px";
+			y_bar.style.top = ev.offsetY + "px";
+		}
+	);
+	
+	var e_mon = enew_t( "p", e, "monitor" );
+	
+	
+	
+}
+
+log( "touchstart : " + ( "ontouchstart" in window ) );
+log( "new AppPane" );
+new AppPane( e_id( "Main" ) );
+
+</script>
+
+
+</body>
+</html>
