@@ -66,19 +66,25 @@ var AppPane = function( com )
 		}
 	);
 	
-	var touch = "ontouchstart" in window;
-	var down = touch ? "touchstart" : "mousedown";
+	var tou = has_touches;
+	cont.addEventListener( tou ? "touchstart" : "mousedown", tou ? t_start : m_down );
 	
-	cont.addEventListener
-	(
-		down,
-		function( ev )
-		{
-			e_mon.innerHTML = ht_plain( [ ev.offsetX, ev.offsetY ] );
-			x_bar.style.left = ev.offsetX + "px";
-			y_bar.style.top = ev.offsetY + "px";
-		}
-	);
+	
+	function m_down( ev )
+	{
+		e_mon.innerHTML = ht_plain( [ ev.offsetX, ev.offsetY ] );
+		x_bar.style.left = ev.offsetX + "px";
+		y_bar.style.top = ev.offsetY + "px";
+	}
+	
+	function t_start( ev )
+	{
+		var touch = ev.changedTouches[ 0 ];
+		
+		e_mon.innerHTML = ht_plain( touch.toString() );
+		//x_bar.style.left = ev.offsetX + "px";
+		//y_bar.style.top = ev.offsetY + "px";
+	}
 	
 	var e_mon = enew_t( "p", e, "monitor" );
 	
@@ -86,7 +92,8 @@ var AppPane = function( com )
 	
 }
 
-log( "touchstart : " + ( "ontouchstart" in window ) );
+var has_touches = ( "TouchEvent" in window );
+log( "has_touches ? : " + has_touches );
 log( "new AppPane" );
 new AppPane( e_id( "Main" ) );
 
