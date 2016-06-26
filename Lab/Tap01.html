@@ -6,6 +6,11 @@
 <meta name="viewport" content="width=device-width"/>
 <title>Tap-01</title>
 <style>
+body, html
+{
+	position: relative;
+}
+
 .Output
 {
 	margin: 2em;
@@ -17,7 +22,7 @@
 <h1>Tap-01</h1>
 <p>タップにならしむ</p>
 
-<div id="Main"></div>
+<div id="Main" style="position: relative; "></div>
 <p id="Output"></p>
 <p id="Log"></p>
 
@@ -36,7 +41,7 @@ var AppPane = function( com )
 	(
 		"div", e, null,
 		{
-			height: "600px",
+			height: "300px",
 			border: "1px solid #555",
 			position: "relative"
 		}
