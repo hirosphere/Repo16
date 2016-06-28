@@ -421,20 +421,19 @@
 				}
 			);
 			
-			e_touch_move( e, function( ev )  {  ev.e_touch_stop_propagation();  }  );
+			e_touch_move( e, function( ev )  {  e_touch_stop_propagation( ev );  }  );
 			
-			e_touch_end
-			(
-				e,
-				function()
+			e_touch_cancel( e, touch_end );
+			e_touch_end( e, touch_end );
+			
+			function touch_end()
+			{
+				if( stat.key_on )
 				{
-					if( stat.key_on )
-					{
-						stat.key_on = false;
-						chord_play.SetChord( stat );
-					}
+					stat.key_on = false;
+					chord_play.SetChord( stat );
 				}
-			);
+			}
 			
 			key_buttons.push( e );
 			

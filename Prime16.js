@@ -138,6 +138,11 @@ function e_touch_end( e, func )
 	e.addEventListener( Touches.end, func );
 }
 
+function e_touch_cancel( e, func )
+{
+	e.addEventListener( Touches.cancel, func );
+}
+
 var e_touch_stop_propagation = Touch_Supported ?
 	function( event ) { event.preventDefault(); } :
 	function( event ) { event.stopPropagation(); }
