@@ -1,4 +1,4 @@
-﻿new function()
+﻿var S01_2 = new function()
 {
 	function au_new( delay, min_db )
 	{
@@ -24,7 +24,7 @@
 			osc_0_hz.connect( dc_src );
 			
 			
-			context.CreateDCGain = function()
+			context.create_const_gain = function()
 			{
 				var gain = context.createGain();
 				dc_src.connect( gain );
@@ -42,6 +42,7 @@
 				this.cancelScheduledValues( t );
 				this.setValueAtTime( 0, t );
 				this.linearRampToValueAtTime( 1, t + time );
+				//slog( [ "attack", t, time ] );
 			}
 			
 			AudioParam.prototype.release = function( time )
@@ -49,10 +50,11 @@
 				var t = context.bt();
 				
 				var curv = this.value;
-				this.cancelScheduledValues( t );
+				//this.cancelScheduledValues( t );
 				//this.setValueAtTime( curv, t );
 				
 				var tend = t + time * exp_ramp_rate;
+				( [ "release", t, tend ] );
 				this.exponentialRampToValueAtTime( exp_min, tend );
 			}
 			
@@ -79,7 +81,8 @@
 			this.Initiate = function( init, primeview )
 			{
 				this.Views = [ primeview ];
-				this.SetValue( init );
+				this.Value = init;
+				// this.SetValue( init );
 			}
 			
 			this.AddView = function( view )
@@ -114,14 +117,13 @@
 		volume.connect( context.destination );
 		volume.gain.value = 0.07;
 		
-		var base_vo = new Voice( volume, -18 );
-		var ch_vo_1 = new Voice( volume, -17 );
-		var ch_vo_2 = new Voice( volume, -16 );
-		var ch_vo_3 = new Voice( volume, -15 );
+		var base_vo = new Voice( volume, -34 );
+		var ch_vo_1 = new Voice( volume, -28 );
+		var ch_vo_2 = new Voice( volume, -26 );
+		var ch_vo_3 = new Voice( volume, -22 );
 		
 		this.SetChord = function( ba, c1, c2, c3 )
 		{
-			slog( [ ba, c1, c2, c3 ] );
 			base_vo.NoteOn( ba );
 			ch_vo_1.NoteOn( c1 );
 			ch_vo_2.NoteOn( c2 );
@@ -154,7 +156,7 @@
 		var mod  = context.createOscillator();
 		var mod_amp =  context.createGain();
 		
-		var env = context.CreateDCGain();
+		var env = context.create_const_gain();
 		
 		var amp =  context.createGain();
 		var amp_in1 =  context.createGain();
@@ -172,13 +174,14 @@
 		
 		
 		vosc.frequency.value = 440;
+		vosc.type = "sawtooth";
 		env.gain.value = 0;
 		amp.gain.value = 0;
 		amp.gain.setTargetAtTime( 0, context.bt(), 0.1 );
 		
 		mod.frequency.value = 1;
 		mod.detune.value = mod_pitch * 100;
-		mod_amp.gain.value = 0.0;
+		mod_amp.gain.value = 0.7;
 		
 		vosc.start();
 		mod.start();
@@ -192,7 +195,7 @@
 			if( ! note_on )
 			{
 				note_on = true;
-				env.gain.attack( 0.4 );
+				env.gain.attack( 0.1 );
 			}
 		}
 		
@@ -215,7 +218,7 @@
 	function ChordPlay( synth )
 	{
 		var self = this;
-		var stat;
+		var stat = {};
 		this.GetLabel = function( key, maj )
 		{
 			var oct = Math.floor( key / 12 );
@@ -244,11 +247,12 @@
 			var c2 = key_range_loop( key + c2s, base );
 			var c3 = key_range_loop( key + c3s, base );
 			
-			stat.key_on ? synth.SetChord( ba, c1, c2, c3 ) : synth.OffChord();
+			var key_on = stat.key_on || self.Hold.GetValue();
+			key_on ? synth.SetChord( ba, c1, c2, c3 ) : synth.OffChord();
 		}
 		
-		this.Base = new Leaf( 0, function(){} );
-		this.Hold = new Leaf( false, function(){} )
+		this.Base = new Leaf( 0, function(){ update(); } );
+		this.Hold = new Leaf( false, function(){ update(); } )
 	}
 	
 	function key_range_loop( key, base )
@@ -378,9 +382,9 @@
 			
 			var e = enew( "div", com, null, key_style );
 			
-			make_sub( e, 0,  0, "sus2" );
-			make_sub( e, key_width - sub_width,  0, "sus4" );
-			make_sub( e, 0,  key_height - sub_height, "dom7" );
+			//make_sub( e, 0,  0, "sus2" );
+			//make_sub( e, key_width - sub_width,  0, "sus4" );
+			//make_sub( e, 0,  key_height - sub_height, "dom7" );
 			
 			var label = tnew( "", e );
 			
@@ -394,29 +398,30 @@
 				hover && hover( chord_play.GetLabel( key, maj ) );
 			};
 			
-			e.onmousedown = function()
-			{
-				hover && hover( chord_play.GetLabel( key, maj ) );
-				stat.key_on = true;
-				chord_play.SetChord( stat );
-			}
-			
-			e.onmouseup =
-			e.onmouseleave = function()
-			{
-				//ev.stopPropagation();
-				if( stat.key_on )
+			e_touch_start
+			(
+				e,
+				function()
 				{
-					stat.key_on = false;
+					hover && hover( chord_play.GetLabel( key, maj ) );
+					stat.key_on = true;
 					chord_play.SetChord( stat );
 				}
-			}
+			);
 			
-			e.onmousemove =
-			e.ondblclick = function( ev )
-			{
-				hover && hover( [ ev.offsetX, ev.offsetY ] );
-			};
+			e_touch_end
+			(
+				e,
+				function()
+				{
+					//ev.stopPropagation();
+					if( stat.key_on )
+					{
+						stat.key_on = false;
+						chord_play.SetChord( stat );
+					}
+				}
+			);
 			
 			key_buttons.push( e );
 			

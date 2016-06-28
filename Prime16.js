@@ -112,6 +112,27 @@ function e_plain( e, plain )
 	e.innerHTML = ht_plain( plain );
 }
 
+
+var Touch_Supported = window.TouchEvent != null;
+var Touches = Touch_Supported ?
+{
+	start: "touchstart", move: "touchmove", end: "touchend", cancel: "touchcancel"
+}
+	:
+{
+	start: "mousedown", move: "mousemove", end: "mouseup", cancel: "mouseleave"
+};
+
+function e_touch_start( e, func )
+{
+	e.addEventListener( Touches.start, func );
+}
+
+function e_touch_end( e, func )
+{
+	e.addEventListener( Touches.end, func );
+}
+
 function ht_plain( plain )
 {
 	var ht = plain + "";
