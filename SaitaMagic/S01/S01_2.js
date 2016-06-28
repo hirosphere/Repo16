@@ -413,10 +413,12 @@
 			e_touch_start
 			(
 				e,
-				function()
+				function( ev )
 				{
 					hover && hover( chord_play.GetLabel( key, maj ) );
+					
 					stat.key_on = true;
+					e_touch_stop_propagation( ev );
 					chord_play.SetChord( stat );
 				}
 			);
