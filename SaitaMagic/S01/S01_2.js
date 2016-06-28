@@ -80,9 +80,9 @@
 		{
 			this.Initiate = function( init, primeview )
 			{
-				this.Views = [ primeview ];
 				this.Value = init;
-				// this.SetValue( init );
+				this.Views = [];
+				if( primeview ) this.Views.push( primeview );
 			}
 			
 			this.AddView = function( view )
@@ -113,14 +113,16 @@
 	
 	function Synth()
 	{
+		var wave_type = this.WaveType = new Leaf( 0 );
+		
 		var volume = context.createGain();
 		volume.connect( context.destination );
 		volume.gain.value = 0.07;
 		
-		var base_vo = new Voice( volume, -34 );
-		var ch_vo_1 = new Voice( volume, -28 );
-		var ch_vo_2 = new Voice( volume, -26 );
-		var ch_vo_3 = new Voice( volume, -22 );
+		var base_vo = new Voice( volume, -34, wave_type );
+		var ch_vo_1 = new Voice( volume, -28, wave_type );
+		var ch_vo_2 = new Voice( volume, -26, wave_type );
+		var ch_vo_3 = new Voice( volume, -22, wave_type );
 		
 		this.SetChord = function( ba, c1, c2, c3 )
 		{
@@ -149,7 +151,8 @@
 		);
 	}
 	
-	function Voice( dest, mod_pitch )
+	
+	function Voice( dest, mod_pitch, w_type )
 	{
 		var vosc = context.createOscillator();
 		
@@ -185,6 +188,12 @@
 		
 		vosc.start();
 		mod.start();
+		
+		
+		var w_types = [ "sine", "triangle", "square", "sawtooth" ];
+		
+		w_type.AddView( function( mea ) { vosc.type = w_types[ mea ]; } );
+		
 		
 		var note_on = false;
 		
@@ -251,8 +260,10 @@
 			key_on ? synth.SetChord( ba, c1, c2, c3 ) : synth.OffChord();
 		}
 		
-		this.Base = new Leaf( 0, function(){ update(); } );
-		this.Hold = new Leaf( false, function(){ update(); } )
+		this.Base = new Leaf( 0, update );
+		this.Hold = new Leaf( false, update );
+		
+		update();
 	}
 	
 	function key_range_loop( key, base )
@@ -282,6 +293,7 @@
 		
 		new Slider( table, "音量",   0,  100, 30, 180, synth.Volume );
 		new Slider( table, "範囲", -24, + 24, 30, 180, chord_play.Base );
+		new Slider( table, "波形",   0,    3, 30,  80, synth.WaveType );
 		
 		var tr = enew( "tr", table );
 		var td = enew( "td", tr, { colSpan: "3" } );
