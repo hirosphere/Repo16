@@ -128,10 +128,20 @@ function e_touch_start( e, func )
 	e.addEventListener( Touches.start, func );
 }
 
+function e_touch_move( e, func )
+{
+	e.addEventListener( Touches.move, func );
+}
+
 function e_touch_end( e, func )
 {
 	e.addEventListener( Touches.end, func );
 }
+
+var e_touch_stop_propagation = Touch_Supported ?
+	function( event ) { event.preventDefault(); } :
+	function( event ) { event.stopPropagation(); }
+;
 
 function ht_plain( plain )
 {

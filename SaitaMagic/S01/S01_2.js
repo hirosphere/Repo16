@@ -421,12 +421,13 @@
 				}
 			);
 			
+			e_touch_move( e, function( ev )  {  ev.e_touch_stop_propagation();  }  );
+			
 			e_touch_end
 			(
 				e,
 				function()
 				{
-					//ev.stopPropagation();
 					if( stat.key_on )
 					{
 						stat.key_on = false;
