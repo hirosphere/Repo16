@@ -227,7 +227,7 @@
 	function ChordPlay( synth )
 	{
 		var self = this;
-		var stat = {};
+		var stat = null;
 		this.GetLabel = function( key, maj )
 		{
 			var oct = Math.floor( key / 12 );
@@ -243,6 +243,8 @@
 		
 		function update()
 		{
+			if( ! stat )  return;
+			
 			var key = stat.key;
 			
 			var maj = stat.maj ? 4 : 3;
@@ -353,7 +355,7 @@
 			for( var i = 0; i < 5; i ++ )
 			{
 				var x = margin_x + i * pitch_x;
-				var ckey = ( i - 2 ) * 7;
+				var ckey = ( i - 2 ) * 5;
 				make_key( e, x, y_maj, rkey + ckey + 3, true );
 				make_key( e, x, y_min, rkey + ckey + 0, false );
 			}
