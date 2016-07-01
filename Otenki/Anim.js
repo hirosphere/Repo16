@@ -370,7 +370,7 @@ var Anim = new function()
 	}
 	function CtrlPane( com, iUnit )
 	{
-		var e = enew( 'div', com.hrz.add(), null );
+		var e = enew( 'div', com.hrz.add(), { paddingTop: "120px" } );
 		var button = enew( 'button', e, { width: '60px', padding: '0px' }, { title: '開始/停止/コマ送り' }, '開始' );
 		enew( 'br', e );
 		var items_e = enew( 'div', e, { margin: '10px 0px', padding: '20px 1px', position: 'relative', background: '#000', color: '#ccc', cursor: 'default' } );
@@ -619,7 +619,7 @@ var Anim = new function()
 		var tr = enew( 'tr', tbody );
 		this.add = function()
 		{
-			return enew( 'td', tr, { border: 'none' }, { vAlign: 'center' } );
+			return enew( 'td', tr, { border: 'none' }, { vAlign: 'top' } );
 		}
 	}
 	
