@@ -1,0 +1,480 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>TEPCO雨量 10/05 12:00-17:00 - 気象画像アニメーション</title>
+<style>
+html { margin: 0; padding: 0; background: #d0e0ff; color: #303028; }
+body
+{
+	margin: 0; padding: 0px 25px 60px 25px;
+	font-size: 13px; font-family: "ＭＳ ゴシック";
+}
+#content{ margin-top: 17px;  }
+h1
+{
+	margin: 0; line-height: 1.8; font-family: "arial black";
+	border-radius: 12px; padding: 3px 17px;; background: #0AA; color: #fff;
+	margin-bottom: 14px;
+}
+h2{ margin: 0; line-height: 1.3; font-family: "arial black"; }
+a{ color: #3828b0; }
+a.exe{ font-size: 17px; font-family: "arial" }
+article
+{
+	background: #fff; color: #443;
+	border-radius: 10px; padding: 20px 2px;
+	margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="TW"></a>
+
+<div id="B728-1"></div>
+
+<script type="text/javascript">
+
+new function()
+{
+	var min = 60 * 1000, hour = 3600 * 1000;
+	var types = {};
+	types.DT_512 =
+	{
+		height: 512, width: 512, step: 1 * hour, delay: 2 * hour,
+		url: 'http://agora.ex.nii.ac.jp/digital-typhoon/globe/color/{YYYY}/512x512/MTS2{YY}{MM}{DD}{hh}.globe.1.jpg'
+	}
+	types.DT_W =
+	{
+		height: 768, width: 1024, step: 1 * hour, delay: 2 * hour,
+		url: 'http://agora.ex.nii.ac.jp/digital-typhoon/wallpaper/globe/1024x768/{YYYY}/MTS2{YY}{MM}{DD}{hh}.jpg'
+	}
+	types.JMA =
+	{
+		height: 812, width: 800, step: 1 * hour, delay: 2 * hour, jst: true,
+		url: 'http://www.jma.go.jp/jp/gms/imgs/6/watervapor/0/{YYYY}{MM}{DD}{hh}{mm}-00.png'
+	}
+	types.WG =
+	{
+		height: 550, width: 550, step: 1 * hour, delay: 2 * hour,
+		url: 'http://webgms.iis.u-tokyo.ac.jp/IIS/L1B/{YYYY}/{Mn}/img/MTSAT2R{YYYY}{MM}{DD}{hh}32{subtype}_m.jpg'
+		// IR1. IR2, IR3, IR4, VIS, VIS_pseud_light
+	}
+	types.TEPCO =
+	{
+		width: 370, height: 480, step: 6 * min, delay: 6 * min, jst: true,
+		url: 'http://thunder.tepco.co.jp/wdata/{subtype}/{area}_{DD}{hh}{mm}.gif'
+	}
+	
+	// {subtype} = {1,2,3,4}
+	// {area} = { 21: All, 48: Fukushima, 827: Iwaki, 47: Niigata, 824: Niigata-2 }
+	
+	function main()
+	{
+		var end = new Date( '2011/10/05 17:00' ).getTime();
+		//end = null;
+		
+		var tepco1 = { end: end, type: 'TEPCO', subtype: 1, area: 21, span: 300 * min };
+		var tepcoF1 = { end: end, type: 'TEPCO', subtype: 1, area: 48, span: 300 * min };
+		var tepcoF2 = { end: end, type: 'TEPCO', subtype: 1, area: 827, span: 300 * min };
+		var tepcoN1 = { end: end, type: 'TEPCO', subtype: 1, area: 47, span: 300 * min };
+		var tepcoN2 = { end: end, type: 'TEPCO', subtype: 1, area: 824, span: 300 * min };
+		
+		new MoviePane( { com_id: 'B728-1', wait: 50, mdef: tepco1 } );
+		new MoviePane( { com_id: 'B728-1', wait: 50, mdef: tepcoF1 } );
+		new MoviePane( { com_id: 'B728-1', wait: 50, mdef: tepcoF2 } );
+		new MoviePane( { com_id: 'B728-1', wait: 50, mdef: tepcoN1 } );
+		new MoviePane( { com_id: 'B728-1', wait: 50, mdef: tepcoN2 } );
+	}
+	function createMovie( args )
+	{
+		var type = types[ args.type ], begin = args.begin, end = args.end;
+		var mov =
+		{
+			height: type.height + 40,
+			items: []
+		};
+		if( ! begin && args.span )
+		{
+			end = args.end || Math.floor( ( new Date().getTime() - type.delay ) / type.step ) * type.step;
+			begin = end - args.span
+		}
+		else return mov;
+		mov.end = end;
+		for( var time = begin; time <= end; time += type.step )
+		{
+			var d = new Date( time );
+			var date = fs_date( d ), udate = fs_udate( d );
+			var item =
+			{
+				src: vrep( type.url, type.jst ? date : udate, args ),
+				label: vrep( '{YYYY}/{MM}/{DD} {hh}:{mm} JST', date, args )
+			}
+			mov.items.push( item );
+		}
+		return mov;
+	}
+	
+	function MoviePane( args )
+	{
+		this.args = args;
+		this.hrz = new Horiz( e_id( args.com_id ) );
+		
+		this.ctrl = new CtrlPane( this );
+		this.player = new Player( this );
+		this.frames = new FramesPane( this );
+		
+		this.setMovie = function( movie )
+		{
+			this.player.stop();
+			this.movie = movie;
+			this.frames.setMovie( movie );
+		}
+		this.updateMovie = function()
+		{
+			args.mdef && this.setMovie( createMovie( args.mdef ) );
+		}
+		this.updateMovie();
+	}
+	function CtrlPane( com )
+	{
+		var e = enew( 'div', com.hrz.add(), null );
+		var button = enew( 'button', e, { width: '40px' }, {}, 'Run' );
+		//var nextButton = enew( 'button', e, { width: '40px' }, {}, 'Next' );
+		var items_e = enew( 'div', e, { margin: '6px 0px', padding: '9px 1px', position: 'relative', background: '#000', color: '#ccc', cursor: 'default' } );
+		var updateButton = enew( 'button', e, { width: '40px' }, {}, 'Re' );
+		var self = this;
+		var iUnit = 2;
+		var items;
+		var mute = true;
+		this.onSetMovie = function( frames )
+		{
+		//	items.style.height = frames.length * iUnit + 8 + 'px';
+			if( items ) for( var i in items ) items[ i ].destruct();
+			items = [];
+			for( var i in frames ) new Item( i, frames[ i ] );
+		}
+		button.onclick = function()
+		{
+			com.player.toggleRun();
+		}
+		//nextButton.onclick = function() { com.frames.next(); }
+		button.onkeydown = function( ev )
+		{
+			ev = ev || event;
+		//	this.innerHTML = ev.keyCode;
+			switch( ev.keyCode )
+			{
+				case 37: com.frames.prev(); break;
+				case 39: com.frames.next(); break;
+				case 53: com.updateMovie(); break;
+				default: return true;
+			}
+			return false;
+		}
+		button.setfocus = function()
+		{
+			if( ! this.focused ){ this.focus(); this.focused = true; }
+		}
+		button.onmouseover = function() { this.setfocus( true ); }
+		button.onblur = function(){ this.focused = false; }
+		updateButton.onclick = function() { com.updateMovie(); }
+		
+		items_e.onmouseover = function() { com.player.mute = true; }
+		items_e.onmousedown = function() { mute = true; }
+		items_e.onmouseout = function() { mute = false; com.player.mute = false; }
+		function Item( index, item )
+		{
+			items[ index ] = this;
+			var e = enew( 'div', items_e, { textAlign: 'center', fontSize: '3px', height: iUnit - 1 + 'px' }, {}, '' );
+			e.style.borderBottom = '1px solid #000';
+			e.onmouseover = function()
+			{
+				if( ! mute ) com.frames.setCurrent( index );
+			}
+			this.update = function( cur )
+			{
+				var col = item.isCurrent ? '#8f0'
+				: item.maked ? ( item.loaded ? '#668' : '#fff860' )
+				: '#444';
+				e.style.background = col;
+			}
+			this.destruct = function()
+			{
+				items_e.removeChild( e );
+				e.innerHTML = '';
+				e = item = null;
+			}
+			item.client = this;
+			this.update();
+		}
+	}
+	var seqs = {};
+	function Player( com )
+	{
+		var self = this, interval, timepoint;
+		this.span = 45;
+		this.mute;
+		this.phase = 0;
+		var wait;
+		this.toggleRun = function()
+		{
+			interval ? this.stop() : this.start();
+		}
+		this.action = function()
+		{
+			timepoint = new Date().getTime();
+			this.step();
+		}
+		this.step = function()
+		{
+			var cur = com.frames.currentIndex, len = com.frames.items.length, phase = this.phase;
+			switch( this.phase )
+			{
+				case 0: cur = 0; phase = 1; 
+				case 1: if( ! ( ++ cur < ( len - 1 ) ) ){ phase = 2; wait = 0; } break;
+				case 2: if( -- wait <= 0 ){ phase = 0; }; break;
+			//	case 3: if( ( cur -= Math.ceil( cur / 2.5 + 0.01 ) ) < 0 ){ phase = 4; cur = 0; wait = 3; } break;
+				case 3: if( ( cur -= 1 ) < 0 ){ phase = 4; cur = 0; wait = 2; } break;
+				case 4: if( -- wait <= 0 ){ phase = 1; }; break;
+			}
+			this.phase = phase;
+			com.frames.setCurrent( cur );
+		}
+		this.start = function()
+		{
+			if( interval ) return;
+			if( com.args.wait ) this.span = com.args.wait;
+			this.action();
+			interval = setInterval( oninterval, 1 );
+		}
+		this.stop = function()
+		{
+			if( ! interval ) return;
+			clearInterval( interval );
+			interval = null;
+		}
+		function oninterval()
+		{
+			if( ( new Date().getTime() - timepoint ) > self.span && ! self.mute ) self.action();
+		}
+	}
+	function FramesPane( com )
+	{
+		this.e = enew( 'div', com.hrz.add(), { overflow: 'hidden', position: 'relative' } );
+		this.items = [];
+		this.current;
+		this.currentIndex;
+		this.setMovie = function( movie )
+		{
+			if( this.items ) for( var i in this.items ) this.items[ i ].destruct();
+			this.movie = movie;
+			this.items = [];
+			if( this.movie )
+			{
+				this.e.style.height = this.movie.height + 'px';
+				for( var i in movie.items ) this.items[ i ] = new FramePane( this, i );
+				this.setCurrent( this.movie.items.length - 1 );
+			}
+			com.ctrl.onSetMovie( this.items );
+		}
+		this.setCurrent = function( index )
+		{
+			if( this.current ) this.current.release();
+			this.currentIndex = index - 0;
+			this.current = this.items[ index ];
+			if( this.current ) this.current.select();
+		}
+		this.next = function()
+		{
+			var index = this.currentIndex + 1;
+			if( index >= this.items.length ) index = 0;
+			this.setCurrent( index );
+		}
+		this.prev = function()
+		{
+			var index = this.currentIndex - 1;
+			if( index < 0  ) index = this.items.length - 1;
+			this.setCurrent( index );
+		}
+	}
+	function FramePane( com, index )
+	{
+		var e = enew( 'div', com.e, { height: com.movie.height - 0 + 30 + 'px' } );
+		var label = enew( 'div', e, {} );
+		var img = enew( 'img', e, {} );
+		var item = com.movie.items[ index ];
+		label.innerHTML = vrep( '[{index}] <b>{label}</b><br>{src}', item, { index: index } );
+		var self = this;
+		this.make = function()
+		{
+			if( this.maked ) return;
+			img.src = com.movie.items[ index ].src;
+			this.maked = true;
+			if( this.client ) this.client.update();
+		}
+		this.select = function()
+		{
+			this.isCurrent = true;
+			if( this.client ) this.client.update( true );
+			this.make();
+			this.scroll();
+		}
+		this.release = function()
+		{
+			this.isCurrent = false;
+			if( this.client ) this.client.update( true );
+		}
+		this.scroll = function()
+		{
+			if( this.loaded ) com.e.scrollTop = e.offsetTop;
+		}
+		img.onload = function()
+		{
+			self.loaded = true;
+			if( self.client ) self.client.update();
+			if( com.current == self ) self.scroll();
+		}
+		this.destruct = function()
+		{
+			com.e.removeChild( e );
+			e.innerHTML = '';
+			e = img = label = com = item = null;
+		}
+	}
+	function Horiz( com_e )
+	{
+		var e = enew( 'table', com_e, { border: 'none' }, { className: 'Horiz' } );
+		var tbody = enew( 'tbody', e );
+		var tr = enew( 'tr', tbody );
+		this.add = function()
+		{
+			return enew( 'td', tr, { border: 'none' }, { vAlign: 'top' } );
+		}
+	}
+	
+	function enew( type, com, style, attrs, text )
+	{
+		var e = document.createElement( type );
+		if( style ) for( var i in style ) e.style[ i ] = style[ i ];
+		if( attrs ) for( var i in attrs ) e[ i ] = attrs[ i ];
+		if( text != null ) e.innerHTML = text;
+		if( com ) com.appendChild( e );
+		return e;
+	}
+	var youbi_list = [ "日", "月", "火", "水", "木", "金", "土" ];
+	var day_list = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
+	var month_list = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+	function fs_date( date )
+	{
+		date = date || new Date();
+		var fs =
+		{
+			YYYY:  str_right( '000' + date.getFullYear(), 4 ),
+			YY: str_right( '0' + date.getFullYear(), 2 ),
+			MM: str_right( '0' + ( date.getMonth() + 1 ), 2 ),
+			M: ( date.getMonth() + 1 ) + '',
+			Mn: month_list[ date.getMonth() ] + '',
+			DD: str_right( '0' + date.getDate(), 2 ),
+			D: date.getDate(),
+			Dn: day_list[ date.getDay() ],
+			B: youbi_list[ date.getDay() ],
+			hh: str_right( '0' + date.getHours(), 2 ),
+			h: date.getHours(),
+			mm: str_right( '0' + date.getMinutes(), 2 ),
+			m: date.getMinutes(),
+			ss: str_right( '0' + date.getSeconds(), 2 ),
+			s: date.getSeconds()
+		}
+		return fs;
+	}
+	function fs_udate( date )
+	{
+		date = date || new Date();
+		var fs =
+		{
+			YYYY:  str_right( '000' + date.getUTCFullYear(), 4 ),
+			YY: str_right( '0' + date.getUTCFullYear(), 2 ),
+			MM: str_right( '0' + ( date.getUTCMonth() + 1 ), 2 ),
+			M: ( date.getUTCMonth() + 1 ) + '',
+			Mn: month_list[ date.getUTCMonth() ] + '',
+			DD: str_right( '0' + date.getUTCDate(), 2 ),
+			D: date.getUTCDate(),
+			Dn: day_list[ date.getUTCDay() ],
+			B: youbi_list[ date.getUTCDay() ],
+			hh: str_right( '0' + date.getUTCHours(), 2 ),
+			h: date.getUTCHours(),
+			mm: str_right( '0' + date.getUTCMinutes(), 2 ),
+			m: date.getUTCMinutes(),
+			ss: str_right( '0' + date.getUTCSeconds(), 2 ),
+			s: date.getUTCSeconds()
+		}
+		return fs;
+	}
+	function date_format( format, date ) { return vrep( format, fs_date( date ) ); }
+	function date_uformat( format, date ) { return vrep( format, fs_udate( date ) ); }
+	function str_right( str, ct )
+	{
+		return ( str + '' ).substr( str.length - ct, ct );
+	}
+	function vrep( str )
+	{
+		var fss = arguments;
+		function fn( a, e, n )
+		{
+			if( e ) return '{';
+			for( var i = 1; i < fss.length; i ++ )
+			{
+				var fs = fss[ i ];
+				if( fs && fs[ n ] !== undefined ) return fs[ n ]; 
+			}
+			return '';
+		}
+		return fss.length >= 1 ? str.replace( /(\{\-)|\{(\w+)\}/g, fn ) : '';
+	}
+	function e_id( id ){ return document.getElementById( id ); }
+	main();
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+<!-- UTF-8Nで保存 -->

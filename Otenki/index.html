@@ -1,0 +1,130 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>気象画像アニメーション</title>
+<link rel="stylesheet" href="Style.css"/>
+</head>
+<body>
+
+
+<div id="content">
+
+
+
+<h1><a href="./">気象画像アニメーション</a></h1>
+
+<div id="navi">
+
+<b>気象庁</b>
+<b>衛星赤外</b>(<a href="#JWV_IR">全球</a>
+<a href="#JWV_IR0">日本域</a>)
+
+<b>衛星水蒸気</b>(<a href="#JWV_WV">全球</a>
+<a href="#JWV_WV0">日本域</a>)
+
+<a href="#JRA_RA">全国雨量</a>
+
+<br/>
+
+<b>ディジタル台風</b> <a href="#DWR">壁紙</a>
+<b>WebGMS</b> <a href="#IR3">IR3</a>
+
+
+<br/>
+
+<b>TEPCO</b>
+(
+<a href="#TW">雨量</a>
+<a href="#TS">雷雲・落雷</a>
+)
+
+<br/>
+
+<b>気象庁</b>
+<a href="RadAme.html" target="_blank">解析雨量・降水短時間予報&gt;</a>
+<a href="RNC.html" target="_blank">レーダー・ナウキャスト　降水&gt;</a>
+
+</div>
+
+<p>[開始]キーのフォーカス時に矢印キーでコマ送りができます。</p>
+
+<div id="q" ></div>
+
+<div id="anims"></div>
+
+<div style="">
+過去アニメーションURL例：<a href="?End=2012/08/12_00:00">2012/08/12 00:00 UTC</a> (TEPCO・気象庁の過去の画像はありません。)
+</div>
+
+<script type="text/javascript" src="Anim.js"></script>
+
+<script type="text/javascript">
+
+new function()
+{
+	var sec = 1000, min = 60 * 1000, hour = 3600 * 1000;
+	var MoviePane = Anim.MoviePane;
+	
+	function main()
+	{
+		new Movie();
+		
+		var jmair  = { type: 'JMA', Area: "6", Element: "infrared", span: ( 24 * 1 + 3 ) * hour };
+		var jmair2 = { type: 'JMA', Area: "0", Element: "infrared", span: ( 24 * 1 + 3 ) * hour };
+		var jmawv  = { type: 'JMA', Area: "6", Element: "watervapor", span: ( 24 * 1 + 3 ) * hour };
+		var jmawv2 = { type: 'JMA', Area: "0", Element: "watervapor", span: ( 24 * 1 + 3 ) * hour };
+		var wg3 = { type: 'WG', subtype: 'IR3', span: ( 24 * 7 ) * hour };
+		var vpl = { type: 'WG', subtype: 'VIS_pseud_light', span: ( 48 ) * hour };
+		var dtw = { type: 'DT_W', span: 27 * hour };
+		var dt = { type: 'DT_512', span: 27 * hour };
+		var wgpl = { type: 'WG', subtype: 'VIS_pseud_light', span: 48 * hour };
+		var tepco1 = { type: 'TEPCO', subtype: '1', span: 12 * hour };
+		var tepco4 = { type: 'TEPCO', subtype: '4', span: 12 * hour };
+		
+		var e = e_id( 'anims' );
+		
+		var w = 60, span = ( 24 ) * hour; 
+		var movs =
+		[
+			new MoviePane( { com: e, wait: 50, mdef: jmair , anc: 'JWV_IR' } ),
+			new MoviePane( { com: e, wait: 50, mdef: jmair2 , anc: 'JWV_IR0' } ),
+			new MoviePane( { com: e, wait: 50, mdef: jmawv , anc: 'JWV_WV' } ),
+			new MoviePane( { com: e, wait: 50, mdef: jmawv2 , anc: 'JWV_WV0' } ),
+			// new MoviePane( { com: e, wait: 100, mdef: noaa_swp, anc: 'NOAA_SWP' } ),
+			// new MoviePane( { com: e, wait: 100, mdef: nasa_tec, anc: 'NASA_TEC' } ),
+			new MoviePane( { com: e, wait: w, mdef: { type: 'JMA_RadAme', Area: "000", span: span } , anc: 'JRA_RA' } ),
+						
+			new MoviePane( { com: e, wait: 80, mdef: tepco1, anc: 'TW' }, 5 ),
+			new MoviePane( { com: e, wait: 80, mdef: tepco4, anc: 'TS' }, 5 ),
+			
+			//new MoviePane( { com: e, wait: 35, mdef: vpl, anc: 'VIS_PL' } ),
+			//new MoviePane( { com: e, wait: 35, mdef: dt, anc: 'D5' } ),
+			//new MoviePane( { com: e, wait: 30, mdef: wgpl } ),
+			
+			//new MoviePane( { com: e, wait: 120, mdef: dtw, anc: 'DWR' } ),
+			
+			//new MoviePane( { com: e, wait: 35, mdef: wg3, anc: 'IR3' }, 2 )
+		];
+		var time = Anim.MakeTimeFromQuery();
+		for( var i in movs ) movs[ i ].updateMovie( time );
+	}
+	
+	main();
+}
+
+
+
+</script>
+
+
+
+<div style="padding: 3px 0px;">
+</div>
+
+
+</div>
+
+</body>
+</html>
+<!-- UTF-8Nで保存 -->

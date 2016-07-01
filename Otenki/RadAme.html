@@ -1,0 +1,111 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>気象庁・解析雨量・降水短時間予報 - 気象画像アニメーション</title>
+<link rel="stylesheet" href="Style.css"/>
+</head>
+<body>
+
+
+<div id="content">
+
+
+
+<h1><a href="">気象画像アニメーション
+<span class="h1_sub">(気象庁・解析雨量・降水短時間予報)</a></span></h1>
+
+<div id="navi">
+<a href="#JRA_000">全国</a>
+<a href="#JRA_201">北海道北西部</a>
+<a href="#JRA_202">北海道東部</a>
+<a href="#JRA_203">北海道南西部</a>
+<a href="#JRA_204">東北北部</a>
+<a href="#JRA_205">東北南部</a>
+<br/>
+<a href="#JRA_206">関東</a>
+<a href="#JRA_207">甲信</a>
+<a href="#JRA_208">北陸東部</a>
+<a href="#JRA_209">北陸西部</a>
+<a href="#JRA_210">東海</a>
+<a href="#JRA_211">近畿</a>
+<a href="#JRA_212">中国</a>
+<br/>
+<a href="#JRA_213">四国</a>
+<a href="#JRA_214">九州北部</a>
+<a href="#JRA_215">九州南部</a>
+<a href="#JRA_216">奄美</a>
+<a href="#JRA_217">沖縄</a>
+<a href="#JRA_218">大東島</a>
+<a href="#JRA_219">宮古・八重山</a>
+<br/>
+&gt; <a href="./">気象画像アニメーション(衛星)</a>
+</div>
+
+<p>[開始]キーのフォーカス時に矢印キーでコマ送りができます。</p>
+
+<div id="q" ></div>
+
+<div id="anims"></div>
+
+<div style="">
+過去アニメーションURL例：<a href="?End=2012/08/12_00:00">2012/08/12 00:00 UTC</a> (TEPCO・気象庁の過去の画像はありません。)
+</div>
+
+<script type="text/javascript" src="Anim.js"></script>
+
+<script type="text/javascript">
+
+new function()
+{
+	var sec = 1000, min = 60 * 1000, hour = 3600 * 1000;
+	var MoviePane = Anim.MoviePane;
+	
+	function main()
+	{
+		var e = e_id( 'anims' );
+		
+		var w = 60, span = ( 24 ) * hour; 
+		var time = Anim.MakeTimeFromQuery();
+		
+		var areas =
+		[
+			"000", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212",
+			"213", "214", "215", "216", "217", "218", "219" 
+		];
+		
+		for( var i in areas )
+		{
+			var mov = new MoviePane
+			(
+				{
+					com: e, wait: w,
+					mdef: { type: "JMA_RadAme", Area: areas[ i ], span: span },
+					anc: "JRA_" + areas[ i ]
+				}
+			);
+			mov.updateMovie( time );
+		}
+	}
+	
+	main();
+}
+
+
+
+</script>
+
+
+
+<div style="padding: 3px 0px;">
+<!--QLOOKアクセス解析-->
+<a href="http://analytics.qlook.net/" target="_blank"><img src="http://hirosp2011.analytics.qlook.net/analyze.png?guid=ON" alt="QLOOKアクセス解析" width="80" height="15" border="0" /></a>
+<!--/QLOOKアクセス解析-->
+</div>
+
+
+</div>
+
+</body>
+</html>
+<!-- UTF-8Nで保存 -->

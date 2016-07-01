@@ -113,16 +113,20 @@
 	
 	function Synth()
 	{
-		var wave_type = this.WaveType = new Leaf( 0 );
+		this.Volume = new Leaf( 50 );
+		this.Mod_Depth = new Leaf( 0.5 );
+		
+		
+		this.WaveType = new Leaf( 0 );
 		
 		var volume = context.createGain();
 		volume.connect( context.destination );
 		volume.gain.value = 0.07;
 		
-		var base_vo = new Voice( volume, -34, wave_type );
-		var ch_vo_1 = new Voice( volume, -28, wave_type );
-		var ch_vo_2 = new Voice( volume, -26, wave_type );
-		var ch_vo_3 = new Voice( volume, -22, wave_type );
+		var base_vo = new Voice( volume, -34, this );
+		var ch_vo_1 = new Voice( volume, -29, this );
+		var ch_vo_2 = new Voice( volume, -22, this );
+		var ch_vo_3 = new Voice( volume, -17, this );
 		
 		this.SetChord = function( ba, c1, c2, c3 )
 		{
@@ -140,9 +144,8 @@
 			ch_vo_3.NoteOff();
 		}
 		
-		this.Volume = new Leaf
+		this.Volume.AddView
 		(
-			50,
 			function( meas )
 			{
 				var value = ( meas == 0 ? 0 : Math.pow( 2, meas / 10 - 10 ) );
@@ -152,7 +155,7 @@
 	}
 	
 	
-	function Voice( dest, mod_pitch, w_type )
+	function Voice( dest, mod_pitch, synth )
 	{
 		var vosc = context.createOscillator();
 		
@@ -184,7 +187,7 @@
 		
 		mod.frequency.value = 1;
 		mod.detune.value = mod_pitch * 100;
-		mod_amp.gain.value = 0.7;
+		//mod_amp.gain.value = 0.7;
 		
 		vosc.start();
 		mod.start();
@@ -192,8 +195,15 @@
 		
 		var w_types = [ "sine", "triangle", "square", "sawtooth" ];
 		
-		w_type.AddView( function( mea ) { vosc.type = w_types[ mea ]; } );
+		synth.WaveType.AddView( function( mea ) { vosc.type = w_types[ mea ]; } );
 		
+		synth.Mod_Depth.AddView
+		(
+			function( value )
+			{
+				mod_amp.gain.value = value;
+			}
+		);
 		
 		var note_on = false;
 		
@@ -262,7 +272,7 @@
 			key_on ? synth.SetChord( ba, c1, c2, c3 ) : synth.OffChord();
 		}
 		
-		this.Base = new Leaf( 0, update );
+		this.Base = new Leaf( -12, update );
 		this.Hold = new Leaf( false, update );
 		
 		update();
@@ -293,15 +303,34 @@
 		
 		var table = enew( "table", e );
 		
+		var dec_100 = new function()
+		{
+			this.pos_value = this.label_value = function( value )
+			{
+				return Math.round( 100 * value );
+			}
+			
+			this.value_pos = function( pos )
+			{
+				return pos / 100;
+			}
+		}
+		
+		var wt_labels = [ "Sin", "Tri", "Squ", "Saw" ];
+		var dec_wt = { label_value: function( value ) { return wt_labels[ value ]; } };
+		
 		new Slider( table, "音量",   0,  100, 30, 180, synth.Volume );
 		new Slider( table, "範囲", -24, + 24, 30, 180, chord_play.Base );
-		new Slider( table, "波形",   0,    3, 30,  80, synth.WaveType );
+		new Slider( table, "波形",   0,    3, 30,  80, synth.WaveType, dec_wt );
+		new Slider( table, "変調",   0,  100, 30, 180, synth.Mod_Depth, dec_100 );
 		
 		var tr = enew( "tr", table );
 		var td = enew( "td", tr, { colSpan: "3" } );
 		new CheckBox( td, "ホールド", chord_play.Hold );
 		
+		new KeyPaneB( e, chord_play, hover );
 		new KeyPane( e, chord_play, hover );
+		
 		this.mon = enew( "div", e, null, { height: "1.5em" }, "", "Monitor" );
 		
 		com.appendChild( e );
@@ -312,6 +341,44 @@
 		}
 	}
 	
+	function ChordPlayB( synth )
+	{
+		
+	}
+	
+	function KeyPaneB( com, cp, hover )
+	{
+		
+		var style =
+		{
+			position: "relative",
+			width: "300px",
+			height: "400px",
+			border: "2px solid #665",
+			borderRadius: "10px",
+			cursor: "default"
+		};
+		
+		var e = enew( "div", com, null, style );
+		
+		var einfo = enew( "div", e );
+		
+		var key_pos = new key_pos_c();
+		
+		e_touch.move
+		(
+			e,
+			function( ev )
+			{
+				einfo.innerHTML = e_touch.local_pos( e, ev ).x;
+			}
+		);
+		
+		function key_pos_c()
+		{
+			
+		}
+	}
 	
 	function KeyPane( com, chord_play, hover )
 	{
@@ -352,10 +419,10 @@
 		{
 			var y_maj = margin_y + row * pitch_y;
 			var y_min = y_maj + min_offset;
-			for( var i = 0; i < 5; i ++ )
+			for( var i = 0; i < 3; i ++ )
 			{
 				var x = margin_x + i * pitch_x;
-				var ckey = ( i - 2 ) * 5;
+				var ckey = ( i - 1 ) * 7;
 				make_key( e, x, y_maj, rkey + ckey + 3, true );
 				make_key( e, x, y_min, rkey + ckey + 0, false );
 			}
@@ -509,6 +576,8 @@
 			this.Initiate = function( table, title, min, max, v_width, width, leaf, dec )
 			{
 				var self = this;
+				
+				if( dec )  for( var fn in dec )  this[ fn ] = dec[ fn ];
 				
 				var tr = enew( "tr", table );
 				enew_t( "td", tr, title );

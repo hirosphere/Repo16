@@ -1,0 +1,57 @@
+html, button, input, textarea { font-size: 13px; font-family: "MS Gothic"; }
+html { margin: 0; padding: 0; }
+body
+{
+	color: #333;
+	background: #fff;
+	margin: 0; padding: 0px;
+}
+#content
+{
+	margin-top: 4px;
+	border-top: 3px solid #99a;
+	width: 1200px;
+	
+	padding: 1px 1px 1px 1px;
+	background: #fff; color: #111; font-family: "MS Gothic"; font-size: 13px;
+}
+h1
+{
+	margin: 0; line-height: 2.0; font-family: "arial black"; font-size: 24px;
+	padding: 4px 18px; background: #1ab;
+	margin-bottom: 1px;
+}
+
+h1,
+h1 a { text-decoration: none; color: #fff; }
+h1 a { padding: 0 0; text-decoration: none }
+
+.h1_sub{ font-size: 16px; }
+
+
+a{ color: #3828b0; text-decoration: none; }
+a.exe{ font-size: 17px; font-family: "arial" }
+
+#navi{ padding: 6px 1px; margin-bottom: 24px; font-size: 13px; line-height: 19px; }
+
+.ANIM
+{
+	padding-bottom: 50px;
+	border-bottom: 3px dotted #665; margin-bottom: 55px;
+}
+h2.ANIM_TITLE
+{
+	margin: 0px 0px 8px; padding: 7px; line-height: 1.6; font-family: "arial black";
+	border-left: 16px solid #0a8; font-size: 24px;
+	border-bottom: 1px solid #aa9;
+}
+h2.ANIM_TITLE,
+h2.ANIM_TITLE a{ color: #181818; }
+
+.ANIM_BODY{ background: #d0d0ff; }
+.Frames{ border: 2px solid #ccb; }
+.Frame{ background: #30302c; }
+.FrameInfo{ background: #cdf; padding: 2px 7px; }
+
+a:hover{ background: #44a; color: #fff !important; }
+

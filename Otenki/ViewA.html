@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<title>気象画像</title>
+<link rel="stylesheet" href="StyleB.css"/>
+<script src="Movie.js"></script>
+<script src="WeatherMov.js"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+var MyMovie = class_def
+(
+	Movie,
+	function( Base )
+	{
+		this.Length = 200;
+		this.Width = 700;
+		this.Height = 360;
+		
+		this.CreateFrame = function( index, length )
+		{
+			var e = enew( "div", null, null, { textAlign: "right", fontSize: "300px" }, index - 0 + 0 );
+			return e;
+		}
+	}
+);
+
+
+new MoviePlayerPane( document.body, "MP", new WeatherMovie(  ) );
+new MoviePlayerPane( document.body, "MP", new MyMovie(  ) );
+
+
+
+</script>
+
+</body>
+</html>
+

@@ -148,6 +148,77 @@ var e_touch_stop_propagation = Touch_Supported ?
 	function( event ) { event.stopPropagation(); }
 ;
 
+
+var e_touch = window.TouchEvent != null ?
+	new function()
+	{
+		this.start = function( e, func )
+		{
+			e.addEventListener( "touchstart", func );
+		}
+		
+		this.move = function( e, func )
+		{
+			e.addEventListener( "touchmove", func );
+		}
+		
+		this.end = function( e, func )
+		{
+			e.addEventListener( "touchend", func );
+		}
+		
+		this.cancel = function( e, func )
+		{
+			e.addEventListener( "touchcancel", func );
+		}
+		
+		this.stop = function( event )
+		{
+			event.preventDefault();
+		}
+		
+		this.local_pos = function( e, ev )
+		{
+		}
+	}
+:
+	new function()
+	{
+		this.start = function( e, func )
+		{
+			e.addEventListener( "mousedown", func );
+		}
+		
+		this.move = function( e, func )
+		{
+			e.addEventListener( "mousemove", func );
+		}
+		
+		this.end = function( e, func )
+		{
+			e.addEventListener( "mouseup", func );
+		}
+		
+		this.cancel = function( e, func )
+		{
+			e.addEventListener( "mouseleave", func );
+		}
+		
+		this.stop = function( event )
+		{
+			event.stopPropagation();
+		}
+		
+		this.local_pos = function( e, ev )
+		{
+			return { x: ev.offsetX, y: ev.offsetY };
+		}
+	}
+;
+
+
+
+
 function ht_plain( plain )
 {
 	var ht = plain + "";

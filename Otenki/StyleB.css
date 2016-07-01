@@ -1,0 +1,45 @@
+
+html
+{
+	background: #d4e0f0;
+}
+
+html, button, textarea
+{
+	font-family: "MS Gothic";
+	font-size: 13px;
+	color: #222;
+}
+
+a{ text-decoration: none; color: #665; }
+
+.MP
+{
+	border: 2px solid #443;
+}
+
+.MP_CONTROL
+{
+	display: inline-block;
+	background: #666;
+	color: #fff;
+	width: 130px;
+	padding: 5px 0;
+	text-align: center;
+	vertical-align: top;
+}
+
+.MP_MOVIE
+{
+	display: inline-block;
+	background: #fff;
+}
+
+.WM_FRAME
+{
+	font-size: 300px;
+	text-align: center;
+	color: #000;
+}
+
+/* eof */
