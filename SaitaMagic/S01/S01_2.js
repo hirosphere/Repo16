@@ -123,9 +123,9 @@
 		volume.connect( context.destination );
 		volume.gain.value = 0.07;
 		
-		var base_vo = new Voice( volume, -34, this );
-		var ch_vo_1 = new Voice( volume, -29, this );
-		var ch_vo_2 = new Voice( volume, -22, this );
+		var base_vo = new Voice( volume, -25, this );
+		var ch_vo_1 = new Voice( volume, -22, this );
+		var ch_vo_2 = new Voice( volume, -20, this );
 		var ch_vo_3 = new Voice( volume, -17, this );
 		
 		this.SetChord = function( ba, c1, c2, c3 )
@@ -328,8 +328,8 @@
 		var td = enew( "td", tr, { colSpan: "3" } );
 		new CheckBox( td, "ホールド", chord_play.Hold );
 		
-		new KeyPaneB( e, chord_play, hover );
 		new KeyPane( e, chord_play, hover );
+		new KeyPaneB( e, chord_play, hover );
 		
 		this.mon = enew( "div", e, null, { height: "1.5em" }, "", "Monitor" );
 		
@@ -390,6 +390,17 @@
 		var key_width = 53;
 		var key_height = 34;
 		var min_offset = 36;
+		
+		
+		
+		var margin_y = 8;
+		var margin_x = 8;
+		var pitch_x = 98;
+		var pitch_y = 94;
+		
+		var key_width = 85;
+		var key_height = 40;
+		var min_offset = 42;
 		
 		var sub_width = 16;
 		var sub_height = 11;
