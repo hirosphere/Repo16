@@ -508,6 +508,10 @@
 			e_touch_cancel( e, touch_end );
 			e_touch_end( e, touch_end );
 			
+			//e.onmouseenter =
+			//e.onmouseclick =
+			e.ondblclick = function( ev ) { slog( "doubleclick" ); e_touch_stop_propagation( ev ); };
+			
 			function touch_end()
 			{
 				if( stat.key_on )
