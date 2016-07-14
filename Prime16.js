@@ -144,8 +144,8 @@ function e_touch_cancel( e, func )
 }
 
 var e_touch_stop_propagation = Touch_Supported ?
-	function( event ) { event.preventDefault(); } :
-	function( event ) { event.stopPropagation(); }
+	function( event ) { event.preventDefault(); slog( event.preventDefault ); } :
+	function( event ) { event.stopPropagation(); slog( event.stopPropagation ); }
 ;
 
 

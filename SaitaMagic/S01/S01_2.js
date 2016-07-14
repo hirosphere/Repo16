@@ -329,7 +329,7 @@
 		new CheckBox( td, "ホールド", chord_play.Hold );
 		
 		new KeyPane( e, chord_play, hover );
-		new KeyPaneB( e, chord_play, hover );
+		// new KeyPaneB( e, chord_play, hover );
 		
 		this.mon = enew( "div", e, null, { height: "1.5em" }, "", "Monitor" );
 		
