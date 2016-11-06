@@ -25,6 +25,34 @@ function class_def( base, decor )
 }
 
 
+var Model = class_def
+(
+	null,
+	function()
+	{
+		this.Initiate = function()
+		{
+			this.Views = [];
+		};
+		
+		this.AddView = function( view, prefix )
+		{
+			this.Views.push( [ view, prefix == undefined ? "" : prefix ] );
+		};
+		
+		this.Notify = function( message, args )
+		{
+			for( var i in this.Views )
+			{
+				var view = this.Views[ i ];
+				var method = view && view[ 0 ][ view[ 1 ] + message ];
+				if( method )  method.apply( view[ 0 ], args || [] );
+			}
+		};
+	}
+);
+
+
 function require( file, onload )
 {
 	var res;

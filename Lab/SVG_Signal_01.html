@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta chaset="utf-8"/>
+<meta name="description" content="JavaScript プログラミング" />
+<meta name="viewport" content="width=device-width"/>
+<title>SVG 5灯式信号機 01</title>
+<style>
+</style>
+
+<script src="../Prime16.js"></script>
+
+</head>
+<body>
+
+<div id="main"></div>
+
+<script><!--
+
+function new_svg( com, width, height )
+{
+	var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	svg.setAttributeNS(null, 'version', '1.1')
+	svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+	svg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+	svg.setAttribute( "width", width );
+	svg.setAttribute( "height", height );
+	if( com )  com.appendChild( svg );
+	return svg;
+}
+
+function svg_new( type, com, attr )
+{
+	var e = document.createElementNS( "http://www.w3.org/2000/svg", type );
+	if( attr )  for( var fn in attr )  e.setAttributeNS( null, fn, attr[ fn ] );
+	if( com )  com.appendChild( e );
+	return e;
+}
+
+var SignalState = class_def
+(
+	Model,
+	function( base )
+	{
+		this.Types =
+		{
+			"5A": [ "R", "YY", "Y", "YG", "G" ],
+			"3": [ "R", "Y", "G" ]
+		};
+		
+		this.Initiate = function( type, init )
+		{
+			base.Initiate.call( this );
+			this.Type = this.Types[ type ];
+			this.SetState( init );
+		};
+		
+		this.Step = function()
+		{
+			var step = 0;
+			for( var i in this.Type )  if( this.State == this.Type[ i ] )  step = i;
+			
+			if( ++ step >= this.Type.length )  step = 0;
+			
+			var state = this.Type[ step ];
+			this.SetState( state );
+		};
+		
+		this.SetState = function( value )
+		{
+			this.State = value;
+			this.Notify( "Changed", [] );
+		};
+	}
+);
+
+var Signal = class_def
+(
+	null,
+	function()
+	{
+		this.Color =
+		{
+			G: "hsl( 170, 100%, 53% )",
+			Y: "hsl( 52, 100%, 53% )",
+			R: "hsl( 0, 100%, 47% )",
+			Bl: "hsl( 0, 0%, 20% )"
+		};
+		
+		this.Initiate = function( model, com, cx, y, size, sep, type )
+		{
+			var self = this;
+			
+			this.Model = model;
+			this.Lamps = [];
+			
+			type = type || "3";
+			var def = this.Types[ type ];
+			for( var fn in def )  this[ fn ] = def[ fn ];
+			
+			var pad_x = size * 1.0;
+			var pad_y = size * 1.0;
+			var pitch = size + sep;
+			
+			var top = y;
+			var w = size + pad_x * 2;
+			var h = size + pad_y * 2 + ( this.Seq.length - 1 ) * pitch;
+			var rx = w * 0.5;
+			
+			var x = cx - w * 0.5;
+			
+			var fill = "hsl( 0, 0, 7 )";
+			
+			var board = svg_new( "rect", com, { x: x, y: top, width: w, height: h, fill: fill, rx: rx } );
+			
+			//
+			
+			var r = size * 0.5;
+			var cy = top + pad_y + size * 0.5;
+			var icol = this.Color.Bl;
+			
+			for( var i = 0; i < this.Seq.length; i ++, cy += pitch )
+			{
+				var col_i = this.Seq[ i ];
+				var acol = this.Color[ col_i ];
+				this.Lamps[ i ] = new Lamp( com, cx, cy, r, acol, icol );
+			}
+			
+			//
+			
+			e_touch.start
+			(
+				board,
+				function() { self.Model.Step(); }
+			);
+			
+			//
+			
+			this.Model.AddView( this, "Model" );
+			this.Update();
+		};
+		
+		this.ModelChanged =
+		this.Update = function()
+		{
+			var state = this.StateTable[ this.Model.State ];
+			for( var i in this.Lamps )
+			{
+				this.Lamps[ i ].SetState( state[ i ] );
+			}
+		};
+		
+		function Lamp( com, cx, cy, r, acol, icol )
+		{
+			var e = svg_new( "circle", com, { cx: cx, cy: cy, r: r, fill: icol } );
+			
+			this.SetState = function( value )
+			{
+				e.setAttributeNS( null, "fill", value ? acol : icol );
+			};
+		}
+		
+		this.Types = {};
+		
+		this.Types["3"] = new function()
+		{
+			this.Seq = [ "G", "Y", "R" ];
+			this.StateTable =
+			{
+				"G": [ true, false, false ],
+				"Y": [ false, true, false ],
+				"R": [ false, false, true ]
+			};
+		};
+		
+		this.Types["5A"] = new function()
+		{
+			this.Seq = [ "Y", "Y", "R", "Y", "G" ];
+			this.StateTable =
+			{
+				"G" : [ false, false, false, false, true  ],
+				"YG": [ false, true , false, false, true  ],
+				"Y" : [ false, false, false, true,  false ],
+				"YY": [ true,  false, false, true,  false ],
+				"R" : [ false, false, true,  false, false ]
+			};
+		};
+	}
+);
+
+var App = class_def
+(
+	null,
+	function()
+	{
+		this.Initiate = function( com )
+		{
+			this.e = enew_t( "div", com, "" );
+			
+			var svg = new_svg( this.e, 600, 900 );
+			svg.style.border = "2px solid #222";
+			
+			new Signal( new SignalState( "3", "G" ), svg, 100, 140, 20, 4, "3" );
+			new Signal( new SignalState( "5A", "G" ), svg, 300, 40, 60, 8, "5A" );
+		}
+	}
+);
+
+new App( e_id( "main" ) );
+
+
+//--></script>
+
+</body>
+</html>
