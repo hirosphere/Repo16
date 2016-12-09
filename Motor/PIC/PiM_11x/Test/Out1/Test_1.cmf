@@ -1,0 +1,548 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$Work1\startup.obj
+end_init CODE 0 30A2 30A2 4 1
+reset_vec CODE 0 3000 3000 4 1
+$Out1\Test_1.obj
+intcodelo CODE 0 3018 3018 8A 1
+intcode CODE 0 3008 3008 10 1
+intcode_body CODE 0 3468 3468 66 1
+text5 CODE 0 3510 3510 3A 1
+text4 CODE 0 32DA 32DA D2 1
+text3 CODE 0 33AC 33AC BC 1
+text2 CODE 0 31E0 31E0 FA 1
+text1 CODE 0 34CE 34CE 42 1
+text0 CODE 0 30A6 30A6 13A 1
+cstackCOMRAM COMRAM 1 1 1 25 1
+cstackBANK0 BANK0 1 60 60 13 1
+bssCOMRAM COMRAM 1 26 26 1B 1
+cinit CODE 0 354A 354A 12 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+BANK0 0073-00FF 1
+BANK1 0100-01FF 1
+BANK2 0200-025F 1
+BANK2 02E0-02FF 1
+BIGRAM 0041-005F 1
+BIGRAM 0073-025F 1
+BIGRAM 02E0-02FF 1
+CODE 3004-3007 1
+CODE 355C-3FFF 1
+COMRAM 0041-005F 1
+CONFIG 300000-30000D 1
+CONST 3004-3007 1
+CONST 355C-3FFF 1
+EEDATA F00000-F000FF 1
+FARRAM 0000-0000 1
+IDLOC 200000-200007 1
+MEDIUMCONST 3004-3007 1
+MEDIUMCONST 355C-3FFF 1
+RAM 0073-025F 1
+RAM 02E0-02FF 1
+SFR 0F53-0FFF 1
+SMALLCONST 3004-3007 1
+SMALLCONST 355C-3FFF 1
+STACK 0073-025F 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <file name>:<line number> <address> <psect name> <class name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$Out1\Test_1.obj
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":12 3008 intcode CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":21 3008 intcode CODE
+"D:\MCUDev13\PIC\xc8\v1.32\include\pic18f14k50.h":7796 3018 intcodelo CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":18 3018 intcodelo CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":21 305C intcodelo CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":61 30A6 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":63 30A6 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":65 30AA text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":66 30B6 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":67 30C2 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":69 30CE text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":70 30D2 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":72 30D4 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":73 30D8 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":80 30DC text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":86 30E0 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":91 30E4 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":94 30E6 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":96 30EA text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":97 3120 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":98 3156 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":100 318C text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":102 3190 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":106 319C text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":108 31A8 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":109 31AA text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":91 31AE text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":116 31B2 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":117 31B6 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":118 31BA text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":120 31BE text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":121 31C2 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":122 31C6 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":124 31CA text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":125 31CE text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":126 31D2 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":128 31D6 text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":130 31DA text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":131 31DC text0 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":55 31E0 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":60 31E0 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":61 31E2 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":62 31E4 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":63 31E6 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":65 31E8 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":10 31EA text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":67 31EA text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":11 31EC text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":12 31EE text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":13 31F0 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":14 31F2 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":16 31F4 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":17 31F6 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":18 31F8 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":19 31FA text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":20 31FC text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":22 31FE text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":23 3200 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":24 3202 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":25 3204 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":26 3206 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":10 3208 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":11 320A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":12 320C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":13 320E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":14 3210 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":16 3212 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":17 3214 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":18 3216 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":19 3218 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":20 321A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":22 321C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":23 321E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":24 3220 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":25 3222 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":26 3224 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":10 3226 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":11 3228 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":12 322A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":13 322C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":14 322E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":16 3230 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":17 3232 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":18 3234 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":19 3236 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":20 3238 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":22 323A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":23 323C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":24 323E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":25 3240 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":26 3242 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":10 3244 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":11 3246 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":12 3248 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":13 324A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":14 324C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":16 324E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":17 3250 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":18 3252 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":19 3254 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":20 3256 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":22 3258 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":23 325A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":24 325C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":25 325E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":26 3260 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":10 3262 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":11 3264 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":12 3266 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":13 3268 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":14 326A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":16 326C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":17 326E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":18 3270 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":19 3272 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":20 3274 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":22 3276 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":23 3278 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":24 327A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":25 327C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":26 327E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":10 3280 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":11 3282 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":12 3284 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":13 3286 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":14 3288 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":16 328A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":17 328C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":18 328E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":19 3290 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":20 3292 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":22 3294 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":23 3296 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":24 3298 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":25 329A text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":26 329C text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":10 329E text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":11 32A0 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":12 32A2 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":13 32A4 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":14 32A6 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":16 32A8 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":17 32AA text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":18 32AC text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":19 32AE text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":20 32B0 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":22 32B2 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":23 32B4 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":24 32B6 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":25 32B8 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":26 32BA text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":33 32BC text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":34 32BE text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":35 32C0 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":36 32C2 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":37 32C4 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":39 32C6 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":40 32C8 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":41 32CA text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":42 32CC text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":43 32CE text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":45 32D0 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":46 32D2 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":47 32D4 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":78 32D6 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Files\WS2811.c":81 32D8 text2 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":32 32DA text4 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":35 32DA text4 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":37 32EA text4 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":39 337C text4 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":51 33AC text3 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":53 33AE text3 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":54 33DA text3 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":55 3420 text3 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":56 3466 text3 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":12 3468 intcode_body CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":15 3494 intcode_body CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":6 34CE text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":10 34CE text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":12 34D0 text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":13 34DA text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":16 34DA text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":17 34DC text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":18 34DE text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":19 34E0 text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":20 34E2 text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":22 34E4 text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":23 34E6 text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":24 34E8 text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":25 34EA text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":26 34EC text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":12 34EE text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":10 34FE text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":31 350C text1 CODE
+"E:\hirosphere.net\Motor\PIC\Libs\Prime.c":10 350E text1 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":43 3510 text5 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":45 3510 text5 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":46 3520 text5 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":47 3534 text5 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Main.c":48 3548 text5 CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":575 354A cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":577 354A cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":580 354A cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":594 354A cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":595 354E cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":596 3550 cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":597 3550 cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":598 3552 cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":599 3554 cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":605 3556 cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":606 3556 cinit CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Out1\Test_1.as":607 3558 cinit CODE
+$Work1\startup.obj
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":60 0 text CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":61 0 text CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":62 0 text CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":64 0 text CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":100 3000 reset_vec CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":105 3000 reset_vec CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":111 30A2 init CODE
+"E:\hirosphere.net\Motor\PIC\PiM_11x\Test\Work1\startup.as":127 30A2 end_init CODE
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__S0 355C 0 ABS 0 - Out1\Test_1.obj
+__S1 73 0 ABS 0 - Out1\Test_1.obj
+__S2 0 0 ABS 0 - Out1\Test_1.obj
+_On_HIDD_Int 3008 0 CODE 0 intcode Out1\Test_1.obj
+__Hintentry 0 0 ABS 0 intentry Out1\Test_1.obj
+__Lintentry 0 0 ABS 0 intentry Out1\Test_1.obj
+_Ill 2F 0 COMRAM 1 bssCOMRAM Out1\Test_1.obj
+Osc_Step@wave 67 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+_main 30A6 0 CODE 0 text0 Out1\Test_1.obj
+_Wait 34CE 0 CODE 0 text1 Out1\Test_1.obj
+___sp 0 0 STACK 2 stack Work1\startup.obj
+RGB_Osc_Step@offset 24 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+start 30A2 0 CODE 0 init Work1\startup.obj
+__size_of_On_HIDD_Int 0 0 ABS 0 - Out1\Test_1.obj
+_RCSTA FAB 0 ABS 0 - Out1\Test_1.obj
+_TRISC F94 0 ABS 0 - Out1\Test_1.obj
+_TXREG FAD 0 ABS 0 - Out1\Test_1.obj
+_SPBRG FAF 0 ABS 0 - Out1\Test_1.obj
+__Hirdata 0 0 CODE 0 irdata Out1\Test_1.obj
+_TXSTA FAC 0 ABS 0 - Out1\Test_1.obj
+__Lirdata 0 0 CODE 0 irdata Out1\Test_1.obj
+__HRAM 0 0 ABS 0 - Out1\Test_1.obj
+__LRAM 1 0 ABS 0 - Out1\Test_1.obj
+Wait@time 20 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+__Hconfig 0 0 CONFIG 0 config Out1\Test_1.obj
+__Lconfig 0 0 CONFIG 0 config Out1\Test_1.obj
+Wait@a 22 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+__Hbigram 0 0 ABS 0 bigram Out1\Test_1.obj
+__Lbigram 0 0 ABS 0 bigram Out1\Test_1.obj
+__Hrparam 0 0 ABS 0 rparam Out1\Test_1.obj
+__Lrparam 0 0 ABS 0 rparam Out1\Test_1.obj
+__Hram 0 0 ABS 0 ram Out1\Test_1.obj
+__Lram 0 0 ABS 0 ram Out1\Test_1.obj
+__Hcomram 0 0 ABS 0 comram Out1\Test_1.obj
+__Lcomram 0 0 ABS 0 comram Out1\Test_1.obj
+__Hsfr 0 0 ABS 0 sfr Out1\Test_1.obj
+__Lsfr 0 0 ABS 0 sfr Out1\Test_1.obj
+__Hbss 0 0 RAM 1 bss Out1\Test_1.obj
+__Lbss 0 0 RAM 1 bss Out1\Test_1.obj
+__Hnvrram 0 0 COMRAM 1 nvrram Out1\Test_1.obj
+__Lnvrram 0 0 COMRAM 1 nvrram Out1\Test_1.obj
+_Osc_Step 32DA 0 CODE 0 text4 Out1\Test_1.obj
+_HIDD_Out 260 0 ABS 1 - Out1\Test_1.obj
+__size_of_Wait 0 0 ABS 0 - Out1\Test_1.obj
+__Heeprom_data 0 0 EEDATA 0 eeprom_data Out1\Test_1.obj
+__Leeprom_data 0 0 EEDATA 0 eeprom_data Out1\Test_1.obj
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs Out1\Test_1.obj
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs Out1\Test_1.obj
+__Hbigbss 0 0 BIGRAM 1 bigbss Out1\Test_1.obj
+__Lbigbss 0 0 BIGRAM 1 bigbss Out1\Test_1.obj
+__Hintret 0 0 ABS 0 intret Out1\Test_1.obj
+__Lintret 0 0 ABS 0 intret Out1\Test_1.obj
+__Hramtop 300 0 RAM 0 ramtop Out1\Test_1.obj
+__Lramtop 300 0 RAM 0 ramtop Out1\Test_1.obj
+__Hstruct 0 0 COMRAM 1 struct Out1\Test_1.obj
+__Lstruct 0 0 COMRAM 1 struct Out1\Test_1.obj
+__Hbigdata 0 0 BIGRAM 1 bigdata Out1\Test_1.obj
+__Lbigdata 0 0 BIGRAM 1 bigdata Out1\Test_1.obj
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst Out1\Test_1.obj
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst Out1\Test_1.obj
+_SPBRGH FB0 0 ABS 0 - Out1\Test_1.obj
+__Hfarbss 0 0 FARRAM 0 farbss Out1\Test_1.obj
+__Lfarbss 0 0 FARRAM 0 farbss Out1\Test_1.obj
+__Hintcode 3018 0 CODE 0 intcode Out1\Test_1.obj
+__Lintcode 3008 0 CODE 0 intcode Out1\Test_1.obj
+__Hfardata 0 0 FARRAM 0 fardata Out1\Test_1.obj
+__Lfardata 0 0 FARRAM 0 fardata Out1\Test_1.obj
+__pintcode 3008 0 CODE 0 intcode Out1\Test_1.obj
+__Habs1 0 0 ABS 0 abs1 Out1\Test_1.obj
+__Labs1 0 0 ABS 0 abs1 Out1\Test_1.obj
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM Out1\Test_1.obj
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM Out1\Test_1.obj
+__Hdata 0 0 ABS 0 data Out1\Test_1.obj
+__Ldata 0 0 ABS 0 data Out1\Test_1.obj
+stackhi 25F 0 ABS 0 - Work1\startup.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 Out1\Test_1.obj
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 Out1\Test_1.obj
+__pcstackBANK0 60 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+__Htemp 0 0 COMRAM 1 temp Out1\Test_1.obj
+__Ltemp 0 0 COMRAM 1 temp Out1\Test_1.obj
+_WS_Out 31E0 0 CODE 0 text2 Out1\Test_1.obj
+stacklo 73 0 ABS 0 - Work1\startup.obj
+__Hrbit 0 0 COMRAM 1 rbit Out1\Test_1.obj
+__Lrbit 0 0 COMRAM 1 rbit Out1\Test_1.obj
+__Hinit 30A2 0 CODE 0 init Out1\Test_1.obj
+__Linit 30A2 0 CODE 0 init Out1\Test_1.obj
+__Hintcodelo 30A2 0 CODE 0 intcodelo Out1\Test_1.obj
+__Lintcodelo 3018 0 CODE 0 intcodelo Out1\Test_1.obj
+__Hrbss 0 0 COMRAM 1 rbss Out1\Test_1.obj
+__end_of_main 31E0 0 CODE 0 text0 Out1\Test_1.obj
+__Lrbss 0 0 COMRAM 1 rbss Out1\Test_1.obj
+__pintcodelo 3018 0 CODE 0 intcodelo Out1\Test_1.obj
+__Htext 0 0 ABS 0 text Out1\Test_1.obj
+__Ltext 0 0 ABS 0 text Out1\Test_1.obj
+__size_of_On_HIDD_Event 0 0 ABS 0 - Out1\Test_1.obj
+_WS_Buffer 26 0 COMRAM 1 bssCOMRAM Out1\Test_1.obj
+end_of_initialization 3556 0 CODE 0 cinit Out1\Test_1.obj
+__end_of_On_HIDD_Int 34CE 0 CODE 0 intcode_body Out1\Test_1.obj
+_TRISBbits F93 0 ABS 0 - Out1\Test_1.obj
+_PORTAbits F80 0 ABS 0 - Out1\Test_1.obj
+__size_of_WS_Out 0 0 ABS 0 - Out1\Test_1.obj
+__Hibigdata 0 0 CODE 0 ibigdata Out1\Test_1.obj
+__Libigdata 0 0 CODE 0 ibigdata Out1\Test_1.obj
+_RGB_Osc_Step 33AC 0 CODE 0 text3 Out1\Test_1.obj
+__size_of_RGB_Osc_Step 0 0 ABS 0 - Out1\Test_1.obj
+__Hifardata 0 0 CODE 0 ifardata Out1\Test_1.obj
+__Lifardata 0 0 CODE 0 ifardata Out1\Test_1.obj
+__size_of_RGB_Osc_Init 0 0 ABS 0 - Out1\Test_1.obj
+__Hbank0 0 0 ABS 0 bank0 Out1\Test_1.obj
+__Lbank0 0 0 ABS 0 bank0 Out1\Test_1.obj
+__Hbank1 0 0 ABS 0 bank1 Out1\Test_1.obj
+__Lbank1 0 0 ABS 0 bank1 Out1\Test_1.obj
+__Hbank2 0 0 ABS 0 bank2 Out1\Test_1.obj
+__Lbank2 0 0 ABS 0 bank2 Out1\Test_1.obj
+__Hpowerup 30A2 0 CODE 0 powerup Out1\Test_1.obj
+__Lpowerup 30A2 0 CODE 0 powerup Out1\Test_1.obj
+__Htext0 0 0 ABS 0 text0 Out1\Test_1.obj
+__Ltext0 0 0 ABS 0 text0 Out1\Test_1.obj
+__end_of_On_HIDD_Event 30A2 0 CODE 0 intcodelo Out1\Test_1.obj
+__Htext1 0 0 ABS 0 text1 Out1\Test_1.obj
+__Ltext1 0 0 ABS 0 text1 Out1\Test_1.obj
+__ptext0 30A6 0 CODE 0 text0 Out1\Test_1.obj
+__Htext2 0 0 ABS 0 text2 Out1\Test_1.obj
+__Ltext2 0 0 ABS 0 text2 Out1\Test_1.obj
+__ptext1 34CE 0 CODE 0 text1 Out1\Test_1.obj
+__Htext3 0 0 ABS 0 text3 Out1\Test_1.obj
+__Ltext3 0 0 ABS 0 text3 Out1\Test_1.obj
+__ptext2 31E0 0 CODE 0 text2 Out1\Test_1.obj
+__Htext4 0 0 ABS 0 text4 Out1\Test_1.obj
+__Ltext4 0 0 ABS 0 text4 Out1\Test_1.obj
+__ptext3 33AC 0 CODE 0 text3 Out1\Test_1.obj
+__Htext5 0 0 ABS 0 text5 Out1\Test_1.obj
+__Ltext5 0 0 ABS 0 text5 Out1\Test_1.obj
+__ptext4 32DA 0 CODE 0 text4 Out1\Test_1.obj
+__ptext5 3510 0 CODE 0 text5 Out1\Test_1.obj
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM Out1\Test_1.obj
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM Out1\Test_1.obj
+__pbssCOMRAM 26 0 COMRAM 1 bssCOMRAM Out1\Test_1.obj
+__Hclrtext 0 0 ABS 0 clrtext Out1\Test_1.obj
+__Lclrtext 0 0 ABS 0 clrtext Out1\Test_1.obj
+__end_of_Osc_Step 33AC 0 CODE 0 text4 Out1\Test_1.obj
+__end_of__initialization 3556 0 CODE 0 cinit Out1\Test_1.obj
+_HIDD_In 2A0 0 ABS 1 - Out1\Test_1.obj
+RGB_Osc_Step@rr 6A 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+__Hidata 0 0 CODE 0 idata Out1\Test_1.obj
+__Lidata 0 0 CODE 0 idata Out1\Test_1.obj
+__Hrdata 0 0 COMRAM 1 rdata Out1\Test_1.obj
+__Lrdata 0 0 COMRAM 1 rdata Out1\Test_1.obj
+__Hidloc 0 0 IDLOC 0 idloc Out1\Test_1.obj
+__Lidloc 0 0 IDLOC 0 idloc Out1\Test_1.obj
+__Hstack 0 0 STACK 2 stack Out1\Test_1.obj
+__Lstack 0 0 STACK 2 stack Out1\Test_1.obj
+int_func 3468 0 CODE 0 intcode_body Out1\Test_1.obj
+__Hparam 0 0 ABS 0 rparam Out1\Test_1.obj
+__Lparam 0 0 ABS 0 rparam Out1\Test_1.obj
+__Hspace_0 355C 0 ABS 0 - Out1\Test_1.obj
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM Out1\Test_1.obj
+__Lspace_0 0 0 ABS 0 - Out1\Test_1.obj
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM Out1\Test_1.obj
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+__end_of_Wait 3510 0 CODE 0 text1 Out1\Test_1.obj
+__Hspace_1 73 0 ABS 0 - Out1\Test_1.obj
+__Lspace_1 0 0 ABS 0 - Out1\Test_1.obj
+__Hsmallconst 0 0 SMALLCONST 0 smallconst Out1\Test_1.obj
+__Lsmallconst 0 0 SMALLCONST 0 smallconst Out1\Test_1.obj
+main@ctr 25 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+__Hspace_2 0 0 ABS 0 - Out1\Test_1.obj
+__Lspace_2 0 0 ABS 0 - Out1\Test_1.obj
+__Hnvbit 0 0 COMRAM 1 nvbit Out1\Test_1.obj
+__Lnvbit 0 0 COMRAM 1 nvbit Out1\Test_1.obj
+__Hcinit 0 0 ABS 0 cinit Out1\Test_1.obj
+__Lcinit 0 0 ABS 0 cinit Out1\Test_1.obj
+__pcinit 354A 0 CODE 0 cinit Out1\Test_1.obj
+__ramtop 300 0 RAM 0 ramtop Work1\startup.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst Work1\startup.obj
+__size_of_main 0 0 ABS 0 - Out1\Test_1.obj
+__Hconst 0 0 CODE 0 const Out1\Test_1.obj
+__Lconst 0 0 CODE 0 const Out1\Test_1.obj
+Osc_Step@step 22 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+RGB_Osc_Step@gr 6C 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+RGB_Osc_Step@this 68 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+_RGB_Osc_Init 3510 0 CODE 0 text5 Out1\Test_1.obj
+_Osc_Step$158 63 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+__end_of_WS_Out 32DA 0 CODE 0 text2 Out1\Test_1.obj
+___inthi_sp 0 0 STACK 2 stack Work1\startup.obj
+___intlo_sp 0 0 STACK 2 stack Work1\startup.obj
+__Hend_init 30A6 0 CODE 0 end_init Out1\Test_1.obj
+__Lend_init 30A2 0 CODE 0 end_init Out1\Test_1.obj
+_Osc_Step$159 65 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+RGB_Osc_Step@br 6E 0 BANK0 1 cstackBANK0 Out1\Test_1.obj
+Osc_Step@phase 20 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+__smallconst 0 0 SMALLCONST 0 smallconst Work1\startup.obj
+__Hreset_vec 3004 0 CODE 0 reset_vec Out1\Test_1.obj
+__Lreset_vec 3000 0 CODE 0 reset_vec Out1\Test_1.obj
+__end_of_RGB_Osc_Step 3468 0 CODE 0 text3 Out1\Test_1.obj
+__end_of_RGB_Osc_Init 354A 0 CODE 0 text5 Out1\Test_1.obj
+RGB_Osc_Init@this 20 0 COMRAM 1 cstackCOMRAM Out1\Test_1.obj
+__accesstop 60 0 ABS 0 - Work1\startup.obj
+__Hintcode_body 0 0 ABS 0 intcode_body Out1\Test_1.obj
+__Lintcode_body 0 0 ABS 0 intcode_body Out1\Test_1.obj
+__pintcode_body 3468 0 CODE 0 intcode_body Out1\Test_1.obj
+intlevel0 0 0 CODE 0 text Work1\startup.obj
+intlevel1 0 0 CODE 0 text Work1\startup.obj
+intlevel2 0 0 CODE 0 text Work1\startup.obj
+intlevel3 0 0 CODE 0 text Work1\startup.obj
+start_initialization 354A 0 CODE 0 cinit Out1\Test_1.obj
+_On_HIDD_Event 3018 0 CODE 0 intcodelo Out1\Test_1.obj
+__initialization 354A 0 CODE 0 cinit Out1\Test_1.obj
+__activetblptr 0 0 ABS 0 - Out1\Test_1.obj
+__size_of_Osc_Step 0 0 ABS 0 - Out1\Test_1.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect in on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+_HIDD_Out 1 260 40
+_HIDD_In 1 2A0 40
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+reset_vec 0 3000 3000 4 1
+intcode 0 3008 3008 10 1
+intcodelo 0 3018 3018 544 1
+cstackCOMRAM 1 1 1 40 1
+cstackBANK0 1 60 60 13 1

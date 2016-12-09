@@ -1,0 +1,2680 @@
+Microchip MPLAB XC8 Compiler V1.32 ()
+
+Linker command line:
+
+--edf=D:\MCUDev13\PIC\xc8\v1.32\dat\en_msgs.txt -cs -h+Output\PiM_11x.sym \
+  --cmf=Output\PiM_11x.cmf -z -Q18F14K50 \
+  -oC:\DOCUME~1\USER\LOCALS~1\Temp\s1f0.6 -MOutput\PiM_11x.map -ver=XC8 \
+  -ASTACK=093h-01ffh -pstack=STACK -ACODE=01000h-03FFFh \
+  -ACONST=01000h-03FFFh -ASMALLCONST=01000h-010FFhx48 \
+  -AMEDIUMCONST=01000h-03FFFh -ACOMRAM=01h-05Fh -AABS1=00h-02FFh \
+  -ABIGRAM=01h-02FFh -ARAM=060h-0FFh,0100h-01FFhx2 -ABANK0=060h-0FFh \
+  -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh -ASFR=0F53h-0F5Fh,0F60h-0FFFh \
+  -preset_vec=01000h,intcode=01008h,intcodelo,powerup,init,end_init \
+  -pramtop=0300h -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST \
+  -pconst=CONST -AFARRAM=00h-00h -ACONFIG=0300000h-030000Dh -pconfig=CONFIG \
+  -AIDLOC=0200000h-0200007h -pidloc=IDLOC -AEEDATA=0F00000h-0F000FFh \
+  -peeprom_data=EEDATA \
+  -prdata=COMRAM,nvrram=COMRAM,nvbit=COMRAM,rbss=COMRAM,rbit=COMRAM \
+  -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
+  -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
+  -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE Work\startup.obj \
+  Output\PiM_11x.obj 
+
+Object code version is 3.11
+
+Machine type is 18F14K50
+
+Call graph: (short form)
+
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+Work\startup.obj
+                end_init                           107E     107E        4      804       0
+                reset_vec                          1000     1000        4      800       0
+                config                           300000   300000        E   300000       0
+Output\PiM_11x.obj
+                intcode                            1008     1008       76      804       0
+                smallconst                         1100     1100       C8      880       0
+                text52                             22FE     22FE       E0      8E4       0
+                text51                             23DE     23DE       D6      8E4       0
+                text50                             257A     257A       C4      8E4       0
+                text49                             1CE0     1CE0      11C      8E4       0
+                text48                             2AD4     2AD4       5A      8E4       0
+                text47                             28DC     28DC       9E      8E4       0
+                text46                             2B2E     2B2E       48      8E4       0
+                text45                             1DFC     1DFC      116      8E4       0
+                text44                             2CE4     2CE4       3A      8E4       0
+                text43                             2DC2     2DC2       36      8E4       0
+                text42                             2D8C     2D8C       36      8E4       0
+                text41                             297A     297A       80      8E4       0
+                text40                             1F12     1F12      104      8E4       0
+                text39                             2F86     2F86       14      8E4       0
+                text38                             2F70     2F70       16      8E4       0
+                text37                             2FBC     2FBC        E      8E4       0
+                text36                             2D56     2D56       36      8E4       0
+                text35                             2CAA     2CAA       3A      8E4       0
+                text34                             29FA     29FA       7E      8E4       0
+                text33                             11C8     11C8      2D6      8E4       0
+                text32                             1A56     1A56      14C      8E4       0
+                text31                             24B4     24B4       C6      8E4       0
+                text30                             2E8A     2E8A       2C      8E4       0
+                text29                             2114     2114       FA      8E4       0
+                text28                             2016     2016       FE      8E4       0
+                text27                             283A     283A       A2      8E4       0
+                text26                             220E     220E       F0      8E4       0
+                text25                             26EC     26EC       AA      8E4       0
+                text24                             2BB8     2BB8       40      8E4       0
+                text23                             2796     2796       A4      8E4       0
+                text22                             2F3E     2F3E       1A      8E4       0
+                text21                             2B76     2B76       42      8E4       0
+                text20                             2E5E     2E5E       2C      8E4       0
+                text19                             2E2C     2E2C       32      8E4       0
+                text18                             1630     1630      170      8E4       0
+                text17                             1BA2     1BA2      13E      8E4       0
+                text15                             2A78     2A78       5C      8E4       0
+                text14                             2EB6     2EB6       2A      8E4       0
+                text13                             2C70     2C70       3A      8E4       0
+                text12                             190A     190A      14C      8E4       0
+                text11                             263E     263E       AE      8E4       0
+                text10                             17A0     17A0      16A      8E4       0
+                text9                              2F58     2F58       18      8E4       0
+                text8                              2F24     2F24       1A      8E4       0
+                text7                              2F9A     2F9A       12      8E4       0
+                text6                              2C36     2C36       3A      8E4       0
+                text5                              2BF8     2BF8       3E      8E4       0
+                text4                              2DF8     2DF8       34      8E4       0
+                text3                              2FAC     2FAC       10      8E4       0
+                text2                              2D1E     2D1E       38      8E4       0
+                text1                              149E     149E      192      8E4       0
+                text0                              2F02     2F02       22      8E4       0
+                cstackCOMRAM                          1        1       30        1       1
+                cstackBANK0                          80       80       13       60       1
+                bssBANK0                             60       60       20       60       1
+                bssCOMRAM                            31       31       1E        1       1
+                cinit                              2EE0     2EE0       22      8E4       0
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   STACK          
+
+        CLASS   CODE           
+                end_init                           107E     107E        4         0
+                intcode                            1008     1008       76         0
+                reset_vec                          1000     1000        4         0
+                text52                             22FE     22FE       E0         0
+                text51                             23DE     23DE       D6         0
+                text50                             257A     257A       C4         0
+                text49                             1CE0     1CE0      11C         0
+                text48                             2AD4     2AD4       5A         0
+                text47                             28DC     28DC       9E         0
+                text46                             2B2E     2B2E       48         0
+                text45                             1DFC     1DFC      116         0
+                text44                             2CE4     2CE4       3A         0
+                text43                             2DC2     2DC2       36         0
+                text42                             2D8C     2D8C       36         0
+                text41                             297A     297A       80         0
+                text40                             1F12     1F12      104         0
+                text39                             2F86     2F86       14         0
+                text38                             2F70     2F70       16         0
+                text37                             2FBC     2FBC        E         0
+                text36                             2D56     2D56       36         0
+                text35                             2CAA     2CAA       3A         0
+                text34                             29FA     29FA       7E         0
+                text33                             11C8     11C8      2D6         0
+                text32                             1A56     1A56      14C         0
+                text31                             24B4     24B4       C6         0
+                text30                             2E8A     2E8A       2C         0
+                text29                             2114     2114       FA         0
+                text28                             2016     2016       FE         0
+                text27                             283A     283A       A2         0
+                text26                             220E     220E       F0         0
+                text25                             26EC     26EC       AA         0
+                text24                             2BB8     2BB8       40         0
+                text23                             2796     2796       A4         0
+                text22                             2F3E     2F3E       1A         0
+                text21                             2B76     2B76       42         0
+                text20                             2E5E     2E5E       2C         0
+                text19                             2E2C     2E2C       32         0
+                text18                             1630     1630      170         0
+                text17                             1BA2     1BA2      13E         0
+                text15                             2A78     2A78       5C         0
+                text14                             2EB6     2EB6       2A         0
+                text13                             2C70     2C70       3A         0
+                text12                             190A     190A      14C         0
+                text11                             263E     263E       AE         0
+                text10                             17A0     17A0      16A         0
+                text9                              2F58     2F58       18         0
+                text8                              2F24     2F24       1A         0
+                text7                              2F9A     2F9A       12         0
+                text6                              2C36     2C36       3A         0
+                text5                              2BF8     2BF8       3E         0
+                text4                              2DF8     2DF8       34         0
+                text3                              2FAC     2FAC       10         0
+                text2                              2D1E     2D1E       38         0
+                text1                              149E     149E      192         0
+                text0                              2F02     2F02       22         0
+                cinit                              2EE0     2EE0       22         0
+
+        CLASS   CONST          
+
+        CLASS   SMALLCONST     
+                smallconst                         1100     1100       C8         0
+
+        CLASS   MEDIUMCONST    
+
+        CLASS   COMRAM         
+                cstackCOMRAM                          1        1       30         1
+                bssCOMRAM                            31       31       1E         1
+
+        CLASS   ABS1           
+                abs_s1                              200      200       30         1
+                abs_s1                              260      260       80         1
+
+        CLASS   BIGRAM         
+
+        CLASS   RAM            
+
+        CLASS   BANK0          
+                cstackBANK0                          80       80       13         1
+                bssBANK0                             60       60       20         1
+
+        CLASS   BANK1          
+
+        CLASS   BANK2          
+
+        CLASS   SFR            
+
+        CLASS   FARRAM         
+
+        CLASS   CONFIG         
+                config                           300000   300000        E         0
+
+        CLASS   IDLOC          
+
+        CLASS   EEDATA         
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
+
+                cstackCOMRAM                   000001  00004E  00004F         1       1  COMRAM  
+                bssBANK0                       000060  000033  000093        60       1  BANK0   
+                reset_vec                      001000  000004  001004       800       0  CODE    
+                intcode                        001008  00007A  001082       804       0  CODE    
+                smallconst                     001100  0000C8  0011C8       880       0  SMALLCON
+                text33                         0011C8  001E02  002FCA       8E4       0  CODE    
+                config                         300000  00000E  30000E    300000       0  CONFIG  
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            000093-0000FF               6D
+        BANK1            000100-0001FF              100
+        BANK2            000230-00025F               30
+                         0002E0-0002FF               20
+        BIGRAM           00004F-00005F               11
+                         000093-0001FF              16D
+                         000230-00025F               30
+                         0002E0-0002FF               20
+        CODE             001004-001007                4
+                         001082-0010FF               7E
+                         002FCA-003FFF             1036
+        COMRAM           00004F-00005F               11
+        CONST            001004-001007                4
+                         001082-0010FF               7E
+                         002FCA-003FFF             1036
+        EEDATA           F00000-F000FF              100
+        FARRAM           000000-000000                1
+        IDLOC            200000-200007                8
+        MEDIUMCONST      001004-001007                4
+                         001082-0010FF               7E
+                         002FCA-003FFF             1036
+        RAM              000093-0001FF               6D
+                         000230-00025F               30
+                         0002E0-0002FF               20
+        SFR              000F53-000FFF                D
+        SMALLCONST       001004-001007                4
+                         001082-0010FF               7E
+                         002FCA-003FFF              100
+        STACK            000093-0001FF              16D
+
+                                  Symbol Table
+
+?_ADC_Read10bit                           cstackBANK0  000080
+?_USBTransferOnePacket                    cstackBANK0  000080
+?i2_USBTransferOnePacket                  cstackCOMRAM 000001
+ADC_Enable@channel                        cstackBANK0  000080
+ADC_Read10bit@channel                     cstackBANK0  000085
+ADC_Read10bit@result                      cstackBANK0  000083
+ADC_SetConfiguration@configuration        cstackBANK0  000080
+APP_DeviceCustomHIDTasks@pot              cstackBANK0  000091
+APP_LEDUpdateUSBStatus@ledCount           bssCOMRAM    000035
+BUTTON_Enable@button                      cstackBANK0  000080
+BUTTON_IsPressed@button                   cstackBANK0  000080
+DoCommand@pot                             cstackBANK0  00008C
+LED_Enable@led                            cstackBANK0  000080
+LED_Off@led                               cstackCOMRAM 000001
+LED_On@led                                cstackCOMRAM 000001
+LED_Toggle@led                            cstackBANK0  000080
+SYSTEM_Initialize@state                   cstackBANK0  000081
+USBConfigureEndpoint@EPNum                cstackCOMRAM 000006
+USBConfigureEndpoint@direction            cstackCOMRAM 000001
+USBConfigureEndpoint@handle               cstackCOMRAM 000007
+USBCtrlTrfInHandler@lastDTS               cstackCOMRAM 000002
+USBCtrlTrfRxService@byteToRead            cstackCOMRAM 000002
+USBCtrlTrfRxService@i                     cstackCOMRAM 000001
+USBCtrlTrfTxService@byteToSend            cstackCOMRAM 000001
+USBDeviceInit@i                           cstackBANK0  000088
+USBDeviceTasks@i                          cstackCOMRAM 000022
+USBEnableEndpoint@ep                      cstackCOMRAM 00000E
+USBEnableEndpoint@options                 cstackCOMRAM 000009
+USBEnableEndpoint@p                       cstackCOMRAM 00000C
+USBStdFeatureReqHandler@current_ep_data   cstackCOMRAM 00001C
+USBStdFeatureReqHandler@p                 cstackCOMRAM 00001D
+USBStdFeatureReqHandler@pUEP              cstackCOMRAM 00001A
+USBStdGetStatusHandler@p                  cstackCOMRAM 000002
+USBStdSetCfgHandler@i                     cstackCOMRAM 000017
+USBTransferOnePacket@data                 cstackBANK0  000081
+USBTransferOnePacket@dir                  cstackBANK0  000080
+USBTransferOnePacket@ep                   cstackBANK0  000086
+USBTransferOnePacket@handle               cstackBANK0  000087
+USBTransferOnePacket@len                  cstackBANK0  000083
+USER_USB_CALLBACK_EVENT_HANDLER@event     cstackCOMRAM 00000F
+USER_USB_CALLBACK_EVENT_HANDLER@pdata     cstackCOMRAM 000011
+USER_USB_CALLBACK_EVENT_HANDLER@size      cstackCOMRAM 000013
+_ADCON0                                   (abs)        000FC2
+_ADCON0bits                               (abs)        000FC2
+_ADCON1                                   (abs)        000FC1
+_ADCON2                                   (abs)        000FC0
+_ADCON2bits                               (abs)        000FC0
+_ADC_Enable                               text9        002F58
+_ADC_Read10bit                            text15       002A78
+_ADC_SetConfiguration                     text8        002F24
+_ADRESH                                   (abs)        000FC4
+_ADRESL                                   (abs)        000FC3
+_ANSELHbits                               (abs)        000F7F
+_APP_DeviceCustomHIDInitialize            text44       002CE4
+_APP_DeviceCustomHIDTasks                 text10       0017A0
+_APP_LEDUpdateUSBStatus                   text41       00297A
+_BAUDCTL                                  (abs)        000FB8
+_BDT                                      (abs)        000200
+_BUTTON_Enable                            text7        002F9A
+_BUTTON_IsPressed                         text14       002EB6
+_BothEP0OutUOWNsSet                       bssCOMRAM    00003D
+_CtrlTrfData                              (abs)        000228
+_DoCommand                                text11       00263E
+_INTCONbits                               (abs)        000FF2
+_IPR2bits                                 (abs)        000FA2
+_LATB                                     (abs)        000F8A
+_LATCbits                                 (abs)        000F8B
+_LED_Enable                               text6        002C36
+_LED_Off                                  text43       002DC2
+_LED_On                                   text42       002D8C
+_LED_Toggle                               text13       002C70
+_PIE2bits                                 (abs)        000FA0
+_PIR2bits                                 (abs)        000FA1
+_PORTAbits                                (abs)        000F80
+_RCONbits                                 (abs)        000FD0
+_RCSTA                                    (abs)        000FAB
+_ReceivedDataBuffer                       (abs)        000260
+_RemoteWakeup                             bssCOMRAM    00003E
+_ReturnToBL                               bssBANK0     000078
+_SPBRG                                    (abs)        000FAF
+_SPBRGH                                   (abs)        000FB0
+_SYSTEM_Initialize                        text5        002BF8
+_SYS_InterruptHigh                        intcode      001008
+_SetupPkt                                 (abs)        000220
+_TRISB                                    (abs)        000F93
+_TRISBbits                                (abs)        000F93
+_TRISCbits                                (abs)        000F94
+_TXSTA                                    (abs)        000FAC
+_ToSendDataBuffer                         (abs)        0002A0
+_UADDR                                    (abs)        000F5C
+_UCFG                                     (abs)        000F61
+_UCON                                     (abs)        000F64
+_UCONbits                                 (abs)        000F64
+_UEIE                                     (abs)        000F5B
+_UEIR                                     (abs)        000F5F
+_UEP0                                     (abs)        000F53
+_UEP0bits                                 (abs)        000F53
+_UEP1                                     (abs)        000F54
+_UIE                                      (abs)        000F60
+_UIEbits                                  (abs)        000F60
+_UIR                                      (abs)        000F62
+_UIRbits                                  (abs)        000F62
+_USB1msTickCount                          bssCOMRAM    000031
+_USBActiveConfiguration                   bssCOMRAM    00004A
+_USBAlternateInterface                    bssCOMRAM    00004B
+_USBBusIsSuspended                        bssCOMRAM    00003F
+_USBCheckHIDRequest                       text40       001F12
+_USBCheckStdRequest                       text28       002016
+_USBConfigureEndpoint                     text47       0028DC
+_USBCtrlEPAllowDataStage                  text27       00283A
+_USBCtrlEPAllowStatusStage                text50       00257A
+_USBCtrlEPService                         text23       002796
+_USBCtrlEPServiceComplete                 text26       00220E
+_USBCtrlTrfInHandler                      text51       0023DE
+_USBCtrlTrfOutHandler                     text48       002AD4
+_USBCtrlTrfRxService                      text49       001CE0
+_USBCtrlTrfSetupHandler                   text25       0026EC
+_USBCtrlTrfTxService                      text52       0022FE
+_USBDeferINDataStagePackets               bssCOMRAM    000040
+_USBDeferOUTDataStagePackets              bssCOMRAM    000041
+_USBDeferStatusStagePacket                bssCOMRAM    000042
+_USBDeviceAttach                          text4        002DF8
+_USBDeviceDetach                          text3        002FAC
+_USBDeviceInit                            text1        00149E
+_USBDeviceState                           bssBANK0     000079
+_USBDeviceTasks                           text17       001BA2
+_USBEnableEndpoint                        text46       002B2E
+_USBInHandle                              bssBANK0     000070
+_USBIncrement1msInternalTimers            text22       002F3E
+_USBOutHandle                             bssBANK0     000072
+_USBStallHandler                          text21       002B76
+_USBStatusStageEnabledFlag1               bssCOMRAM    000043
+_USBStatusStageEnabledFlag2               bssCOMRAM    000044
+_USBStatusStageTimeoutCounter             bssCOMRAM    000045
+_USBStdFeatureReqHandler                  text33       0011C8
+_USBStdGetDscHandler                      text32       001A56
+_USBStdGetStatusHandler                   text31       0024B4
+_USBStdSetCfgHandler                      text29       002114
+_USBSuspend                               text20       002E5E
+_USBTicksSinceSuspendEnd                  bssCOMRAM    000046
+_USBTransferOnePacket                     text12       00190A
+_USBWakeFromSuspend                       text19       002E2C
+_USB_CD_Ptr                               smallconst   001107
+_USB_SD_Ptr                               smallconst   001101
+_USER_USB_CALLBACK_EVENT_HANDLER          text34       0029FA
+_USTAT                                    (abs)        000F63
+_USTATcopy                                bssCOMRAM    00004C
+__CFG_BBSIZ$OFF                           (abs)        000000
+__CFG_BOREN$OFF                           (abs)        000000
+__CFG_BORV$30                             (abs)        000000
+__CFG_CP0$OFF                             (abs)        000000
+__CFG_CP1$OFF                             (abs)        000000
+__CFG_CPB$OFF                             (abs)        000000
+__CFG_CPUDIV$NOCLKDIV                     (abs)        000000
+__CFG_EBTR0$OFF                           (abs)        000000
+__CFG_EBTR1$OFF                           (abs)        000000
+__CFG_EBTRB$OFF                           (abs)        000000
+__CFG_FCMEN$OFF                           (abs)        000000
+__CFG_FOSC$HS                             (abs)        000000
+__CFG_HFOFST$OFF                          (abs)        000000
+__CFG_IESO$OFF                            (abs)        000000
+__CFG_LVP$OFF                             (abs)        000000
+__CFG_MCLRE$OFF                           (abs)        000000
+__CFG_PLLEN$ON                            (abs)        000000
+__CFG_PWRTEN$OFF                          (abs)        000000
+__CFG_STVREN$ON                           (abs)        000000
+__CFG_USBDIV$OFF                          (abs)        000000
+__CFG_WDTEN$OFF                           (abs)        000000
+__CFG_WDTPS$32768                         (abs)        000000
+__CFG_WRT0$OFF                            (abs)        000000
+__CFG_WRT1$OFF                            (abs)        000000
+__CFG_WRTB$OFF                            (abs)        000000
+__CFG_WRTC$OFF                            (abs)        000000
+__CFG_XINST$OFF                           (abs)        000000
+__HRAM                                    (abs)        000000
+__Habs1                                   abs1         000000
+__Hbank0                                  bank0        000000
+__Hbank1                                  bank1        000000
+__Hbank2                                  bank2        000000
+__Hbigbss                                 bigbss       000000
+__Hbigdata                                bigdata      000000
+__Hbigram                                 bigram       000000
+__Hbss                                    bss          000000
+__HbssBANK0                               bssBANK0     000000
+__HbssCOMRAM                              bssCOMRAM    000000
+__Hcinit                                  cinit        000000
+__Hclrtext                                clrtext      000000
+__Hcomram                                 comram       000000
+__Hconfig                                 config       30000E
+__Hconst                                  const        000000
+__HcstackBANK0                            cstackBANK0  000000
+__HcstackCOMRAM                           cstackCOMRAM 000000
+__Hdata                                   data         000000
+__Heeprom_data                            eeprom_data  000000
+__Hend_init                               end_init     001082
+__Hfarbss                                 farbss       000000
+__Hfardata                                fardata      000000
+__Hibigdata                               ibigdata     000000
+__Hidata                                  idata        000000
+__Hidloc                                  idloc        000000
+__Hifardata                               ifardata     000000
+__Hinit                                   init         00107E
+__Hintcode                                intcode      00107E
+__Hintcode_body                           intcode_body 000000
+__Hintcodelo                              intcodelo    00107E
+__Hintentry                               intentry     000000
+__Hintret                                 intret       000000
+__Hintsave_regs                           intsave_regs 000000
+__Hirdata                                 irdata       000000
+__Hmediumconst                            mediumconst  000000
+__HnvFARRAM                               nvFARRAM     000000
+__Hnvbit                                  nvbit        000000
+__Hnvrram                                 nvrram       000000
+__Hparam                                  rparam       000000
+__Hpowerup                                powerup      00107E
+__Hram                                    ram          000000
+__Hramtop                                 ramtop       000300
+__Hrbit                                   rbit         000000
+__Hrbss                                   rbss         000000
+__Hrdata                                  rdata        000000
+__Hreset_vec                              reset_vec    001004
+__Hrparam                                 rparam       000000
+__Hsfr                                    sfr          000000
+__Hsmallconst                             smallconst   0011C8
+__Hspace_0                                (abs)        30000E
+__Hspace_1                                (abs)        000093
+__Hspace_2                                (abs)        000000
+__Hstack                                  stack        000000
+__Hstruct                                 struct       000000
+__Htemp                                   temp         000000
+__Htext                                   text         000000
+__Htext0                                  text0        000000
+__Htext1                                  text1        000000
+__Htext10                                 text10       000000
+__Htext11                                 text11       000000
+__Htext12                                 text12       000000
+__Htext13                                 text13       000000
+__Htext14                                 text14       000000
+__Htext15                                 text15       000000
+__Htext17                                 text17       000000
+__Htext18                                 text18       000000
+__Htext19                                 text19       000000
+__Htext2                                  text2        000000
+__Htext20                                 text20       000000
+__Htext21                                 text21       000000
+__Htext22                                 text22       000000
+__Htext23                                 text23       000000
+__Htext24                                 text24       000000
+__Htext25                                 text25       000000
+__Htext26                                 text26       000000
+__Htext27                                 text27       000000
+__Htext28                                 text28       000000
+__Htext29                                 text29       000000
+__Htext3                                  text3        000000
+__Htext30                                 text30       000000
+__Htext31                                 text31       000000
+__Htext32                                 text32       000000
+__Htext33                                 text33       000000
+__Htext34                                 text34       000000
+__Htext35                                 text35       000000
+__Htext36                                 text36       000000
+__Htext37                                 text37       000000
+__Htext38                                 text38       000000
+__Htext39                                 text39       000000
+__Htext4                                  text4        000000
+__Htext40                                 text40       000000
+__Htext41                                 text41       000000
+__Htext42                                 text42       000000
+__Htext43                                 text43       000000
+__Htext44                                 text44       000000
+__Htext45                                 text45       000000
+__Htext46                                 text46       000000
+__Htext47                                 text47       000000
+__Htext48                                 text48       000000
+__Htext49                                 text49       000000
+__Htext5                                  text5        000000
+__Htext50                                 text50       000000
+__Htext51                                 text51       000000
+__Htext52                                 text52       000000
+__Htext6                                  text6        000000
+__Htext7                                  text7        000000
+__Htext8                                  text8        000000
+__Htext9                                  text9        000000
+__LRAM                                    (abs)        000001
+__Labs1                                   abs1         000000
+__Lbank0                                  bank0        000000
+__Lbank1                                  bank1        000000
+__Lbank2                                  bank2        000000
+__Lbigbss                                 bigbss       000000
+__Lbigdata                                bigdata      000000
+__Lbigram                                 bigram       000000
+__Lbss                                    bss          000000
+__LbssBANK0                               bssBANK0     000000
+__LbssCOMRAM                              bssCOMRAM    000000
+__Lcinit                                  cinit        000000
+__Lclrtext                                clrtext      000000
+__Lcomram                                 comram       000000
+__Lconfig                                 config       300000
+__Lconst                                  const        000000
+__LcstackBANK0                            cstackBANK0  000000
+__LcstackCOMRAM                           cstackCOMRAM 000000
+__Ldata                                   data         000000
+__Leeprom_data                            eeprom_data  000000
+__Lend_init                               end_init     00107E
+__Lfarbss                                 farbss       000000
+__Lfardata                                fardata      000000
+__Libigdata                               ibigdata     000000
+__Lidata                                  idata        000000
+__Lidloc                                  idloc        000000
+__Lifardata                               ifardata     000000
+__Linit                                   init         00107E
+__Lintcode                                intcode      001008
+__Lintcode_body                           intcode_body 000000
+__Lintcodelo                              intcodelo    00107E
+__Lintentry                               intentry     000000
+__Lintret                                 intret       000000
+__Lintsave_regs                           intsave_regs 000000
+__Lirdata                                 irdata       000000
+__Lmediumconst                            mediumconst  000000
+__LnvFARRAM                               nvFARRAM     000000
+__Lnvbit                                  nvbit        000000
+__Lnvrram                                 nvrram       000000
+__Lparam                                  rparam       000000
+__Lpowerup                                powerup      00107E
+__Lram                                    ram          000000
+__Lramtop                                 ramtop       000300
+__Lrbit                                   rbit         000000
+__Lrbss                                   rbss         000000
+__Lrdata                                  rdata        000000
+__Lreset_vec                              reset_vec    001000
+__Lrparam                                 rparam       000000
+__Lsfr                                    sfr          000000
+__Lsmallconst                             smallconst   001100
+__Lspace_0                                (abs)        000000
+__Lspace_1                                (abs)        000000
+__Lspace_2                                (abs)        000000
+__Lstack                                  stack        000000
+__Lstruct                                 struct       000000
+__Ltemp                                   temp         000000
+__Ltext                                   text         000000
+__Ltext0                                  text0        000000
+__Ltext1                                  text1        000000
+__Ltext10                                 text10       000000
+__Ltext11                                 text11       000000
+__Ltext12                                 text12       000000
+__Ltext13                                 text13       000000
+__Ltext14                                 text14       000000
+__Ltext15                                 text15       000000
+__Ltext17                                 text17       000000
+__Ltext18                                 text18       000000
+__Ltext19                                 text19       000000
+__Ltext2                                  text2        000000
+__Ltext20                                 text20       000000
+__Ltext21                                 text21       000000
+__Ltext22                                 text22       000000
+__Ltext23                                 text23       000000
+__Ltext24                                 text24       000000
+__Ltext25                                 text25       000000
+__Ltext26                                 text26       000000
+__Ltext27                                 text27       000000
+__Ltext28                                 text28       000000
+__Ltext29                                 text29       000000
+__Ltext3                                  text3        000000
+__Ltext30                                 text30       000000
+__Ltext31                                 text31       000000
+__Ltext32                                 text32       000000
+__Ltext33                                 text33       000000
+__Ltext34                                 text34       000000
+__Ltext35                                 text35       000000
+__Ltext36                                 text36       000000
+__Ltext37                                 text37       000000
+__Ltext38                                 text38       000000
+__Ltext39                                 text39       000000
+__Ltext4                                  text4        000000
+__Ltext40                                 text40       000000
+__Ltext41                                 text41       000000
+__Ltext42                                 text42       000000
+__Ltext43                                 text43       000000
+__Ltext44                                 text44       000000
+__Ltext45                                 text45       000000
+__Ltext46                                 text46       000000
+__Ltext47                                 text47       000000
+__Ltext48                                 text48       000000
+__Ltext49                                 text49       000000
+__Ltext5                                  text5        000000
+__Ltext50                                 text50       000000
+__Ltext51                                 text51       000000
+__Ltext52                                 text52       000000
+__Ltext6                                  text6        000000
+__Ltext7                                  text7        000000
+__Ltext8                                  text8        000000
+__Ltext9                                  text9        000000
+__S0                                      (abs)        30000E
+__S1                                      (abs)        000093
+__S2                                      (abs)        000000
+___inthi_sp                               stack        000000
+___intlo_sp                               stack        000000
+___sp                                     stack        000000
+__accesstop                               (abs)        000060
+__activetblptr                            (abs)        000002
+__end_of_ADC_Enable                       text9        002F70
+__end_of_ADC_Read10bit                    text15       002AD4
+__end_of_ADC_SetConfiguration             text8        002F3E
+__end_of_APP_DeviceCustomHIDInitialize    text44       002D1E
+__end_of_APP_DeviceCustomHIDTasks         text10       00190A
+__end_of_APP_LEDUpdateUSBStatus           text41       0029FA
+__end_of_BUTTON_Enable                    text7        002FAC
+__end_of_BUTTON_IsPressed                 text14       002EE0
+__end_of_DoCommand                        text11       0026EC
+__end_of_LED_Enable                       text6        002C70
+__end_of_LED_Off                          text43       002DF8
+__end_of_LED_On                           text42       002DC2
+__end_of_LED_Toggle                       text13       002CAA
+__end_of_SYSTEM_Initialize                text5        002C36
+__end_of_SYS_InterruptHigh                intcode      00107E
+__end_of_USBCheckHIDRequest               text40       002016
+__end_of_USBCheckStdRequest               text28       002114
+__end_of_USBConfigureEndpoint             text47       00297A
+__end_of_USBCtrlEPAllowDataStage          text27       0028DC
+__end_of_USBCtrlEPAllowStatusStage        text50       00263E
+__end_of_USBCtrlEPService                 text23       00283A
+__end_of_USBCtrlEPServiceComplete         text26       0022FE
+__end_of_USBCtrlTrfInHandler              text51       0024B4
+__end_of_USBCtrlTrfOutHandler             text48       002B2E
+__end_of_USBCtrlTrfRxService              text49       001DFC
+__end_of_USBCtrlTrfSetupHandler           text25       002796
+__end_of_USBCtrlTrfTxService              text52       0023DE
+__end_of_USBDeviceAttach                  text4        002E2C
+__end_of_USBDeviceDetach                  text3        002FBC
+__end_of_USBDeviceInit                    text1        001630
+__end_of_USBDeviceTasks                   text17       001CE0
+__end_of_USBEnableEndpoint                text46       002B76
+__end_of_USBIncrement1msInternalTimers    text22       002F58
+__end_of_USBStallHandler                  text21       002BB8
+__end_of_USBStdFeatureReqHandler          text33       00149E
+__end_of_USBStdGetDscHandler              text32       001BA2
+__end_of_USBStdGetStatusHandler           text31       00257A
+__end_of_USBStdSetCfgHandler              text29       00220E
+__end_of_USBSuspend                       text20       002E8A
+__end_of_USBTransferOnePacket             text12       001A56
+__end_of_USBWakeFromSuspend               text19       002E5E
+__end_of_USB_CD_Ptr                       smallconst   001109
+__end_of_USB_SD_Ptr                       smallconst   001107
+__end_of_USER_USB_CALLBACK_EVENT_HANDLER  text34       002A78
+__end_of__initialization                  cinit        002EF8
+__end_of_configDescriptor1                smallconst   001194
+__end_of_device_dsc                       smallconst   0011C3
+__end_of_hid_rpt01                        smallconst   0011B1
+__end_of_main                             text0        002F24
+__end_of_memcpy                           text24       002BF8
+__end_of_memset                           text2        002D56
+__end_of_sd000                            smallconst   0011C7
+__end_of_sd001                            smallconst   00113D
+__end_of_sd002                            smallconst   00116B
+__end_ofi2_ADC_Enable                     text39       002F9A
+__end_ofi2_ADC_SetConfiguration           text38       002F86
+__end_ofi2_BUTTON_Enable                  text37       002FCA
+__end_ofi2_LED_Enable                     text36       002D8C
+__end_ofi2_SYSTEM_Initialize              text35       002CE4
+__end_ofi2_USBDeviceInit                  text18       0017A0
+__end_ofi2_USBTransferOnePacket           text45       001F12
+__end_ofi2_memset                         text30       002EB6
+__initialization                          cinit        002EE0
+__mediumconst                             mediumconst  000000
+__pbssBANK0                               bssBANK0     000060
+__pbssCOMRAM                              bssCOMRAM    000031
+__pcinit                                  cinit        002EE0
+__pcstackBANK0                            cstackBANK0  000080
+__pcstackCOMRAM                           cstackCOMRAM 000001
+__pintcode                                intcode      001008
+__psmallconst                             smallconst   001100
+__ptext0                                  text0        002F02
+__ptext1                                  text1        00149E
+__ptext10                                 text10       0017A0
+__ptext11                                 text11       00263E
+__ptext12                                 text12       00190A
+__ptext13                                 text13       002C70
+__ptext14                                 text14       002EB6
+__ptext15                                 text15       002A78
+__ptext17                                 text17       001BA2
+__ptext18                                 text18       001630
+__ptext19                                 text19       002E2C
+__ptext2                                  text2        002D1E
+__ptext20                                 text20       002E5E
+__ptext21                                 text21       002B76
+__ptext22                                 text22       002F3E
+__ptext23                                 text23       002796
+__ptext24                                 text24       002BB8
+__ptext25                                 text25       0026EC
+__ptext26                                 text26       00220E
+__ptext27                                 text27       00283A
+__ptext28                                 text28       002016
+__ptext29                                 text29       002114
+__ptext3                                  text3        002FAC
+__ptext30                                 text30       002E8A
+__ptext31                                 text31       0024B4
+__ptext32                                 text32       001A56
+__ptext33                                 text33       0011C8
+__ptext34                                 text34       0029FA
+__ptext35                                 text35       002CAA
+__ptext36                                 text36       002D56
+__ptext37                                 text37       002FBC
+__ptext38                                 text38       002F70
+__ptext39                                 text39       002F86
+__ptext4                                  text4        002DF8
+__ptext40                                 text40       001F12
+__ptext41                                 text41       00297A
+__ptext42                                 text42       002D8C
+__ptext43                                 text43       002DC2
+__ptext44                                 text44       002CE4
+__ptext45                                 text45       001DFC
+__ptext46                                 text46       002B2E
+__ptext47                                 text47       0028DC
+__ptext48                                 text48       002AD4
+__ptext49                                 text49       001CE0
+__ptext5                                  text5        002BF8
+__ptext50                                 text50       00257A
+__ptext51                                 text51       0023DE
+__ptext52                                 text52       0022FE
+__ptext6                                  text6        002C36
+__ptext7                                  text7        002F9A
+__ptext8                                  text8        002F24
+__ptext9                                  text9        002F58
+__ramtop                                  ramtop       000300
+__size_of_ADC_Enable                      (abs)        000000
+__size_of_ADC_Read10bit                   (abs)        000000
+__size_of_ADC_SetConfiguration            (abs)        000000
+__size_of_APP_DeviceCustomHIDInitialize   (abs)        000000
+__size_of_APP_DeviceCustomHIDTasks        (abs)        000000
+__size_of_APP_LEDUpdateUSBStatus          (abs)        000000
+__size_of_BUTTON_Enable                   (abs)        000000
+__size_of_BUTTON_IsPressed                (abs)        000000
+__size_of_DoCommand                       (abs)        000000
+__size_of_LED_Enable                      (abs)        000000
+__size_of_LED_Off                         (abs)        000000
+__size_of_LED_On                          (abs)        000000
+__size_of_LED_Toggle                      (abs)        000000
+__size_of_SYSTEM_Initialize               (abs)        000000
+__size_of_SYS_InterruptHigh               (abs)        000000
+__size_of_USBCheckHIDRequest              (abs)        000000
+__size_of_USBCheckStdRequest              (abs)        000000
+__size_of_USBConfigureEndpoint            (abs)        000000
+__size_of_USBCtrlEPAllowDataStage         (abs)        000000
+__size_of_USBCtrlEPAllowStatusStage       (abs)        000000
+__size_of_USBCtrlEPService                (abs)        000000
+__size_of_USBCtrlEPServiceComplete        (abs)        000000
+__size_of_USBCtrlTrfInHandler             (abs)        000000
+__size_of_USBCtrlTrfOutHandler            (abs)        000000
+__size_of_USBCtrlTrfRxService             (abs)        000000
+__size_of_USBCtrlTrfSetupHandler          (abs)        000000
+__size_of_USBCtrlTrfTxService             (abs)        000000
+__size_of_USBDeviceAttach                 (abs)        000000
+__size_of_USBDeviceDetach                 (abs)        000000
+__size_of_USBDeviceInit                   (abs)        000000
+__size_of_USBDeviceTasks                  (abs)        000000
+__size_of_USBEnableEndpoint               (abs)        000000
+__size_of_USBIncrement1msInternalTimers   (abs)        000000
+__size_of_USBStallHandler                 (abs)        000000
+__size_of_USBStdFeatureReqHandler         (abs)        000000
+__size_of_USBStdGetDscHandler             (abs)        000000
+__size_of_USBStdGetStatusHandler          (abs)        000000
+__size_of_USBStdSetCfgHandler             (abs)        000000
+__size_of_USBSuspend                      (abs)        000000
+__size_of_USBTransferOnePacket            (abs)        000000
+__size_of_USBWakeFromSuspend              (abs)        000000
+__size_of_USER_USB_CALLBACK_EVENT_HANDLER (abs)        000000
+__size_of_main                            (abs)        000000
+__size_of_memcpy                          (abs)        000000
+__size_of_memset                          (abs)        000000
+__size_ofi2_ADC_Enable                    (abs)        000000
+__size_ofi2_ADC_SetConfiguration          (abs)        000000
+__size_ofi2_BUTTON_Enable                 (abs)        000000
+__size_ofi2_LED_Enable                    (abs)        000000
+__size_ofi2_SYSTEM_Initialize             (abs)        000000
+__size_ofi2_USBDeviceInit                 (abs)        000000
+__size_ofi2_USBTransferOnePacket          (abs)        000000
+__size_ofi2_memset                        (abs)        000000
+__smallconst                              smallconst   001100
+_active_protocol                          bssCOMRAM    00004D
+_configDescriptor1                        smallconst   00116B
+_controlTransferState                     bssCOMRAM    000047
+_device_dsc                               smallconst   0011B1
+_endpoint_number                          bssCOMRAM    000048
+_ep_data_in                               bssBANK0     000074
+_ep_data_out                              bssBANK0     000076
+_hid_rpt01                                smallconst   001194
+_idle_rate                                bssCOMRAM    00004E
+_inPipes                                  bssBANK0     00007A
+_main                                     text0        002F02
+_memcpy                                   text24       002BB8
+_memset                                   text2        002D1E
+_outPipes                                 bssBANK0     000060
+_pBDTEntryEP0OutCurrent                   bssCOMRAM    000037
+_pBDTEntryEP0OutNext                      bssCOMRAM    000039
+_pBDTEntryIn                              bssBANK0     000068
+_pBDTEntryOut                             bssBANK0     00006C
+_pDst                                     bssCOMRAM    00003B
+_sd000                                    smallconst   0011C3
+_sd001                                    smallconst   001109
+_sd002                                    smallconst   00113D
+_shortPacketStatus                        bssCOMRAM    000049
+end_of_initialization                     cinit        002EF8
+i2ADC_Enable@channel                      cstackCOMRAM 000001
+i2ADC_SetConfiguration@configuration      cstackCOMRAM 000001
+i2BUTTON_Enable@button                    cstackCOMRAM 000001
+i2LED_Enable@led                          cstackCOMRAM 000001
+i2SYSTEM_Initialize@state                 cstackCOMRAM 000002
+i2USBDeviceInit@i                         cstackCOMRAM 000009
+i2USBTransferOnePacket@data               cstackCOMRAM 000002
+i2USBTransferOnePacket@dir                cstackCOMRAM 000001
+i2USBTransferOnePacket@ep                 cstackCOMRAM 000007
+i2USBTransferOnePacket@handle             cstackCOMRAM 000008
+i2USBTransferOnePacket@len                cstackCOMRAM 000004
+i2_ADC_Enable                             text39       002F86
+i2_ADC_SetConfiguration                   text38       002F70
+i2_BUTTON_Enable                          text37       002FBC
+i2_LED_Enable                             text36       002D56
+i2_SYSTEM_Initialize                      text35       002CAA
+i2_USBDeviceInit                          text18       001630
+i2_USBTransferOnePacket                   text45       001DFC
+i2_memset                                 text30       002E8A
+i2memset@c                                cstackCOMRAM 000003
+i2memset@n                                cstackCOMRAM 000005
+i2memset@p                                cstackCOMRAM 000007
+i2memset@p1                               cstackCOMRAM 000001
+intlevel0                                 text         000000
+intlevel1                                 text         000000
+intlevel2                                 text         000000
+intlevel3                                 text         000000
+memcpy@d                                  cstackCOMRAM 000007
+memcpy@d1                                 cstackCOMRAM 000001
+memcpy@n                                  cstackCOMRAM 000005
+memcpy@s                                  cstackCOMRAM 000009
+memcpy@s1                                 cstackCOMRAM 000003
+memset@c                                  cstackBANK0  000082
+memset@n                                  cstackBANK0  000084
+memset@p                                  cstackBANK0  000086
+memset@p1                                 cstackBANK0  000080
+stackhi                                   (abs)        0001FF
+stacklo                                   (abs)        000093
+start                                     init         00107E
+start_initialization                      cinit        002EE0
+
+
+FUNCTION INFORMATION:
+
+ *************** function _main *****************
+ Defined at:
+		line 17 in file "HIDD\main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels required when called:   13
+ This function calls:
+		_APP_DeviceCustomHIDTasks
+		_SYSTEM_Initialize
+		_USBDeviceAttach
+		_USBDeviceDetach
+		_USBDeviceInit
+ This function is called by:
+		Startup code after reset
+ This function uses a non-reentrant model
+
+
+ *************** function _USBDeviceInit *****************
+ Defined at:
+		line 282 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  i               1    8[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   11
+ This function calls:
+		_memset
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _memset *****************
+ Defined at:
+		line 8 in file "D:\MCUDev13\PIC\xc8\v1.32\sources\common\memset.c"
+ Parameters:    Size  Location     Type
+  p1              2    0[BANK0 ] PTR void 
+		 -> USBAlternateInterface(1), BDT(32), UEP1(1), 
+  c               2    2[BANK0 ] int 
+  n               2    4[BANK0 ] unsigned int 
+ Auto vars:     Size  Location     Type
+  p               2    6[BANK0 ] PTR unsigned char 
+		 -> USBAlternateInterface(1), BDT(32), UEP1(1), 
+ Return value:  Size  Location     Type
+                  2    0[BANK0 ] PTR void 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       6       0       0       0
+      Locals:         0       2       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       8       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBDeviceInit
+ This function uses a non-reentrant model
+
+
+ *************** function _USBDeviceDetach *****************
+ Defined at:
+		line 1252 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _USBDeviceAttach *****************
+ Defined at:
+		line 1357 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _SYSTEM_Initialize *****************
+ Defined at:
+		line 38 in file "HIDD\system.c"
+ Parameters:    Size  Location     Type
+  state           1    wreg     enum E4601
+ Auto vars:     Size  Location     Type
+  state           1    1[BANK0 ] enum E4601
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   11
+ This function calls:
+		_ADC_Enable
+		_ADC_SetConfiguration
+		_BUTTON_Enable
+		_LED_Enable
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _LED_Enable *****************
+ Defined at:
+		line 220 in file "BSP\leds.c"
+ Parameters:    Size  Location     Type
+  led             1    wreg     enum E2
+ Auto vars:     Size  Location     Type
+  led             1    0[BANK0 ] enum E2
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function _BUTTON_Enable *****************
+ Defined at:
+		line 85 in file "BSP\buttons.c"
+ Parameters:    Size  Location     Type
+  button          1    wreg     enum E4576
+ Auto vars:     Size  Location     Type
+  button          1    0[BANK0 ] enum E4576
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function _ADC_SetConfiguration *****************
+ Defined at:
+		line 75 in file "BSP\adc.c"
+ Parameters:    Size  Location     Type
+  configuratio    1    wreg     enum E33
+ Auto vars:     Size  Location     Type
+  configuratio    1    0[BANK0 ] enum E33
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function _ADC_Enable *****************
+ Defined at:
+		line 61 in file "BSP\adc.c"
+ Parameters:    Size  Location     Type
+  channel         1    wreg     enum E30
+ Auto vars:     Size  Location     Type
+  channel         1    0[BANK0 ] enum E30
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function _APP_DeviceCustomHIDTasks *****************
+ Defined at:
+		line 97 in file "HIDD\app_device_custom_hid.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  pot             2   17[BANK0 ] unsigned int 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       2       0       0       0
+      Temps:          0       3       0       0       0
+      Totals:         0       5       0       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   12
+ This function calls:
+		_ADC_Read10bit
+		_BUTTON_IsPressed
+		_DoCommand
+		_USBTransferOnePacket
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _DoCommand *****************
+ Defined at:
+		line 57 in file "HIDD\app_device_custom_hid.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  pot             2   12[BANK0 ] unsigned int 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       2       0       0       0
+      Temps:          0       3       0       0       0
+      Totals:         0       5       0       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   11
+ This function calls:
+		_ADC_Read10bit
+		_BUTTON_IsPressed
+		_LED_Toggle
+		_USBTransferOnePacket
+ This function is called by:
+		_APP_DeviceCustomHIDTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _USBTransferOnePacket *****************
+ Defined at:
+		line 1000 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+  ep              1    wreg     unsigned char 
+  dir             1    0[BANK0 ] unsigned char 
+  data            2    1[BANK0 ] PTR unsigned char 
+		 -> ToSendDataBuffer(64), ReceivedDataBuffer(64), 
+  len             1    3[BANK0 ] unsigned char 
+ Auto vars:     Size  Location     Type
+  ep              1    6[BANK0 ] unsigned char 
+  handle          2    7[BANK0 ] PTR volatile struct __BD
+		 -> RAM(767), BDT(32), NULL(0), 
+ Return value:  Size  Location     Type
+                  2    0[BANK0 ] PTR void 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       4       0       0       0
+      Locals:         0       3       0       0       0
+      Temps:          0       2       0       0       0
+      Totals:         0       9       0       0       0
+Total ram usage:        9 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_DoCommand
+		_APP_DeviceCustomHIDTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _LED_Toggle *****************
+ Defined at:
+		line 141 in file "BSP\leds.c"
+ Parameters:    Size  Location     Type
+  led             1    wreg     enum E2
+ Auto vars:     Size  Location     Type
+  led             1    0[BANK0 ] enum E2
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_DoCommand
+ This function uses a non-reentrant model
+
+
+ *************** function _BUTTON_IsPressed *****************
+ Defined at:
+		line 55 in file "BSP\buttons.c"
+ Parameters:    Size  Location     Type
+  button          1    wreg     enum E4576
+ Auto vars:     Size  Location     Type
+  button          1    0[BANK0 ] enum E4576
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_DoCommand
+		_APP_DeviceCustomHIDTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _ADC_Read10bit *****************
+ Defined at:
+		line 37 in file "BSP\adc.c"
+ Parameters:    Size  Location     Type
+  channel         1    wreg     enum E30
+ Auto vars:     Size  Location     Type
+  channel         1    5[BANK0 ] enum E30
+  result          2    3[BANK0 ] unsigned int 
+ Return value:  Size  Location     Type
+                  2    0[BANK0 ] unsigned int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       2       0       0       0
+      Locals:         0       3       0       0       0
+      Temps:          0       1       0       0       0
+      Totals:         0       6       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_DoCommand
+		_APP_DeviceCustomHIDTasks
+		_ADC_ReadPercentage
+ This function uses a non-reentrant model
+
+
+ *************** function _SYS_InterruptHigh *****************
+ Defined at:
+		line 67 in file "HIDD\system.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:         14       0       0       0       0
+      Totals:        14       0       0       0       0
+Total ram usage:       14 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    9
+ This function calls:
+		_USBDeviceTasks
+ This function is called by:
+		Interrupt level 2
+ This function uses a non-reentrant model
+
+
+ *************** function _USBDeviceTasks *****************
+ Defined at:
+		line 482 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  i               1   33[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    8
+ This function calls:
+		_USBCtrlEPAllowStatusStage
+		_USBCtrlEPService
+		_USBIncrement1msInternalTimers
+		_USBStallHandler
+		_USBSuspend
+		_USBWakeFromSuspend
+		_USER_USB_CALLBACK_EVENT_HANDLER
+		i2_USBDeviceInit
+ This function is called by:
+		_SYS_InterruptHigh
+ This function uses a non-reentrant model
+
+
+ *************** function i2_USBDeviceInit *****************
+ Defined at:
+		line 282 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  USBDeviceIni    1    8[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		i2_memset
+ This function is called by:
+		_USBDeviceTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _USBWakeFromSuspend *****************
+ Defined at:
+		line 2308 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function is called by:
+		_USBDeviceTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _USBSuspend *****************
+ Defined at:
+		line 2250 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function is called by:
+		_USBDeviceTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _USBStallHandler *****************
+ Defined at:
+		line 2207 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBDeviceTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _USBIncrement1msInternalTimers *****************
+ Defined at:
+		line 3030 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBDeviceTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlEPService *****************
+ Defined at:
+		line 2377 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          1       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    7
+ This function calls:
+		_USBCtrlTrfInHandler
+		_USBCtrlTrfOutHandler
+		_USBCtrlTrfSetupHandler
+		_memcpy
+ This function is called by:
+		_USBDeviceTasks
+ This function uses a non-reentrant model
+
+
+ *************** function _memcpy *****************
+ Defined at:
+		line 11 in file "D:\MCUDev13\PIC\xc8\v1.32\sources\common\memcpy.c"
+ Parameters:    Size  Location     Type
+  d1              2    0[COMRAM] PTR void 
+		 -> SetupPkt(8), 
+  s1              2    2[COMRAM] PTR const void 
+		 -> CtrlTrfData(8), RAM(767), SetupPkt(8), ToSendDataBuffer(64), 
+		 -> ReceivedDataBuffer(64), 
+  n               2    4[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  s               2    8[COMRAM] PTR const unsigned char 
+		 -> CtrlTrfData(8), RAM(767), SetupPkt(8), ToSendDataBuffer(64), 
+		 -> ReceivedDataBuffer(64), 
+  d               2    6[COMRAM] PTR unsigned char 
+		 -> SetupPkt(8), 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] PTR void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         6       0       0       0       0
+      Locals:         4       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:        10       0       0       0       0
+Total ram usage:       10 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBCtrlEPService
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlTrfSetupHandler *****************
+ Defined at:
+		line 2470 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    6
+ This function calls:
+		_USBCheckStdRequest
+		_USBCtrlEPServiceComplete
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function is called by:
+		_USBCtrlEPService
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlEPServiceComplete *****************
+ Defined at:
+		line 1621 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_USBCtrlEPAllowDataStage
+		_USBCtrlEPAllowStatusStage
+ This function is called by:
+		_USBCtrlTrfSetupHandler
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlEPAllowDataStage *****************
+ Defined at:
+		line 1493 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_USBCtrlTrfTxService
+ This function is called by:
+		_USBCtrlEPServiceComplete
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCheckStdRequest *****************
+ Defined at:
+		line 2691 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          2       0       0       0       0
+      Totals:         2       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		_USBStdFeatureReqHandler
+		_USBStdGetDscHandler
+		_USBStdGetStatusHandler
+		_USBStdSetCfgHandler
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function is called by:
+		_USBCtrlTrfSetupHandler
+ This function uses a non-reentrant model
+
+
+ *************** function _USBStdSetCfgHandler *****************
+ Defined at:
+		line 1973 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  i               1   22[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+		i2_memset
+ This function is called by:
+		_USBCheckStdRequest
+ This function uses a non-reentrant model
+
+
+ *************** function i2_memset *****************
+ Defined at:
+		line 8 in file "D:\MCUDev13\PIC\xc8\v1.32\sources\common\memset.c"
+ Parameters:    Size  Location     Type
+  p1              2    0[COMRAM] PTR void 
+		 -> USBAlternateInterface(1), BDT(32), UEP1(1), 
+  c               2    2[COMRAM] int 
+  n               2    4[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  memset          2    6[COMRAM] PTR unsigned char 
+		 -> USBAlternateInterface(1), BDT(32), UEP1(1), 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] PTR void 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         6       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         8       0       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBStdSetCfgHandler
+		i2_USBDeviceInit
+ This function uses a non-reentrant model
+
+
+ *************** function _USBStdGetStatusHandler *****************
+ Defined at:
+		line 2134 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  p               2    1[COMRAM] PTR struct __BDT
+		 -> RAM(767), BDT(32), NULL(0), 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          1       0       0       0       0
+      Totals:         3       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBCheckStdRequest
+ This function uses a non-reentrant model
+
+
+ *************** function _USBStdGetDscHandler *****************
+ Defined at:
+		line 2048 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          2       0       0       0       0
+      Totals:         2       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBCheckStdRequest
+ This function uses a non-reentrant model
+
+
+ *************** function _USBStdFeatureReqHandler *****************
+ Defined at:
+		line 2759 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  p               2   28[COMRAM] PTR struct __BDT
+		 -> RAM(767), BDT(32), NULL(0), 
+  pUEP            2   25[COMRAM] PTR unsigned char 
+		 -> UEP0(1), 
+  current_ep_d    1   27[COMRAM] struct .
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         5       0       0       0       0
+      Temps:          3       0       0       0       0
+      Totals:         8       0       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function is called by:
+		_USBCheckStdRequest
+ This function uses a non-reentrant model
+
+
+ *************** function _USER_USB_CALLBACK_EVENT_HANDLER *****************
+ Defined at:
+		line 51 in file "HIDD\usb_events.c"
+ Parameters:    Size  Location     Type
+  event           2   14[COMRAM] enum E4810
+  pdata           2   16[COMRAM] PTR void 
+		 -> RAM(767), USTATcopy(1), USBActiveConfiguration(1), BDT(32), 
+		 -> NULL(0), 
+  size            2   18[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         6       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          2       0       0       0       0
+      Totals:         8       0       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_APP_DeviceCustomHIDInitialize
+		_APP_LEDUpdateUSBStatus
+		_USBCheckHIDRequest
+		i2_SYSTEM_Initialize
+ This function is called by:
+		_USBDeviceTasks
+		_USBStdSetCfgHandler
+		_USBSuspend
+		_USBWakeFromSuspend
+		_USBCtrlTrfSetupHandler
+		_USBCheckStdRequest
+		_USBStdFeatureReqHandler
+ This function uses a non-reentrant model
+
+
+ *************** function i2_SYSTEM_Initialize *****************
+ Defined at:
+		line 38 in file "HIDD\system.c"
+ Parameters:    Size  Location     Type
+  state           1    wreg     enum E4601
+ Auto vars:     Size  Location     Type
+  state           1    1[COMRAM] enum E4601
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		i2_ADC_Enable
+		i2_ADC_SetConfiguration
+		i2_BUTTON_Enable
+		i2_LED_Enable
+ This function is called by:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function uses a non-reentrant model
+
+
+ *************** function i2_LED_Enable *****************
+ Defined at:
+		line 220 in file "BSP\leds.c"
+ Parameters:    Size  Location     Type
+  led             1    wreg     enum E2
+ Auto vars:     Size  Location     Type
+  led             1    0[COMRAM] enum E2
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		i2_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function i2_BUTTON_Enable *****************
+ Defined at:
+		line 85 in file "BSP\buttons.c"
+ Parameters:    Size  Location     Type
+  button          1    wreg     enum E4576
+ Auto vars:     Size  Location     Type
+  button          1    0[COMRAM] enum E4576
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		i2_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function i2_ADC_SetConfiguration *****************
+ Defined at:
+		line 75 in file "BSP\adc.c"
+ Parameters:    Size  Location     Type
+  configuratio    1    wreg     enum E33
+ Auto vars:     Size  Location     Type
+  configuratio    1    0[COMRAM] enum E33
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		i2_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function i2_ADC_Enable *****************
+ Defined at:
+		line 61 in file "BSP\adc.c"
+ Parameters:    Size  Location     Type
+  channel         1    wreg     enum E30
+ Auto vars:     Size  Location     Type
+  channel         1    0[COMRAM] enum E30
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		i2_SYSTEM_Initialize
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCheckHIDRequest *****************
+ Defined at:
+		line 153 in file "HIDD\USB\usb_device_hid.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          1       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function uses a non-reentrant model
+
+
+ *************** function _APP_LEDUpdateUSBStatus *****************
+ Defined at:
+		line 50 in file "HIDD\app_led_usb_status.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_LED_Off
+		_LED_On
+ This function is called by:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function uses a non-reentrant model
+
+
+ *************** function _LED_On *****************
+ Defined at:
+		line 59 in file "BSP\leds.c"
+ Parameters:    Size  Location     Type
+  led             1    wreg     enum E2
+ Auto vars:     Size  Location     Type
+  led             1    0[COMRAM] enum E2
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_APP_LEDUpdateUSBStatus
+ This function uses a non-reentrant model
+
+
+ *************** function _LED_Off *****************
+ Defined at:
+		line 100 in file "BSP\leds.c"
+ Parameters:    Size  Location     Type
+  led             1    wreg     enum E2
+ Auto vars:     Size  Location     Type
+  led             1    0[COMRAM] enum E2
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_APP_LEDUpdateUSBStatus
+ This function uses a non-reentrant model
+
+
+ *************** function _APP_DeviceCustomHIDInitialize *****************
+ Defined at:
+		line 42 in file "HIDD\app_device_custom_hid.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_USBEnableEndpoint
+		i2_USBTransferOnePacket
+ This function is called by:
+		_USER_USB_CALLBACK_EVENT_HANDLER
+ This function uses a non-reentrant model
+
+
+ *************** function i2_USBTransferOnePacket *****************
+ Defined at:
+		line 1000 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+  ep              1    wreg     unsigned char 
+  dir             1    0[COMRAM] unsigned char 
+  data            2    1[COMRAM] PTR unsigned char 
+		 -> ToSendDataBuffer(64), ReceivedDataBuffer(64), 
+  len             1    3[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  ep              1    6[COMRAM] unsigned char 
+  USBTransferO    2    7[COMRAM] PTR volatile struct __BD
+		 -> RAM(767), BDT(32), NULL(0), 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] PTR void 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         4       0       0       0       0
+      Locals:         3       0       0       0       0
+      Temps:          2       0       0       0       0
+      Totals:         9       0       0       0       0
+Total ram usage:        9 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_APP_DeviceCustomHIDInitialize
+ This function uses a non-reentrant model
+
+
+ *************** function _USBEnableEndpoint *****************
+ Defined at:
+		line 883 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+  ep              1    wreg     unsigned char 
+  options         1    8[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  ep              1   13[COMRAM] unsigned char 
+  p               2   11[COMRAM] PTR unsigned char 
+		 -> UEP0(1), 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         1       0       0       0       0
+      Locals:         3       0       0       0       0
+      Temps:          2       0       0       0       0
+      Totals:         6       0       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_USBConfigureEndpoint
+ This function is called by:
+		_APP_DeviceCustomHIDInitialize
+ This function uses a non-reentrant model
+
+
+ *************** function _USBConfigureEndpoint *****************
+ Defined at:
+		line 1548 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+  EPNum           1    wreg     unsigned char 
+  direction       1    0[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  EPNum           1    5[COMRAM] unsigned char 
+  handle          2    6[COMRAM] PTR volatile struct __BD
+		 -> BDT(32), 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         1       0       0       0       0
+      Locals:         3       0       0       0       0
+      Temps:          4       0       0       0       0
+      Totals:         8       0       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBEnableEndpoint
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlTrfOutHandler *****************
+ Defined at:
+		line 2543 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_USBCtrlTrfRxService
+ This function is called by:
+		_USBCtrlEPService
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlTrfRxService *****************
+ Defined at:
+		line 1857 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  byteToRead      1    1[COMRAM] unsigned char 
+  i               1    0[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         2       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_USBCtrlEPAllowStatusStage
+ This function is called by:
+		_USBCtrlTrfOutHandler
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlEPAllowStatusStage *****************
+ Defined at:
+		line 1421 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBDeviceTasks
+		_USBCtrlEPServiceComplete
+		_USBCtrlTrfRxService
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlTrfInHandler *****************
+ Defined at:
+		line 2597 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  lastDTS         1    1[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_USBCtrlTrfTxService
+ This function is called by:
+		_USBCtrlEPService
+ This function uses a non-reentrant model
+
+
+ *************** function _USBCtrlTrfTxService *****************
+ Defined at:
+		line 1776 in file "HIDD\USB\usb_device.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  byteToSend      1    0[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1  BANK2h  BANK2l
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_USBCtrlEPAllowDataStage
+		_USBCtrlTrfInHandler
+ This function uses a non-reentrant model
+
+
+
+MODULE INFORMATION
+
+Module		Function		Class		Link	Load	Size
+BSP\buttons.c
+		_BUTTON_IsPress		CODE           	2EB6	0000	42
+		_BUTTON_Enable 		CODE           	2F9A	0000	18
+
+BSP\buttons.c estimated size: 60
+
+HIDD\USB\usb_device.c
+		_USBCtrlTrfInHa		CODE           	23DE	0000	214
+		_USBTransferOne		CODE           	190A	0000	332
+		_USBDeviceDetac		CODE           	2FAC	0000	16
+		_USBDeviceAttac		CODE           	2DF8	0000	52
+		_USBStdGetDscHa		CODE           	1A56	0000	332
+		_USBCtrlEPAllow		CODE           	283A	0000	162
+		_USBStdFeatureR		CODE           	11C8	0000	726
+		_USBCtrlEPAllow		CODE           	257A	0000	196
+		_USBCtrlTrfSetu		CODE           	26EC	0000	170
+		_USBCtrlTrfOutH		CODE           	2AD4	0000	90
+		_USBCtrlEPServi		CODE           	220E	0000	240
+		_USBSuspend    		CODE           	2E5E	0000	44
+		_USBStdSetCfgHa		CODE           	2114	0000	250
+		_USBStdGetStatu		CODE           	24B4	0000	198
+		_USBWakeFromSus		CODE           	2E2C	0000	50
+		_USBCtrlTrfRxSe		CODE           	1CE0	0000	284
+		_USBCtrlTrfTxSe		CODE           	22FE	0000	224
+		_USBEnableEndpo		CODE           	2B2E	0000	72
+		_USBConfigureEn		CODE           	28DC	0000	158
+		_USBDeviceInit 		CODE           	149E	0000	402
+		_USBIncrement1m		CODE           	2F3E	0000	26
+		_USBCtrlEPServi		CODE           	2796	0000	164
+		_USBStallHandle		CODE           	2B76	0000	66
+		_USBDeviceTasks		CODE           	1BA2	0000	318
+		_USBCheckStdReq		CODE           	2016	0000	254
+
+HIDD\USB\usb_device.c estimated size: 5040
+
+D:\MCUDev13\PIC\xc8\v1.32\sources\common\memset.c
+		_memset        		CODE           	2D1E	0000	56
+
+D:\MCUDev13\PIC\xc8\v1.32\sources\common\memset.c estimated size: 56
+
+HIDD\app_device_custom_hid.c
+		_APP_DeviceCust		CODE           	17A0	0000	362
+		_APP_DeviceCust		CODE           	2CE4	0000	58
+		_DoCommand     		CODE           	263E	0000	174
+
+HIDD\app_device_custom_hid.c estimated size: 594
+
+HIDD\USB\usb_device_hid.c
+		_USBCheckHIDReq		CODE           	1F12	0000	260
+
+HIDD\USB\usb_device_hid.c estimated size: 260
+
+HIDD\main.c
+		_main          		CODE           	2F02	0000	34
+
+HIDD\main.c estimated size: 34
+
+HIDD\usb_events.c
+		_USER_USB_CALLB		CODE           	29FA	0000	126
+
+HIDD\usb_events.c estimated size: 126
+
+HIDD\app_led_usb_status.c
+		_APP_LEDUpdateU		CODE           	297A	0000	128
+
+HIDD\app_led_usb_status.c estimated size: 128
+
+shared
+		_configDescript		SMALLCONST     	116B	0000	41
+		_USB_CD_Ptr    		SMALLCONST     	1107	0000	2
+		_sd001         		SMALLCONST     	1109	0000	52
+		i2_ADC_Enable  		CODE           	2F86	0000	20
+		i2_BUTTON_Enabl		CODE           	2FBC	0000	14
+		i2_ADC_SetConfi		CODE           	2F70	0000	22
+		_sd002         		SMALLCONST     	113D	0000	46
+		i2_USBDeviceIni		CODE           	1630	0000	368
+		__initializatio		CODE           	2EE0	0000	24
+		_device_dsc    		SMALLCONST     	11B1	0000	18
+		i2_SYSTEM_Initi		CODE           	2CAA	0000	58
+		_USB_SD_Ptr    		SMALLCONST     	1101	0000	6
+		i2_LED_Enable  		CODE           	2D56	0000	54
+		_hid_rpt01     		SMALLCONST     	1194	0000	29
+		i2_memset      		CODE           	2E8A	0000	44
+		_sd000         		SMALLCONST     	11C3	0000	4
+		i2_USBTransferO		CODE           	1DFC	0000	278
+
+shared estimated size: 1080
+
+D:\MCUDev13\PIC\xc8\v1.32\sources\common\memcpy.c
+		_memcpy        		CODE           	2BB8	0000	64
+
+D:\MCUDev13\PIC\xc8\v1.32\sources\common\memcpy.c estimated size: 64
+
+BSP\leds.c
+		_LED_Off       		CODE           	2DC2	0000	54
+		_LED_On        		CODE           	2D8C	0000	54
+		_LED_Enable    		CODE           	2C36	0000	58
+		_LED_Toggle    		CODE           	2C70	0000	58
+
+BSP\leds.c estimated size: 224
+
+HIDD\system.c
+		_SYS_InterruptH		CODE           	1008	0000	118
+		_SYSTEM_Initial		CODE           	2BF8	0000	62
+
+HIDD\system.c estimated size: 180
+
+BSP\adc.c
+		_ADC_Enable    		CODE           	2F58	0000	24
+		_ADC_SetConfigu		CODE           	2F24	0000	26
+		_ADC_Read10bit 		CODE           	2A78	0000	92
+
+BSP\adc.c estimated size: 142
+

@@ -1,0 +1,41 @@
+{
+	AppName: "MotorApp.exe",
+	
+	Options:
+	[
+		"/unsafe"
+	],
+	
+	Srcs:
+	[
+		[
+			"Main\\",
+			[
+				"Main.cs",
+				"TablePane.cs",
+				"GridPane.cs",
+				"Rail.cs",
+				"Leaf.cs"
+			]
+		],
+		[
+			"Con_1",
+			[
+				"BacchusApp.cs",
+				"RailPane.cs",
+				"WDLView.cs",
+				"COMTest.cs",
+				"HID_1_Pane.cs",
+				"HID_1.cs"
+			]
+		],
+		[
+			"..\\Libs\\",
+			[
+				"Prime.cs",
+				"Layout.cs",
+				"WDL.cs"
+			]
+		]
+	]
+}

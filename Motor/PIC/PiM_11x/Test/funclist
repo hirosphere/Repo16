@@ -1,0 +1,10 @@
+_main: CODE, 12454 0 314
+_On_HIDD_Int: CODE, 12296 0 1222
+_On_HIDD_Event: CODE, 12312 0 138
+_Osc_Step: CODE, 13018 0 210
+__initialization: CODE, 13642 0 12
+_Wait: CODE, 13518 0 66
+_WS_Out: CODE, 12768 0 250
+_RGB_Osc_Step: CODE, 13228 0 188
+_RGB_Osc_Init: CODE, 13584 0 58
+Total: 2458

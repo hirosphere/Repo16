@@ -1,0 +1,75 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[; ;Prime.h: 18: void Wait( unsigned int time );
+"6 ..\..\Libs\Prime.c
+[v _Wait `(v ~T0 @X0 1 ef1`ui ]
+"7
+{
+[; ;Prime.c: 6: void Wait( unsigned int time )
+[; ;Prime.c: 7: {
+[e :U _Wait ]
+"6
+[v _time `ui ~T0 @X0 1 r1 ]
+"7
+[f ]
+"8
+[v _a `ui ~T0 @X0 1 a ]
+[; ;Prime.c: 8: unsigned int a;
+[; ;Prime.c: 10: while( time -- > 0 )
+"10
+[e $U 2  ]
+[e :U 3 ]
+[; ;Prime.c: 11: {
+"11
+{
+[; ;Prime.c: 12: for( a = 750; a -- > 0; )
+"12
+{
+[e = _a -> -> 750 `i `ui ]
+[e $U 8  ]
+"13
+[e :U 5 ]
+[; ;Prime.c: 13: {
+{
+"15
+"16
+[; <"       NOP ;# ">
+"17
+[; <"    NOP ;# ">
+"18
+[; <"    NOP ;# ">
+"19
+[; <"    NOP ;# ">
+"20
+[; <"    NOP ;# ">
+"21
+"22
+[; <"       NOP ;# ">
+"23
+[; <"    NOP ;# ">
+"24
+[; <"    NOP ;# ">
+"25
+[; <"    NOP ;# ">
+"26
+[; <"    NOP ;# ">
+"27
+"29
+}
+"12
+[e :U 8 ]
+[e $ > -- _a -> -> 1 `i `ui -> -> 0 `i `ui 5  ]
+[e :U 6 ]
+"29
+}
+"30
+}
+[e :U 2 ]
+"10
+[e $ > -- _time -> -> 1 `i `ui -> -> 0 `i `ui 3  ]
+[e :U 4 ]
+[; ;Prime.c: 29: }
+[; ;Prime.c: 30: }
+[; ;Prime.c: 31: }
+"31
+[e :UE 1 ]
+}

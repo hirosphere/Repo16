@@ -1,0 +1,15 @@
+
+# 1 "Files\WS2811.c"
+
+
+# 4
+#asm
+
+#endasm 
+
+
+
+  void WS_Out( void )
+{
+
+}

@@ -1,0 +1,42 @@
+{
+	Opt1:
+	{
+		Chip: "18F14K50",
+		CodeOffset: "0x1000",
+		OutDir: "Output",
+		ObjDir: "Work",
+		AsmList: ""
+	},
+	
+	Opt2:
+	{
+		O: "PiM_11x",
+		M: ""
+	},
+	
+	Paths:
+	[
+		"..\\Libs", "HIDD", "HIDD\\USB", "BSP", "Files"
+	],
+	
+	Srcs:
+	[
+		"HIDD\\main.c",
+		
+		"HIDD\\app_device_custom_hid.c",
+		"HIDD\\app_led_usb_status.c",
+		"HIDD\\system.c",
+		"HIDD\\usb_events.c",
+		
+		"HIDD\\USB\\usb_descriptors.c",
+		"HIDD\\USB\\usb_device.c",
+		"HIDD\\USB\\usb_device_hid.c",
+		
+		"BSP\\adc.c",
+		"BSP\\buttons.c",
+		"BSP\\leds.c",
+		"BSP\\Peri1.c"//,
+		
+		//"Files\\WS2811.c"
+	]
+}

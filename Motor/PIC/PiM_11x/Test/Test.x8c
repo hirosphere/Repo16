@@ -1,0 +1,29 @@
+{
+	Opt1:
+	{
+		Chip: "18F14K50",
+		CodeOffset: "0x3000",
+		OutDir: "Out1",
+		ObjDir: "Work1",
+		AsmList: ""
+	},
+	
+	Opt2:
+	{
+		O: "Test_1",
+		M: ""
+	},
+	
+	Paths:
+	[
+		"..\\Files",
+		"..\\..\\Libs"
+	],
+	
+	Srcs:
+	[
+		"..\\..\\Libs\\Prime.c",
+		"..\\Files\\WS2811.c",
+		"Main.c"
+	]
+}

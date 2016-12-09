@@ -1,0 +1,36 @@
+
+# 1 "..\..\Libs\Prime.c"
+
+# 18 "..\..\Libs\Prime.h"
+void Wait( unsigned int time );
+
+# 6 "..\..\Libs\Prime.c"
+void Wait( unsigned int time )
+{
+unsigned int a;
+
+while( time -- > 0 )
+{
+for( a = 750; a -- > 0; )
+{
+
+# 14
+#asm
+
+      NOP
+   NOP
+   NOP
+   NOP
+   NOP
+
+      NOP
+   NOP
+   NOP
+   NOP
+   NOP
+
+#endasm 
+      }
+}
+}
+

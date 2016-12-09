@@ -1,0 +1,1557 @@
+[p LITE_MODE AUTOSTATIC LFSROK ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F14K50 ]
+[d frameptr 4065 ]
+"19 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\main.c
+[e E4601 . `uc
+SYSTEM_STATE_USB_START 0
+SYSTEM_STATE_USB_SUSPEND 1
+SYSTEM_STATE_USB_RESUME 2
+]
+"59 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_device_custom_hid.c
+[e E5283 . `uc
+COMMAND_TOGGLE_LED 128
+COMMAND_GET_BUTTON_STATUS 129
+COMMAND_RETURN 130
+COMMAND_Read 144
+COMMAND_READ_POTENTIOMETER 55
+]
+"63
+[e E5254 . `uc
+LED_NONE 0
+LED_D1 1
+LED_D2 2
+LED_D3 3
+LED_D4 4
+]
+"76
+[e E5246 . `uc
+BUTTON_NONE 0
+BUTTON_S1 1
+]
+"88
+[e E4179 . `uc
+ADC_CHANNEL_10 10
+]
+"99
+[e E291 . `uc
+DETACHED_STATE 0
+ATTACHED_STATE 1
+POWERED_STATE 2
+DEFAULT_STATE 4
+ADR_PENDING_STATE 8
+ADDRESS_STATE 16
+CONFIGURED_STATE 32
+]
+"56 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_led_usb_status.c
+[e E4584 . `uc
+LED_NONE 0
+LED_D1 1
+LED_D2 2
+LED_D3 3
+LED_D4 4
+]
+"60
+[e E4869 . `uc
+DETACHED_STATE 0
+ATTACHED_STATE 1
+POWERED_STATE 2
+DEFAULT_STATE 4
+ADR_PENDING_STATE 8
+ADDRESS_STATE 16
+CONFIGURED_STATE 32
+]
+"39 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\system.c
+[e E4601 . `uc
+SYSTEM_STATE_USB_START 0
+SYSTEM_STATE_USB_SUSPEND 1
+SYSTEM_STATE_USB_RESUME 2
+]
+"47
+[e E4584 . `uc
+LED_NONE 0
+LED_D1 1
+LED_D2 2
+LED_D3 3
+LED_D4 4
+]
+"50
+[e E4576 . `uc
+BUTTON_NONE 0
+BUTTON_S1 1
+]
+"52
+[e E3764 . `uc
+ADC_CONFIGURATION_DEFAULT 0
+]
+"53
+[e E3761 . `uc
+ADC_CHANNEL_10 10
+]
+"52 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\usb_events.c
+[e E4810 . `ui
+EVENT_NONE 0
+EVENT_DEVICE_STACK_BASE 1
+EVENT_HOST_STACK_BASE 100
+EVENT_HUB_ATTACH 101
+EVENT_STALL 102
+EVENT_VBUS_SES_REQUEST 103
+EVENT_VBUS_OVERCURRENT 104
+EVENT_VBUS_REQUEST_POWER 105
+EVENT_VBUS_RELEASE_POWER 106
+EVENT_VBUS_POWER_AVAILABLE 107
+EVENT_UNSUPPORTED_DEVICE 108
+EVENT_CANNOT_ENUMERATE 109
+EVENT_CLIENT_INIT_ERROR 110
+EVENT_OUT_OF_MEMORY 111
+EVENT_UNSPECIFIED_ERROR 112
+EVENT_DETACH 113
+EVENT_TRANSFER 114
+EVENT_SOF 115
+EVENT_RESUME 116
+EVENT_SUSPEND 117
+EVENT_RESET 118
+EVENT_DATA_ISOC_READ 119
+EVENT_DATA_ISOC_WRITE 120
+EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION 121
+EVENT_1MS 122
+EVENT_ALT_INTERFACE 123
+EVENT_HOLD_BEFORE_CONFIGURATION 124
+EVENT_GENERIC_BASE 400
+EVENT_MSD_BASE 500
+EVENT_HID_BASE 600
+EVENT_PRINTER_BASE 700
+EVENT_CDC_BASE 800
+EVENT_CHARGER_BASE 900
+EVENT_AUDIO_BASE 1000
+EVENT_USER_BASE 10000
+EVENT_BUS_ERROR 32767
+]
+"74
+[e E4601 . `uc
+SYSTEM_STATE_USB_START 0
+SYSTEM_STATE_USB_SUSPEND 1
+SYSTEM_STATE_USB_RESUME 2
+]
+"53
+[e E4878 . `uc
+EVENT_CONFIGURED 1
+EVENT_SET_DESCRIPTOR 2
+EVENT_EP0_REQUEST 3
+EVENT_ATTACH 4
+EVENT_TRANSFER_TERMINATED 5
+]
+"141 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[e E4921 . `uc
+DETACHED_STATE 0
+ATTACHED_STATE 1
+POWERED_STATE 2
+DEFAULT_STATE 4
+ADR_PENDING_STATE 8
+ADDRESS_STATE 16
+CONFIGURED_STATE 32
+]
+"718
+[e E4862 . `ui
+EVENT_NONE 0
+EVENT_DEVICE_STACK_BASE 1
+EVENT_HOST_STACK_BASE 100
+EVENT_HUB_ATTACH 101
+EVENT_STALL 102
+EVENT_VBUS_SES_REQUEST 103
+EVENT_VBUS_OVERCURRENT 104
+EVENT_VBUS_REQUEST_POWER 105
+EVENT_VBUS_RELEASE_POWER 106
+EVENT_VBUS_POWER_AVAILABLE 107
+EVENT_UNSUPPORTED_DEVICE 108
+EVENT_CANNOT_ENUMERATE 109
+EVENT_CLIENT_INIT_ERROR 110
+EVENT_OUT_OF_MEMORY 111
+EVENT_UNSPECIFIED_ERROR 112
+EVENT_DETACH 113
+EVENT_TRANSFER 114
+EVENT_SOF 115
+EVENT_RESUME 116
+EVENT_SUSPEND 117
+EVENT_RESET 118
+EVENT_DATA_ISOC_READ 119
+EVENT_DATA_ISOC_WRITE 120
+EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION 121
+EVENT_1MS 122
+EVENT_ALT_INTERFACE 123
+EVENT_HOLD_BEFORE_CONFIGURATION 124
+EVENT_GENERIC_BASE 400
+EVENT_MSD_BASE 500
+EVENT_HID_BASE 600
+EVENT_PRINTER_BASE 700
+EVENT_CDC_BASE 800
+EVENT_CHARGER_BASE 900
+EVENT_AUDIO_BASE 1000
+EVENT_USER_BASE 10000
+EVENT_BUS_ERROR 32767
+]
+"2022
+[e E4930 . `uc
+EVENT_CONFIGURED 1
+EVENT_SET_DESCRIPTOR 2
+EVENT_EP0_REQUEST 3
+EVENT_ATTACH 4
+EVENT_TRANSFER_TERMINATED 5
+]
+"16 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\adc.c
+[e E30 . `uc
+ADC_CHANNEL_10 10
+]
+"76
+[e E33 . `uc
+ADC_CONFIGURATION_DEFAULT 0
+]
+"56 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\buttons.c
+[e E4576 . `uc
+BUTTON_NONE 0
+BUTTON_S1 1
+]
+"60 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\leds.c
+[e E2 . `uc
+LED_NONE 0
+LED_D1 1
+LED_D2 2
+LED_D3 3
+LED_D4 4
+]
+"15 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\adc.c
+[v _ADC_ReadPercentage ADC_ReadPercentage `(uc  1 e 1 0 ]
+"37
+[v _ADC_Read10bit ADC_Read10bit `(ui  1 e 2 0 ]
+"61
+[v _ADC_Enable ADC_Enable `(uc  1 e 1 0 ]
+[v i2_ADC_Enable ADC_Enable `(uc  1 e 1 0 ]
+"75
+[v _ADC_SetConfiguration ADC_SetConfiguration `(uc  1 e 1 0 ]
+[v i2_ADC_SetConfiguration ADC_SetConfiguration `(uc  1 e 1 0 ]
+"55 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\buttons.c
+[v _BUTTON_IsPressed BUTTON_IsPressed `(uc  1 e 1 0 ]
+"85
+[v _BUTTON_Enable BUTTON_Enable `(v  1 e 0 0 ]
+[v i2_BUTTON_Enable BUTTON_Enable `(v  1 e 0 0 ]
+"59 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\leds.c
+[v _LED_On LED_On `(v  1 e 0 0 ]
+"100
+[v _LED_Off LED_Off `(v  1 e 0 0 ]
+"141
+[v _LED_Toggle LED_Toggle `(v  1 e 0 0 ]
+"182
+[v _LED_Get LED_Get `(uc  1 e 1 0 ]
+"220
+[v _LED_Enable LED_Enable `(v  1 e 0 0 ]
+[v i2_LED_Enable LED_Enable `(v  1 e 0 0 ]
+"5 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\Peri1.c
+[v _Ser_Init Ser_Init `(v  1 e 0 0 ]
+"19
+[v _WS_Out WS_Out `(v  1 e 0 0 ]
+"4 D:\MCUDev13\PIC\xc8\v1.32\sources\common\abdiv.c
+[v ___abdiv __abdiv `(c  1 e 1 0 ]
+"4 D:\MCUDev13\PIC\xc8\v1.32\sources\common\abmod.c
+[v ___abmod __abmod `(c  1 e 1 0 ]
+"31 D:\MCUDev13\PIC\xc8\v1.32\sources\common\abtofl.c
+[v ___abtofl __abtofl `(d  1 e 3 0 ]
+"33 D:\MCUDev13\PIC\xc8\v1.32\sources\common\abtoft.c
+[v ___abtoft __abtoft `(f  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"36 D:\MCUDev13\PIC\xc8\v1.32\sources\common\altofl.c
+[v ___altofl __altofl `(d  1 e 3 0 ]
+"42 D:\MCUDev13\PIC\xc8\v1.32\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\atdiv.c
+[v ___atdiv __atdiv `(m  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\atmod.c
+[v ___atmod __atmod `(m  1 e 3 0 ]
+"37 D:\MCUDev13\PIC\xc8\v1.32\sources\common\attofl.c
+[v ___attofl __attofl `(d  1 e 3 0 ]
+"37 D:\MCUDev13\PIC\xc8\v1.32\sources\common\attoft.c
+[v ___attoft __attoft `(f  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"31 D:\MCUDev13\PIC\xc8\v1.32\sources\common\awtofl.c
+[v ___awtofl __awtofl `(d  1 e 3 0 ]
+"32 D:\MCUDev13\PIC\xc8\v1.32\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+"63 D:\MCUDev13\PIC\xc8\v1.32\sources\common\double.c
+[v ___flpack __flpack `(d  1 e 3 0 ]
+"88 D:\MCUDev13\PIC\xc8\v1.32\sources\common\fladd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"49 D:\MCUDev13\PIC\xc8\v1.32\sources\common\fldiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"4 D:\MCUDev13\PIC\xc8\v1.32\sources\common\flge.c
+[v ___flge __flge `(b  1 e 0 0 ]
+"62 D:\MCUDev13\PIC\xc8\v1.32\sources\common\flmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 D:\MCUDev13\PIC\xc8\v1.32\sources\common\flneg.c
+[v ___flneg __flneg `(d  1 e 3 0 ]
+"62 D:\MCUDev13\PIC\xc8\v1.32\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"20 D:\MCUDev13\PIC\xc8\v1.32\sources\common\flsub.c
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"43 D:\MCUDev13\PIC\xc8\v1.32\sources\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+"86 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"49 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"4 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+"62 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"15 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+"20 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 D:\MCUDev13\PIC\xc8\v1.32\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"4 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"4 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"27 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lbtofl.c
+[v ___lbtofl __lbtofl `(d  1 e 3 0 ]
+"27 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"30 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lltofl.c
+[v ___lltofl __lltofl `(d  1 e 3 0 ]
+"35 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ltdiv.c
+[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\ltmod.c
+[v ___ltmod __ltmod `(um  1 e 3 0 ]
+"30 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lttofl.c
+[v ___lttofl __lttofl `(d  1 e 3 0 ]
+"30 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lttoft.c
+[v ___lttoft __lttoft `(f  1 e 3 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"28 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lwtofl.c
+[v ___lwtofl __lwtofl `(d  1 e 3 0 ]
+"28 D:\MCUDev13\PIC\xc8\v1.32\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"11 D:\MCUDev13\PIC\xc8\v1.32\sources\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\memset.c
+[v _memset memset `(*.39v  1 e 2 0 ]
+[v i2_memset memset `(*.39v  1 e 2 0 ]
+"15 D:\MCUDev13\PIC\xc8\v1.32\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 D:\MCUDev13\PIC\xc8\v1.32\sources\common\Umul24.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"15 D:\MCUDev13\PIC\xc8\v1.32\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 D:\MCUDev13\PIC\xc8\v1.32\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asfladd.c
+[v ___asfladd __asfladd `(d  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asfldiv.c
+[v ___asfldiv __asfldiv `(d  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asflmul.c
+[v ___asflmul __asflmul `(d  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asflsub.c
+[v ___asflsub __asflsub `(d  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asftadd.c
+[v ___asftadd __asftadd `(f  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asftdiv.c
+[v ___asftdiv __asftdiv `(f  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asftmul.c
+[v ___asftmul __asftmul `(f  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\asftsub.c
+[v ___asftsub __asftsub `(f  1 e 3 0 ]
+"6 D:\MCUDev13\PIC\xc8\v1.32\sources\pic18\aslmul.c
+[v ___aslmul __aslmul `(ul  1 e 4 0 ]
+"42 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_device_custom_hid.c
+[v _APP_DeviceCustomHIDInitialize APP_DeviceCustomHIDInitialize `(v  1 e 0 0 ]
+"57
+[v _DoCommand DoCommand `(v  1 e 0 0 ]
+"97
+[v _APP_DeviceCustomHIDTasks APP_DeviceCustomHIDTasks `(v  1 e 0 0 ]
+"50 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_led_usb_status.c
+[v _APP_LEDUpdateUSBStatus APP_LEDUpdateUSBStatus `(v  1 e 0 0 ]
+"11 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\main.c
+[v _Chip_Init Chip_Init `(v  1 e 0 0 ]
+"17
+[v _main main `(v  1 e 0 0 ]
+"38 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 0 0 ]
+[v i2_SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 0 0 ]
+"67
+[v _SYS_InterruptHigh SYS_InterruptHigh `II(v  1 e 0 0 ]
+"254 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBDeviceTerm USBDeviceTerm `(v  1 e 0 0 ]
+"282
+[v _USBDeviceInit USBDeviceInit `(v  1 e 0 0 ]
+[v i2_USBDeviceInit USBDeviceInit `(v  1 e 0 0 ]
+"482
+[v _USBDeviceTasks USBDeviceTasks `(v  1 e 0 0 ]
+"883
+[v _USBEnableEndpoint USBEnableEndpoint `(v  1 e 0 0 ]
+"1000
+[v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+[v i2_USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+"1078
+[v _USBStallEndpoint USBStallEndpoint `(v  1 e 0 0 ]
+"1134
+[v _USBCancelIO USBCancelIO `(v  1 e 0 0 ]
+"1252
+[v _USBDeviceDetach USBDeviceDetach `(v  1 e 0 0 ]
+"1357
+[v _USBDeviceAttach USBDeviceAttach `(v  1 e 0 0 ]
+"1421
+[v _USBCtrlEPAllowStatusStage USBCtrlEPAllowStatusStage `(v  1 e 0 0 ]
+"1493
+[v _USBCtrlEPAllowDataStage USBCtrlEPAllowDataStage `(v  1 e 0 0 ]
+"1548
+[v _USBConfigureEndpoint USBConfigureEndpoint `(v  1 s 0 USBConfigureEndpoint ]
+"1621
+[v _USBCtrlEPServiceComplete USBCtrlEPServiceComplete `(v  1 s 0 USBCtrlEPServiceComplete ]
+"1776
+[v _USBCtrlTrfTxService USBCtrlTrfTxService `(v  1 s 0 USBCtrlTrfTxService ]
+"1857
+[v _USBCtrlTrfRxService USBCtrlTrfRxService `(v  1 s 0 USBCtrlTrfRxService ]
+"1973
+[v _USBStdSetCfgHandler USBStdSetCfgHandler `(v  1 s 0 USBStdSetCfgHandler ]
+"2048
+[v _USBStdGetDscHandler USBStdGetDscHandler `(v  1 s 0 USBStdGetDscHandler ]
+"2134
+[v _USBStdGetStatusHandler USBStdGetStatusHandler `(v  1 s 0 USBStdGetStatusHandler ]
+"2207
+[v _USBStallHandler USBStallHandler `(v  1 s 0 USBStallHandler ]
+"2250
+[v _USBSuspend USBSuspend `(v  1 s 0 USBSuspend ]
+"2308
+[v _USBWakeFromSuspend USBWakeFromSuspend `(v  1 s 0 USBWakeFromSuspend ]
+"2377
+[v _USBCtrlEPService USBCtrlEPService `(v  1 s 0 USBCtrlEPService ]
+"2470
+[v _USBCtrlTrfSetupHandler USBCtrlTrfSetupHandler `(v  1 s 0 USBCtrlTrfSetupHandler ]
+"2543
+[v _USBCtrlTrfOutHandler USBCtrlTrfOutHandler `(v  1 s 0 USBCtrlTrfOutHandler ]
+"2597
+[v _USBCtrlTrfInHandler USBCtrlTrfInHandler `(v  1 s 0 USBCtrlTrfInHandler ]
+"2691
+[v _USBCheckStdRequest USBCheckStdRequest `(v  1 s 0 USBCheckStdRequest ]
+"2759
+[v _USBStdFeatureReqHandler USBStdFeatureReqHandler `(v  1 s 0 USBStdFeatureReqHandler ]
+"3030
+[v _USBIncrement1msInternalTimers USBIncrement1msInternalTimers `(v  1 e 0 0 ]
+"3109
+[v _USBGet1msTickCount USBGet1msTickCount `(ul  1 e 4 0 ]
+"153 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device_hid.c
+[v _USBCheckHIDRequest USBCheckHIDRequest `(v  1 e 0 0 ]
+"51 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\usb_events.c
+[v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(uc  1 e 1 0 ]
+"47 D:\MCUDev13\PIC\xc8\v1.32\include\pic18f14k50.h
+[v _UEP0 UEP0 `VEuc  1 e 1 @3923 ]
+[s S975 . 1 `uc 1 EPSTALL 1 0 :1:0 
+`uc 1 EPINEN 1 0 :1:1 
+`uc 1 EPOUTEN 1 0 :1:2 
+`uc 1 EPCONDIS 1 0 :1:3 
+`uc 1 EPHSHK 1 0 :1:4 
+]
+"99
+[s S981 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 EP0CONDIS 1 0 :1:3 
+]
+[s S984 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 EP0HSHK 1 0 :1:4 
+]
+[s S987 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 EP0INEN 1 0 :1:1 
+]
+[s S990 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 EP0OUTEN 1 0 :1:2 
+]
+[s S993 . 1 `uc 1 EP0STALL 1 0 :1:0 
+]
+[s S995 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 EPCONDIS0 1 0 :1:3 
+]
+[s S998 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 EPHSHK0 1 0 :1:4 
+]
+[s S1001 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 EPINEN0 1 0 :1:1 
+]
+[s S1004 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 EPOUTEN0 1 0 :1:2 
+]
+[s S1007 . 1 `uc 1 EPSTALL0 1 0 :1:0 
+]
+[u S1009 . 1 `S975 1 . 1 0 `S981 1 . 1 0 `S984 1 . 1 0 `S987 1 . 1 0 `S990 1 . 1 0 `S993 1 . 1 0 `S995 1 . 1 0 `S998 1 . 1 0 `S1001 1 . 1 0 `S1004 1 . 1 0 `S1007 1 . 1 0 ]
+[v _UEP0bits UEP0bits `VES1009  1 e 1 @3923 ]
+"178
+[v _UEP1 UEP1 `VEuc  1 e 1 @3924 ]
+"1095
+[v _UEIE UEIE `VEuc  1 e 1 @3931 ]
+"1145
+[v _UADDR UADDR `VEuc  1 e 1 @3932 ]
+"1316
+[v _UEIR UEIR `VEuc  1 e 1 @3935 ]
+"1366
+[v _UIE UIE `VEuc  1 e 1 @3936 ]
+[s S105 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 SUSPND 1 0 :1:1 
+`uc 1 RESUME 1 0 :1:2 
+`uc 1 USBEN 1 0 :1:3 
+`uc 1 PKTDIS 1 0 :1:4 
+`uc 1 SE0 1 0 :1:5 
+`uc 1 PPBRST 1 0 :1:6 
+]
+"1382
+[u S113 . 1 `S105 1 . 1 0 ]
+[v _UIEbits UIEbits `VES113  1 e 1 @3936 ]
+"1421
+[v _UCFG UCFG `VEuc  1 e 1 @3937 ]
+"1483
+[v _UIR UIR `VEuc  1 e 1 @3938 ]
+"1499
+[v _UIRbits UIRbits `VES113  1 e 1 @3938 ]
+"1538
+[v _USTAT USTAT `VEuc  1 e 1 @3939 ]
+"1588
+[v _UCON UCON `VEuc  1 e 1 @3940 ]
+"1604
+[v _UCONbits UCONbits `VES113  1 e 1 @3940 ]
+[s S2055 . 1 `uc 1 ANS8 1 0 :1:0 
+`uc 1 ANS9 1 0 :1:1 
+`uc 1 ANS10 1 0 :1:2 
+`uc 1 ANS11 1 0 :1:3 
+]
+"2345
+[u S2060 . 1 `S2055 1 . 1 0 ]
+[v _ANSELHbits ANSELHbits `VES2060  1 e 1 @3967 ]
+[s S2138 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+]
+"2421
+[s S2145 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 AN3 1 0 :1:4 
+]
+[s S2148 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 OSC2 1 0 :1:4 
+`uc 1 OSC1 1 0 :1:5 
+]
+[s S2152 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CLKOUT 1 0 :1:4 
+`uc 1 CLKIN 1 0 :1:5 
+]
+[s S2156 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LVDIN 1 0 :1:5 
+]
+[s S2159 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RA2 1 0 :1:2 
+]
+[s S2162 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RA6 1 0 :1:6 
+]
+[s S2165 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RA7 1 0 :1:7 
+]
+[s S2168 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RJPU 1 0 :1:7 
+]
+[s S2171 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+]
+[u S2173 . 1 `S2138 1 . 1 0 `S2145 1 . 1 0 `S2148 1 . 1 0 `S2152 1 . 1 0 `S2156 1 . 1 0 `S2159 1 . 1 0 `S2162 1 . 1 0 `S2165 1 . 1 0 `S2168 1 . 1 0 `S2171 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES2173  1 e 1 @3968 ]
+"3058
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+[s S2236 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"3215
+[s S2245 . 1 `uc 1 LC0 1 0 :1:0 
+]
+[s S2247 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+]
+[s S2250 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LC2 1 0 :1:2 
+]
+[s S2253 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 LC3 1 0 :1:3 
+]
+[s S2256 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 LC4 1 0 :1:4 
+]
+[s S2259 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LC5 1 0 :1:5 
+]
+[s S2262 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 LC6 1 0 :1:6 
+]
+[s S2265 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S2268 . 1 `S2236 1 . 1 0 `S2245 1 . 1 0 `S2247 1 . 1 0 `S2250 1 . 1 0 `S2253 1 . 1 0 `S2256 1 . 1 0 `S2259 1 . 1 0 `S2262 1 . 1 0 `S2265 1 . 1 0 ]
+[v _LATCbits LATCbits `VES2268  1 e 1 @3979 ]
+"3380
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S2027 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"3406
+[s S2033 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S2039 . 1 `S2027 1 . 1 0 `S2033 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES2039  1 e 1 @3987 ]
+[s S2311 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"3541
+[s S2320 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S2329 . 1 `S2311 1 . 1 0 `S2320 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES2329  1 e 1 @3988 ]
+[s S573 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 TMR3IE 1 0 :1:1 
+`uc 1 USBIE 1 0 :1:2 
+`uc 1 BCLIE 1 0 :1:3 
+`uc 1 EEIE 1 0 :1:4 
+`uc 1 C2IE 1 0 :1:5 
+`uc 1 C1IE 1 0 :1:6 
+`uc 1 OSCFIE 1 0 :1:7 
+]
+"4039
+[s S582 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CMIE 1 0 :1:6 
+]
+[u S585 . 1 `S573 1 . 1 0 `S582 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES585  1 e 1 @4000 ]
+"4104
+[v _PIR2bits PIR2bits `VES585  1 e 1 @4001 ]
+"4169
+[v _IPR2bits IPR2bits `VES585  1 e 1 @4002 ]
+"4351
+[v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
+"4560
+[v _TXSTA TXSTA `VEuc  1 e 1 @4012 ]
+"4879
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+"4890
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @4016 ]
+"5177
+[v _BAUDCTL BAUDCTL `VEuc  1 e 1 @4024 ]
+"5776
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+[s S2073 . 1 `uc 1 ADCS 1 0 :3:0 
+`uc 1 ACQT 1 0 :3:3 
+`uc 1 . 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"5797
+[s S2078 . 1 `uc 1 ADCS0 1 0 :1:0 
+`uc 1 ADCS1 1 0 :1:1 
+`uc 1 ADCS2 1 0 :1:2 
+`uc 1 ACQT0 1 0 :1:3 
+`uc 1 ACQT1 1 0 :1:4 
+`uc 1 ACQT2 1 0 :1:5 
+]
+[u S2085 . 1 `S2073 1 . 1 0 `S2078 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES2085  1 e 1 @4032 ]
+"5846
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"5892
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S1950 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"5940
+[s S1953 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S1960 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S1967 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S1970 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S1973 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S1976 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S1979 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S1982 . 1 `S1950 1 . 1 0 `S1953 1 . 1 0 `S1950 1 . 1 0 `S1960 1 . 1 0 `S1967 1 . 1 0 `S1970 1 . 1 0 `S1973 1 . 1 0 `S1976 1 . 1 0 `S1979 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES1982  1 e 1 @4034 ]
+"6020
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"6026
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+[s S763 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"6763
+[s S765 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S768 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S771 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S774 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S777 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S786 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+]
+[u S792 . 1 `S763 1 . 1 0 `S765 1 . 1 0 `S768 1 . 1 0 `S771 1 . 1 0 `S774 1 . 1 0 `S777 1 . 1 0 `S786 1 . 1 0 ]
+[v _RCONbits RCONbits `VES792  1 e 1 @4048 ]
+[s S858 . 1 `uc 1 RABIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RABIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"7526
+[s S867 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S876 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[s S885 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S894 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S898 . 1 `S858 1 . 1 0 `S867 1 . 1 0 `S876 1 . 1 0 `S885 1 . 1 0 `S894 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES898  1 e 1 @4082 ]
+"21 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_device_custom_hid.c
+[v _ReceivedDataBuffer ReceivedDataBuffer `[64]uc  1 e 64 @608 ]
+"22
+[v _ToSendDataBuffer ToSendDataBuffer `[64]uc  1 e 64 @672 ]
+"29
+[v _USBOutHandle USBOutHandle `*.39VEv  1 e 2 0 ]
+"30
+[v _USBInHandle USBInHandle `*.39VEv  1 e 2 0 ]
+"9 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\main.c
+[v _ReturnToBL ReturnToBL `uc  1 e 1 0 ]
+[s S287 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `ui 1 idVendor 2 8 `ui 1 idProduct 2 10 `ui 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
+"152 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_descriptors.c
+[v _device_dsc device_dsc `CS287  1 e 18 0 ]
+"171
+[v _configDescriptor1 configDescriptor1 `C[41]uc  1 e 41 0 ]
+[s S302 . 4 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[1]ui 1 string 2 2 ]
+"220
+[v _sd000 sd000 `CS302  1 e 4 0 ]
+[s S306 . 52 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[25]ui 1 string 50 2 ]
+"225
+[v _sd001 sd001 `CS306  1 e 52 0 ]
+[s S310 . 46 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[22]ui 1 string 44 2 ]
+"232
+[v _sd002 sd002 `CS310  1 e 46 0 ]
+[s S314 . 29 `[29]uc 1 report 29 0 ]
+"239
+[v _hid_rpt01 hid_rpt01 `CS314  1 e 29 0 ]
+"259
+[v _USB_CD_Ptr USB_CD_Ptr `C[1]*.25Cuc  1 e 2 0 ]
+"265
+[v _USB_SD_Ptr USB_SD_Ptr `C[3]*.25Cuc  1 e 6 0 ]
+"141 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBDeviceState USBDeviceState `VEE291  1 e 1 0 ]
+"142
+[v _USBActiveConfiguration USBActiveConfiguration `VEuc  1 e 1 0 ]
+"143
+[v _USBAlternateInterface USBAlternateInterface `VE[1]uc  1 e 1 0 ]
+[s S362 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"144
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S378 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S382 _BD_STAT 1 `uc 1 Val 1 0 `S362 1 . 1 0 `S371 1 . 1 0 `S378 1 . 1 0 ]
+[s S387 . 4 `S382 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S392 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S396 __BDT 4 `S387 1 . 4 0 `S392 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v _pBDTEntryEP0OutCurrent pBDTEntryEP0OutCurrent `*.39VES396  1 e 2 0 ]
+"145
+[v _pBDTEntryEP0OutNext pBDTEntryEP0OutNext `*.39VES396  1 e 2 0 ]
+"146
+[v _pBDTEntryOut pBDTEntryOut `[2]*.39VES396  1 e 4 0 ]
+"147
+[v _pBDTEntryIn pBDTEntryIn `[2]*.39VES396  1 e 4 0 ]
+"148
+[v _shortPacketStatus shortPacketStatus `VEuc  1 e 1 0 ]
+"149
+[v _controlTransferState controlTransferState `VEuc  1 e 1 0 ]
+[u S401 . 3 `*.39uc 1 bRam 3 0 `*.39Cuc 1 bRom 3 0 `*.39ui 1 wRam 3 0 `*.39Cui 1 wRom 3 0 ]
+"150
+[s S406 . 1 `uc 1 ctrl_trf_mem 1 0 :1:0 
+`uc 1 reserved 1 0 :5:1 
+`uc 1 includeZero 1 0 :1:6 
+`uc 1 busy 1 0 :1:7 
+]
+[u S411 . 1 `S406 1 bits 1 0 `uc 1 Val 1 0 ]
+[s S414 . 2 `uc 1 LB 1 0 `uc 1 HB 1 1 ]
+[u S417 . 2 `ui 1 Val 2 0 `[2]uc 1 v 2 0 `S414 1 byte 2 0 ]
+[s S421 . 6 `S401 1 pSrc 3 0 `S411 1 info 1 3 `S417 1 wCount 2 4 ]
+[v _inPipes inPipes `VE[1]S421  1 e 6 0 ]
+[u S425 . 3 `*.39uc 1 bRam 3 0 `*.39ui 1 wRam 3 0 ]
+"151
+[s S428 . 1 `uc 1 reserved 1 0 :7:0 
+`uc 1 busy 1 0 :1:7 
+]
+[u S431 . 1 `S428 1 bits 1 0 `uc 1 Val 1 0 ]
+[s S435 . 8 `S425 1 pDst 3 0 `S431 1 info 1 3 `S417 1 wCount 2 4 `*.37(v 1 pFunc 2 6 ]
+[v _outPipes outPipes `VE[1]S435  1 e 8 0 ]
+"152
+[v _pDst pDst `*.39VEuc  1 e 2 0 ]
+"153
+[v _RemoteWakeup RemoteWakeup `VEuc  1 e 1 0 ]
+"154
+[v _USBBusIsSuspended USBBusIsSuspended `VEuc  1 e 1 0 ]
+[s S440 . 1 `uc 1 filler1 1 0 :1:0 
+`uc 1 ping_pong 1 0 :1:1 
+`uc 1 direction 1 0 :1:2 
+`uc 1 endpoint_number 1 0 :4:3 
+]
+"155
+[u S445 __USTAT 1 `S440 1 . 1 0 `uc 1 Val 1 0 ]
+[v _USTATcopy USTATcopy `VES445  1 e 1 0 ]
+"156
+[v _endpoint_number endpoint_number `VEuc  1 e 1 0 ]
+"157
+[v _BothEP0OutUOWNsSet BothEP0OutUOWNsSet `VEuc  1 e 1 0 ]
+[s S448 . 1 `uc 1 ping_pong_state 1 0 :1:0 
+`uc 1 transfer_terminated 1 0 :1:1 
+]
+"158
+[u S451 . 1 `S448 1 bits 1 0 `uc 1 Val 1 0 ]
+[v _ep_data_in ep_data_in `VE[2]S451  1 e 2 0 ]
+"159
+[v _ep_data_out ep_data_out `VE[2]S451  1 e 2 0 ]
+"160
+[v _USBStatusStageTimeoutCounter USBStatusStageTimeoutCounter `VEuc  1 e 1 0 ]
+"161
+[v _USBDeferStatusStagePacket USBDeferStatusStagePacket `VEuc  1 e 1 0 ]
+"162
+[v _USBStatusStageEnabledFlag1 USBStatusStageEnabledFlag1 `VEuc  1 e 1 0 ]
+"163
+[v _USBStatusStageEnabledFlag2 USBStatusStageEnabledFlag2 `VEuc  1 e 1 0 ]
+"164
+[v _USBDeferINDataStagePackets USBDeferINDataStagePackets `VEuc  1 e 1 0 ]
+"165
+[v _USBDeferOUTDataStagePackets USBDeferOUTDataStagePackets `VEuc  1 e 1 0 ]
+"166
+[v _USB1msTickCount USB1msTickCount `VEul  1 e 4 0 ]
+"167
+[v _USBTicksSinceSuspendEnd USBTicksSinceSuspendEnd `VEuc  1 e 1 0 ]
+"174
+[v _BDT BDT `VE[8]S396  1 e 32 @512 ]
+[s S454 . 8 `uc 1 bmRequestType 1 0 `uc 1 bRequest 1 1 `ui 1 wValue 2 2 `ui 1 wIndex 2 4 `ui 1 wLength 2 6 ]
+"179
+[s S481 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`S417 1 W_Value 2 2 `S417 1 W_Index 2 4 `S417 1 W_Length 2 6 ]
+[s S487 . 8 `uc 1 Recipient 1 0 :5:0 
+`uc 1 RequestType 1 0 :2:5 
+`uc 1 DataDir 1 0 :1:7 
+`uc 1 . 1 1 :8:0 
+`uc 1 bFeature 1 2 `uc 1 . 1 3 :8:0 
+`uc 1 . 1 4 :8:0 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S498 . 1 `uc 1 recipient 1 0 :5:0 
+`uc 1 type 1 0 :2:5 
+`uc 1 direction 1 0 :1:7 
+]
+[u S502 . 1 `uc 1 bmRequestType 1 0 `S498 1 . 1 0 ]
+[s S505 . 1 `S502 1 requestInfo 1 0 ]
+[s S507 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bDscIndex 1 2 `uc 1 bDescriptorType 1 3 `ui 1 wLangID 2 4 `uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S515 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bDevADR 1 2 `uc 1 bDevADRH 1 3 `uc 1 . 1 4 :8:0 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S524 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bConfigurationValue 1 2 `uc 1 bCfgRSD 1 3 `uc 1 . 1 4 :8:0 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S533 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 bAltID 1 2 `uc 1 bAltID_H 1 3 `uc 1 bIntfID 1 4 `uc 1 bIntfID_H 1 5 `uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S542 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 . 1 2 :8:0 
+`uc 1 . 1 3 :8:0 
+`uc 1 bEPID 1 4 `uc 1 bEPID_H 1 5 `uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[s S551 . 8 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`uc 1 . 1 2 :8:0 
+`uc 1 . 1 3 :8:0 
+`uc 1 EPNum 1 4 :4:0 
+`uc 1 . 1 4 :3:4 
+`uc 1 EPDir 1 4 :1:7 
+`uc 1 . 1 5 :8:0 
+`uc 1 . 1 6 :8:0 
+`uc 1 . 1 7 :8:0 
+]
+[u S562 . 8 `S454 1 . 8 0 `S481 1 . 8 0 `S487 1 . 8 0 `S505 1 . 1 0 `S507 1 . 8 0 `S515 1 . 8 0 `S524 1 . 8 0 `S533 1 . 8 0 `S542 1 . 8 0 `S551 1 . 8 0 ]
+[v _SetupPkt SetupPkt `VES562  1 e 8 @544 ]
+"180
+[v _CtrlTrfData CtrlTrfData `VE[8]uc  1 e 8 @552 ]
+"79 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device_hid.c
+[v _idle_rate idle_rate `uc  1 s 1 idle_rate ]
+"80
+[v _active_protocol active_protocol `uc  1 s 1 active_protocol ]
+"17 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"48
+} 0
+"282 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBDeviceInit USBDeviceInit `(v  1 e 0 0 ]
+{
+"284
+[v USBDeviceInit@i i `uc  1 a 1 8 ]
+"376
+} 0
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\memset.c
+[v _memset memset `(*.39v  1 e 2 0 ]
+{
+"15
+[v memset@p p `*.39uc  1 a 2 6 ]
+"8
+[v memset@p1 p1 `*.39v  1 p 2 0 ]
+[v memset@c c `i  1 p 2 2 ]
+[v memset@n n `ui  1 p 2 4 ]
+"22
+} 0
+"1252 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBDeviceDetach USBDeviceDetach `(v  1 e 0 0 ]
+{
+"1317
+} 0
+"1357
+[v _USBDeviceAttach USBDeviceAttach `(v  1 e 0 0 ]
+{
+"1387
+} 0
+"38 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 0 0 ]
+{
+[v SYSTEM_Initialize@state state `E4601  1 a 1 wreg ]
+[v SYSTEM_Initialize@state state `E4601  1 a 1 wreg ]
+[v SYSTEM_Initialize@state state `E4601  1 a 1 1 ]
+"62
+} 0
+"220 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\leds.c
+[v _LED_Enable LED_Enable `(v  1 e 0 0 ]
+{
+[v LED_Enable@led led `E2  1 a 1 wreg ]
+[v LED_Enable@led led `E2  1 a 1 wreg ]
+[v LED_Enable@led led `E2  1 a 1 0 ]
+"243
+} 0
+"85 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\buttons.c
+[v _BUTTON_Enable BUTTON_Enable `(v  1 e 0 0 ]
+{
+[v BUTTON_Enable@button button `E4576  1 a 1 wreg ]
+[v BUTTON_Enable@button button `E4576  1 a 1 wreg ]
+[v BUTTON_Enable@button button `E4576  1 a 1 0 ]
+"95
+} 0
+"75 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\adc.c
+[v _ADC_SetConfiguration ADC_SetConfiguration `(uc  1 e 1 0 ]
+{
+[v ADC_SetConfiguration@configuration configuration `E33  1 a 1 wreg ]
+[v ADC_SetConfiguration@configuration configuration `E33  1 a 1 wreg ]
+"77
+[v ADC_SetConfiguration@configuration configuration `E33  1 a 1 0 ]
+"88
+} 0
+"61
+[v _ADC_Enable ADC_Enable `(uc  1 e 1 0 ]
+{
+[v ADC_Enable@channel channel `E30  1 a 1 wreg ]
+[v ADC_Enable@channel channel `E30  1 a 1 wreg ]
+[v ADC_Enable@channel channel `E30  1 a 1 0 ]
+"73
+} 0
+"97 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_device_custom_hid.c
+[v _APP_DeviceCustomHIDTasks APP_DeviceCustomHIDTasks `(v  1 e 0 0 ]
+{
+"151
+[v APP_DeviceCustomHIDTasks@pot pot `ui  1 a 2 17 ]
+"178
+} 0
+"57
+[v _DoCommand DoCommand `(v  1 e 0 0 ]
+{
+"86
+[v DoCommand@pot pot `ui  1 a 2 12 ]
+"95
+} 0
+"1000 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+{
+[v USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[s S362 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"1002
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S378 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S382 _BD_STAT 1 `uc 1 Val 1 0 `S362 1 . 1 0 `S371 1 . 1 0 `S378 1 . 1 0 ]
+[s S387 . 4 `S382 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S392 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S396 __BDT 4 `S387 1 . 4 0 `S392 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBTransferOnePacket@handle handle `*.39VES396  1 a 2 7 ]
+"1000
+[v USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[v USBTransferOnePacket@dir dir `uc  1 p 1 0 ]
+[v USBTransferOnePacket@data data `*.39uc  1 p 2 1 ]
+[v USBTransferOnePacket@len len `uc  1 p 1 3 ]
+"1005
+[v USBTransferOnePacket@ep ep `uc  1 a 1 6 ]
+"1052
+} 0
+"141 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\leds.c
+[v _LED_Toggle LED_Toggle `(v  1 e 0 0 ]
+{
+[v LED_Toggle@led led `E2  1 a 1 wreg ]
+[v LED_Toggle@led led `E2  1 a 1 wreg ]
+[v LED_Toggle@led led `E2  1 a 1 0 ]
+"164
+} 0
+"55 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\buttons.c
+[v _BUTTON_IsPressed BUTTON_IsPressed `(uc  1 e 1 0 ]
+{
+[v BUTTON_IsPressed@button button `E4576  1 a 1 wreg ]
+[v BUTTON_IsPressed@button button `E4576  1 a 1 wreg ]
+[v BUTTON_IsPressed@button button `E4576  1 a 1 0 ]
+"67
+} 0
+"37 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\adc.c
+[v _ADC_Read10bit ADC_Read10bit `(ui  1 e 2 0 ]
+{
+[v ADC_Read10bit@channel channel `E30  1 a 1 wreg ]
+"39
+[v ADC_Read10bit@result result `ui  1 a 2 3 ]
+"37
+[v ADC_Read10bit@channel channel `E30  1 a 1 wreg ]
+[v ADC_Read10bit@channel channel `E30  1 a 1 5 ]
+"59
+} 0
+"67 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\system.c
+[v _SYS_InterruptHigh SYS_InterruptHigh `II(v  1 e 0 0 ]
+{
+"72
+} 0
+"482 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBDeviceTasks USBDeviceTasks `(v  1 e 0 0 ]
+{
+"484
+[v USBDeviceTasks@i i `uc  1 a 1 33 ]
+"832
+} 0
+"282
+[v i2_USBDeviceInit USBDeviceInit `(v  1 e 0 0 ]
+{
+[v i2USBDeviceInit@i USBDeviceInit `uc  1 a 1 8 ]
+"376
+} 0
+"2308
+[v _USBWakeFromSuspend USBWakeFromSuspend `(v  1 s 0 USBWakeFromSuspend ]
+{
+"2354
+} 0
+"2250
+[v _USBSuspend USBSuspend `(v  1 s 0 USBSuspend ]
+{
+"2291
+} 0
+"2207
+[v _USBStallHandler USBStallHandler `(v  1 s 0 USBStallHandler ]
+{
+"2232
+} 0
+"3030
+[v _USBIncrement1msInternalTimers USBIncrement1msInternalTimers `(v  1 e 0 0 ]
+{
+"3048
+} 0
+"2377
+[v _USBCtrlEPService USBCtrlEPService `(v  1 s 0 USBCtrlEPService ]
+{
+"2428
+} 0
+"11 D:\MCUDev13\PIC\xc8\v1.32\sources\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 2 0 ]
+{
+"20
+[v memcpy@s s `*.39Cuc  1 a 2 8 ]
+"18
+[v memcpy@d d `*.39uc  1 a 2 6 ]
+"11
+[v memcpy@d1 d1 `*.39v  1 p 2 0 ]
+[v memcpy@s1 s1 `*.39Cv  1 p 2 2 ]
+[v memcpy@n n `ui  1 p 2 4 ]
+"32
+} 0
+"2470 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBCtrlTrfSetupHandler USBCtrlTrfSetupHandler `(v  1 s 0 USBCtrlTrfSetupHandler ]
+{
+"2520
+} 0
+"1621
+[v _USBCtrlEPServiceComplete USBCtrlEPServiceComplete `(v  1 s 0 USBCtrlEPServiceComplete ]
+{
+"1753
+} 0
+"1493
+[v _USBCtrlEPAllowDataStage USBCtrlEPAllowDataStage `(v  1 e 0 0 ]
+{
+"1523
+} 0
+"2691
+[v _USBCheckStdRequest USBCheckStdRequest `(v  1 s 0 USBCheckStdRequest ]
+{
+"2738
+} 0
+"1973
+[v _USBStdSetCfgHandler USBStdSetCfgHandler `(v  1 s 0 USBStdSetCfgHandler ]
+{
+"1975
+[v USBStdSetCfgHandler@i i `uc  1 a 1 22 ]
+"2029
+} 0
+"8 D:\MCUDev13\PIC\xc8\v1.32\sources\common\memset.c
+[v i2_memset memset `(*.39v  1 e 2 0 ]
+{
+[v i2memset@p memset `*.39uc  1 a 2 6 ]
+[v i2memset@p1 p1 `*.39v  1 p 2 0 ]
+[v i2memset@c c `i  1 p 2 2 ]
+[v i2memset@n n `ui  1 p 2 4 ]
+"22
+} 0
+"2134 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v _USBStdGetStatusHandler USBStdGetStatusHandler `(v  1 s 0 USBStdGetStatusHandler ]
+{
+[s S362 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"2166
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S378 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S382 _BD_STAT 1 `uc 1 Val 1 0 `S362 1 . 1 0 `S371 1 . 1 0 `S378 1 . 1 0 ]
+[s S387 . 4 `S382 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S392 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S396 __BDT 4 `S387 1 . 4 0 `S392 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBStdGetStatusHandler@p p `*.39S396  1 a 2 1 ]
+"2189
+} 0
+"2048
+[v _USBStdGetDscHandler USBStdGetDscHandler `(v  1 s 0 USBStdGetDscHandler ]
+{
+"2117
+} 0
+"2759
+[v _USBStdFeatureReqHandler USBStdFeatureReqHandler `(v  1 s 0 USBStdFeatureReqHandler ]
+{
+[s S362 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"2761
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S378 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S382 _BD_STAT 1 `uc 1 Val 1 0 `S362 1 . 1 0 `S371 1 . 1 0 `S378 1 . 1 0 ]
+[s S387 . 4 `S382 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S392 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S396 __BDT 4 `S387 1 . 4 0 `S392 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBStdFeatureReqHandler@p p `*.39S396  1 a 2 28 ]
+"2766
+[v USBStdFeatureReqHandler@pUEP pUEP `*.39uc  1 a 2 25 ]
+[s S448 . 1 `uc 1 ping_pong_state 1 0 :1:0 
+`uc 1 transfer_terminated 1 0 :1:1 
+]
+"2762
+[u S451 . 1 `S448 1 bits 1 0 `uc 1 Val 1 0 ]
+[v USBStdFeatureReqHandler@current_ep_data current_ep_data `S451  1 a 1 27 ]
+"2985
+} 0
+"51 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\usb_events.c
+[v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(uc  1 e 1 0 ]
+{
+[v USER_USB_CALLBACK_EVENT_HANDLER@event event `E4810  1 p 2 14 ]
+[v USER_USB_CALLBACK_EVENT_HANDLER@pdata pdata `*.39v  1 p 2 16 ]
+[v USER_USB_CALLBACK_EVENT_HANDLER@size size `ui  1 p 2 18 ]
+"113
+} 0
+"38 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\system.c
+[v i2_SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 0 0 ]
+{
+[v i2SYSTEM_Initialize@state state `E4601  1 a 1 wreg ]
+[v i2SYSTEM_Initialize@state state `E4601  1 a 1 wreg ]
+[v i2SYSTEM_Initialize@state state `E4601  1 a 1 1 ]
+"62
+} 0
+"220 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\leds.c
+[v i2_LED_Enable LED_Enable `(v  1 e 0 0 ]
+{
+[v i2LED_Enable@led led `E2  1 a 1 wreg ]
+[v i2LED_Enable@led led `E2  1 a 1 wreg ]
+[v i2LED_Enable@led led `E2  1 a 1 0 ]
+"243
+} 0
+"85 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\buttons.c
+[v i2_BUTTON_Enable BUTTON_Enable `(v  1 e 0 0 ]
+{
+[v i2BUTTON_Enable@button button `E4576  1 a 1 wreg ]
+[v i2BUTTON_Enable@button button `E4576  1 a 1 wreg ]
+[v i2BUTTON_Enable@button button `E4576  1 a 1 0 ]
+"95
+} 0
+"75 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\adc.c
+[v i2_ADC_SetConfiguration ADC_SetConfiguration `(uc  1 e 1 0 ]
+{
+[v i2ADC_SetConfiguration@configuration configuration `E33  1 a 1 wreg ]
+[v i2ADC_SetConfiguration@configuration configuration `E33  1 a 1 wreg ]
+"77
+[v i2ADC_SetConfiguration@configuration configuration `E33  1 a 1 0 ]
+"88
+} 0
+"61
+[v i2_ADC_Enable ADC_Enable `(uc  1 e 1 0 ]
+{
+[v i2ADC_Enable@channel channel `E30  1 a 1 wreg ]
+[v i2ADC_Enable@channel channel `E30  1 a 1 wreg ]
+[v i2ADC_Enable@channel channel `E30  1 a 1 0 ]
+"73
+} 0
+"153 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device_hid.c
+[v _USBCheckHIDRequest USBCheckHIDRequest `(v  1 e 0 0 ]
+{
+"241
+} 0
+"50 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_led_usb_status.c
+[v _APP_LEDUpdateUSBStatus APP_LEDUpdateUSBStatus `(v  1 e 0 0 ]
+{
+"52
+[v APP_LEDUpdateUSBStatus@ledCount ledCount `ui  1 s 2 ledCount ]
+"99
+} 0
+"59 E:\hirosphere.net\Motor\PIC\PiM_11x\BSP\leds.c
+[v _LED_On LED_On `(v  1 e 0 0 ]
+{
+[v LED_On@led led `E2  1 a 1 wreg ]
+[v LED_On@led led `E2  1 a 1 wreg ]
+[v LED_On@led led `E2  1 a 1 0 ]
+"82
+} 0
+"100
+[v _LED_Off LED_Off `(v  1 e 0 0 ]
+{
+[v LED_Off@led led `E2  1 a 1 wreg ]
+[v LED_Off@led led `E2  1 a 1 wreg ]
+[v LED_Off@led led `E2  1 a 1 0 ]
+"123
+} 0
+"42 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\app_device_custom_hid.c
+[v _APP_DeviceCustomHIDInitialize APP_DeviceCustomHIDInitialize `(v  1 e 0 0 ]
+{
+"53
+} 0
+"1000 E:\hirosphere.net\Motor\PIC\PiM_11x\HIDD\USB\usb_device.c
+[v i2_USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
+{
+[v i2USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[s S362 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S378 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S382 _BD_STAT 1 `uc 1 Val 1 0 `S362 1 . 1 0 `S371 1 . 1 0 `S378 1 . 1 0 ]
+[s S387 . 4 `S382 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S392 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S396 __BDT 4 `S387 1 . 4 0 `S392 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v i2USBTransferOnePacket@handle USBTransferOnePacket `*.39VES396  1 a 2 7 ]
+[v i2USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
+[v i2USBTransferOnePacket@dir dir `uc  1 p 1 0 ]
+[v i2USBTransferOnePacket@data data `*.39uc  1 p 2 1 ]
+[v i2USBTransferOnePacket@len len `uc  1 p 1 3 ]
+"1005
+[v i2USBTransferOnePacket@ep ep `uc  1 a 1 6 ]
+"1052
+} 0
+"883
+[v _USBEnableEndpoint USBEnableEndpoint `(v  1 e 0 0 ]
+{
+[v USBEnableEndpoint@ep ep `uc  1 a 1 wreg ]
+"885
+[v USBEnableEndpoint@p p `*.39uc  1 a 2 11 ]
+"883
+[v USBEnableEndpoint@ep ep `uc  1 a 1 wreg ]
+[v USBEnableEndpoint@options options `uc  1 p 1 8 ]
+"889
+[v USBEnableEndpoint@ep ep `uc  1 a 1 13 ]
+"907
+} 0
+"1548
+[v _USBConfigureEndpoint USBConfigureEndpoint `(v  1 s 0 USBConfigureEndpoint ]
+{
+[v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 wreg ]
+[s S362 . 1 `uc 1 BC8 1 0 :1:0 
+`uc 1 BC9 1 0 :1:1 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 INCDIS 1 0 :1:4 
+`uc 1 KEN 1 0 :1:5 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+"1550
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID0 1 0 :1:2 
+`uc 1 PID1 1 0 :1:3 
+`uc 1 PID2 1 0 :1:4 
+`uc 1 PID3 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+]
+[s S378 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :2:6 
+]
+[u S382 _BD_STAT 1 `uc 1 Val 1 0 `S362 1 . 1 0 `S371 1 . 1 0 `S378 1 . 1 0 ]
+[s S387 . 4 `S382 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S392 . 4 `uc 1 . 1 0 :8:0 
+`uc 1 . 1 1 :8:0 
+`ui 1 ADR 2 2 ]
+[u S396 __BDT 4 `S387 1 . 4 0 `S392 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBConfigureEndpoint@handle handle `*.39VES396  1 a 2 6 ]
+"1548
+[v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 wreg ]
+[v USBConfigureEndpoint@direction direction `uc  1 p 1 0 ]
+"1554
+[v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 5 ]
+"1590
+} 0
+"2543
+[v _USBCtrlTrfOutHandler USBCtrlTrfOutHandler `(v  1 s 0 USBCtrlTrfOutHandler ]
+{
+"2572
+} 0
+"1857
+[v _USBCtrlTrfRxService USBCtrlTrfRxService `(v  1 s 0 USBCtrlTrfRxService ]
+{
+"1859
+[v USBCtrlTrfRxService@byteToRead byteToRead `uc  1 a 1 1 ]
+"1860
+[v USBCtrlTrfRxService@i i `uc  1 a 1 0 ]
+"1952
+} 0
+"1421
+[v _USBCtrlEPAllowStatusStage USBCtrlEPAllowStatusStage `(v  1 e 0 0 ]
+{
+"1464
+} 0
+"2597
+[v _USBCtrlTrfInHandler USBCtrlTrfInHandler `(v  1 s 0 USBCtrlTrfInHandler ]
+{
+"2599
+[v USBCtrlTrfInHandler@lastDTS lastDTS `uc  1 a 1 1 ]
+"2672
+} 0
+"1776
+[v _USBCtrlTrfTxService USBCtrlTrfTxService `(v  1 s 0 USBCtrlTrfTxService ]
+{
+"1778
+[v USBCtrlTrfTxService@byteToSend byteToSend `uc  1 a 1 0 ]
+"1830
+} 0

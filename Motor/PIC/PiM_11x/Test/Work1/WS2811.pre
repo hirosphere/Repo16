@@ -1,0 +1,85 @@
+
+# 1 "..\Files\WS2811.c"
+
+# 5 "..\Files\Periph.h"
+void WS_Out();
+
+
+# 7 "..\Files\WS2811.c"
+#asm
+
+  WS_Bit_Out macro bit
+
+    bsf LATC, 2
+  nop
+  nop
+  nop
+  btfss INDF0, bit
+
+    bcf LATC, 2
+  nop
+  nop
+  nop
+  nop
+
+    bcf LATC, 2
+  nop
+  nop
+  nop
+  nop
+
+   endm
+
+
+   WS_Bit_Out_0 macro
+
+    bsf LATC, 2
+  nop
+  nop
+  nop
+  btfss INDF0, 0
+
+    bcf LATC, 2
+  nop
+  nop
+  nop
+  nop
+
+    bcf LATC, 2
+  incf FSR0L
+  decfsz WREG
+
+   endm
+
+#endasm 
+
+
+  void WS_Out()
+{
+
+
+# 58
+#asm
+
+    movlw LOW( _WS_Buffer )
+  movwf FSR0L
+  movlw HIGH( _WS_Buffer )
+  movwf FSR0H
+
+    movlw 0x9
+
+    WS_Out_Loop:
+
+    WS_Bit_Out 7
+  WS_Bit_Out 6
+  WS_Bit_Out 5
+  WS_Bit_Out 4
+  WS_Bit_Out 3
+  WS_Bit_Out 2
+  WS_Bit_Out 1
+  WS_Bit_Out_0
+
+    bra WS_Out_Loop
+
+#endasm 
+   }

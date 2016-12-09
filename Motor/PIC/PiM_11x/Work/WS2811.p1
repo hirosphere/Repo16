@@ -1,0 +1,14 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"5 Files\WS2811.c
+"10
+[v _WS_Out `(v ~T0 @X0 1 ef ]
+"11
+{
+[; ;WS2811.c: 10: void WS_Out( void )
+[; ;WS2811.c: 11: {
+[e :U _WS_Out ]
+[f ]
+[; ;WS2811.c: 13: }
+"13
+[e :UE 1 ]
+}

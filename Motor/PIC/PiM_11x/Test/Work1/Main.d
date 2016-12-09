@@ -1,0 +1,1 @@
+ Work1/Main.d  Work1/Main.p1:  Main.c ../Files/Periph.h ../../Libs/HIDD.h ../../Libs/Prime.h
